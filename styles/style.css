@@ -4,5 +4,28 @@
 Primary (60%):
 Secondary (30%):
 Accent (10%):
+Other: #c1cacb
 ---------------------*/
 
+.welcome-banner img{
+  display: block;
+  max-height: 500px;
+  max-width: 300px;
+  width: auto;
+}
+
+.accent {
+  color: #BADA07;
+}
+
+.btn-ge-primary {
+  background-color: #c1cacb;
+}
+
+.btn-ge-primary:hover, .btn-ge-outline-secondary:hover {
+  background-color: #BADA07;
+}
+
+.btn-ge-outline-secondary {
+  border: 2px solid #c1cacb;
+}
