@@ -8,10 +8,18 @@ Other: #c1cacb
 ---------------------*/
 
 .welcome-banner img{
-  display: block;
+  display: inline;
   max-height: 500px;
   max-width: 300px;
   width: auto;
+  /* justify-content: center; */
+  padding: 0;
+}
+
+@media (max-width: 500px) {
+  .welcome-banner img {
+    display: none !important;
+  }
 }
 
 .accent {
