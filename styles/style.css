@@ -4,9 +4,41 @@
 Primary (60%): #E4EAEB
 Secondary (30%): #BADA07
 Accent (10%): #D87131
+Other: #c1cacb
 ---------------------*/
 
-.footer {
+.welcome-banner img{
+      display: inline;
+      max-height: 500px;
+      max-width: 300px;
+      width: auto;
+      /* justify-content: center; */
+      padding: 0;
+    }
+    
+    @media (max-width: 500px) {
+      .welcome-banner img {
+        display: none !important;
+      }
+    }
+    
+    .accent {
+      color: #BADA07;
+    }
+    
+    .btn-ge-primary {
+      background-color: #c1cacb;
+    }
+    
+    .btn-ge-primary:hover, .btn-ge-outline-secondary:hover {
+      background-color: #BADA07;
+    }
+    
+    .btn-ge-outline-secondary {
+      border: 2px solid #c1cacb;
+    }
+
+    .footer {
       background-color: #BADA07;
       padding: 70px 0;
       position: sticky;
