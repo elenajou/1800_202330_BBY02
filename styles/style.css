@@ -151,6 +151,82 @@ input[type=search] {
       background-color: #BADA07;
 }
 
+/* for Grace's pages */
+.card-img-top {
+      width: 100%;
+      height: 15vh;
+      object-fit: cover;    
+  }
+  
+  .card {
+      margin-left: 2%;
+      margin-right: 0.5%;
+  }
+  
+  #result1 {
+      margin-right: 0%;
+  }
+  
+  #result2 {
+      margin-left: 0%;
+  }
+  
+  #result3 {
+      margin-right: 0%;
+  }
+  
+  #result4 {
+      margin-left: 0%;
+  }
+  
+  #result5 {
+      margin-right: 0%;
+  }
+  
+  #result6 {
+      margin-left: 0%;
+  }
+  
+  #result7 {
+      margin-right: 0%;
+  }
+  
+  #result8 {
+      margin-left: 0%;
+  }
+
+  #recipe-title {
+      color: #BADA07;
+  }
+
+  .custom-size {
+      width: 75vw;
+      height:50vh;
+      object-fit: cover;
+  }
+
+ #mypageheader {
+      margin-bottom: 2%;
+ }
+
+ .custom-size-fridge {
+      object-fit: contain;
+ }
+
+ .card-img-top-fridge {
+      width: 100%;
+      height: 40vh;
+      object-fit: cover;    
+  }
+
+  #fridge-title {
+      color: #BADA07;
+  }
+
+  #mb-custom {
+      margin-bottom: 2%;
+  }
+
 .login-container {
       display: flex;
       align-items: center;
