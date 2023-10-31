@@ -21,6 +21,16 @@ Other: #c1cacb
 .nav-item {
       font-family: 'Dosis';
       font-size: medium;
+}     
+
+.icon-space {
+      padding-right: 10px;
+      /* color: black; */
+}
+
+fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
+      display: inline;
+      font-size: 1.5em;
 }
 
 form {
@@ -139,4 +149,23 @@ input[type=search] {
 
 .footer .social-links a:hover {
       background-color: #BADA07;
+}
+
+.login-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+
+.login-info {
+      left: 50%;
+      top: 33%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      border: #2EAC36 solid 2px;
+      padding: 3em;
+}
+
+input, label {
+      display: block;
 }
