@@ -121,24 +121,16 @@ input[type=search] {
       width: 100%;
       position: relative;
       background-color: #E4EAEB;
-<<<<<<< HEAD
       max-width: 100vw;
       padding: 70px;
       margin: 0;
       bottom: 0;
       right: 0;
       left: 0;
-      position: absolute;
 }
 
-.footer col {
+.footer-col {
       width: 33%;
-}
-
-.footer ul {
-=======
-      padding: 70px 0;
-      bottom: 0;
 }
 
 .footer-row {
@@ -147,7 +139,6 @@ input[type=search] {
 }
 
 ul {
->>>>>>> database
       list-style: none;
       padding: 0;
 }
