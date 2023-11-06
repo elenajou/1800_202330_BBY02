@@ -14,7 +14,7 @@ bootstrap_head.innerHTML = `
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&family=Dosis:wght@500&display=swap" rel="stylesheet">
 
   <!-------------------------------------------------------->
-  <!-------------------- Stylesheets ----------------------->
+  <!-------------------- Stylesheets --------------newCard.querySelector('.card-title').innerHTML = title;--------->
   <!-------------------------------------------------------->
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">

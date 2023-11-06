@@ -58,6 +58,8 @@
         </div>
     </nav>
 
+    <!--Recipe Cards-->
+<!-- 
     <div class="px-4 my-5 text-left border-bottom">
         <h1 class="display-6 fw-bold" id="mypageheader">Search Result</h1>
 
@@ -148,6 +150,43 @@
                   <p class="card-text">Recipe Description</p>
                   </div>
               </div>
-            </div>
+            </div> -->
+
+  <!--Container-->  
+  <div class="container px-4 my-5 text-left border-bottom">
+    <h1 class="display-6 fw-bold" id="mypageheader">Search Results</h1>
+    <div class="container">
+      <div id="recipes-go-here" class="row row-cols-auto">
+      </div>
+    </div>
+  </div>  
+
+  <!--Recipe card templates, not displayed-->
+  <template id="recipeCardTemplate">
+    <div class="card py-2 mx-2" style="width: 18rem; height: auto">
+      <img class="card-image card-img-top" src=" ..." alt="..." />
+      <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-time">placeholder</p>
+          <br />
+          <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+          </p>
+          <a class="btn btn-primary card-href">Read more</a>
+      </div>
+    </div>
+  </template>
+
+  <!---------------------------------------------->
+  <!-- Your own JavaScript functions go here    -->
+  <!---------------------------------------------->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
+  <script src="../scripts/firebaseAPI_BBY02.js"></script>
+  <script src="../scripts/recipeMenu.js"></script>
+
 </body>
 </html>
