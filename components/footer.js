@@ -33,4 +33,4 @@ footer.innerHTML = `
     </footer>
 `;
 
-document.body.appendChild(footer.content);
+document.getElementById("footer").appendChild(footer.content);
