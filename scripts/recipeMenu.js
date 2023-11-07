@@ -9,7 +9,7 @@ function displayCardsDynamically(collection) {
         var description = doc.data().description;
         var recipeCode = doc.data().code;
         let newCard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newCard) that will be filled with Firestore data
-        var docID = doc.ID;
+        var docID = doc.id;
 
         //update title and text and image
         newCard.querySelector('.card-title').innerHTML = title;
