@@ -117,4 +117,105 @@ function writeRecipes() {
     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
   });
 }
-writeRecipes();
+// writeRecipes();
+
+function writeIngredients() {
+  var recipesRef = db.collection("recipes").doc();
+  // doublecheck: is your collection called "Reviews" or "reviews"?
+  db.collection("recipes")
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        var recipe02Ref = db.collection("recipes").where("name", "==", "Crème Brûlée")
+          .get()
+          .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+              ingredientsRef = db.collection("recipes").doc(doc.id).collection("ingredients");
+              ingredientsRef.add({
+                code: "recipe02ingr01",
+                name: "ice cream",
+                qty: 1,
+                last_updated: firebase.firestore.FieldValue.serverTimestamp()
+              });
+
+              ingredientsRef.add({
+                code: "recipe02ingr01",
+                name: "egg",
+                qty: 1,
+                last_updated: firebase.firestore.FieldValue.serverTimestamp()
+              });
+
+              ingredientsRef.add({
+                code: "recipe02ingr01",
+                name: "sugar",
+                qty: 1,
+                last_updated: firebase.firestore.FieldValue.serverTimestamp()
+              });
+            });
+          });  
+        });
+    });
+
+    db.collection("recipes")
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        var recipe02Ref = db.collection("recipes").where("name", "==", "Peanut Butter Cups")
+          .get()
+          .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+              ingredientsRef = db.collection("recipes").doc(doc.id).collection("ingredients");
+              ingredientsRef.add({
+                code: "recipe03ingr01",
+                name: "peanut butter",
+                qty: 1,
+                last_updated: firebase.firestore.FieldValue.serverTimestamp()
+              });
+
+              ingredientsRef.add({
+                code: "recipe03ingr02",
+                name: "sugar",
+                qty: 3,
+                last_updated: firebase.firestore.FieldValue.serverTimestamp()
+              });
+
+              ingredientsRef.add({
+                code: "recipe03ingr03",
+                name: "chocolate",
+                qty: 1,
+                last_updated: firebase.firestore.FieldValue.serverTimestamp()
+              });
+            });
+          });  
+        });
+    });
+}
+
+writeIngredients();
+
+function displayRecipeInfo() {
+  var recipesRef = db.collection("recipes");
+  // doublecheck: is your collection called "Reviews" or "reviews"?
+  db.collection( "recipes" )
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        var ingredientsRef = db.collection("recipes").doc(doc).collection("ingredients");
+        ingredientsRef.add({
+          name: "peach jam",
+          qty: 1
+        });
+        ingredientsRef.add({
+          name: "milk",
+          qty: 1
+        });
+        ingredientsRef.add({
+          name: "egg",
+          qty: 1
+        });
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+      });
+    });
+}
+
+// displayRecipeInfo();

@@ -1,6 +1,4 @@
-const bootstrap_head = document.createElement('template');
-
-bootstrap_head.innerHTML = `
+var string_of_links = document.head.innerHTML + `
   <!-------------------------------------------------------->
   <!------------- Boostrap Library JS CDN ------------------>
   <!-------------------------------------------------------->
@@ -14,10 +12,10 @@ bootstrap_head.innerHTML = `
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&family=Dosis:wght@500&display=swap" rel="stylesheet">
 
   <!-------------------------------------------------------->
-  <!-------------------- Stylesheets --------------newCard.querySelector('.card-title').innerHTML = title;--------->
+  <!-------------------- Stylesheets ----------------------->
   <!-------------------------------------------------------->
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 `;
 
-document.head.appendChild(bootstrap_head.content);
+document.head.innerHTML = string_of_links;
