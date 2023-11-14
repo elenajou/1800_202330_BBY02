@@ -3,10 +3,7 @@ function displayGroceryItems() {
   let ID = "yrx60kXc7EuhjYKXrSfC";
   console.log(ID);
 
-  db.collection("users")
-    .doc(ID)
-    .collection("groceryLists")
-    .get()
+  db.collection("users").doc(ID).collection("groceryLists").get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const {name, qty} = doc.data();
@@ -21,7 +18,7 @@ function displayGroceryItems() {
         checkbox.box = "";
         checkbox.setAttribute("arial-label", "...");
 
-        // Append checkbox to the list item
+        // // Append checkbox to the list item
         newIngredient.appendChild(checkbox);
 
         newIngredient.innerHTML += qty + " " + name;

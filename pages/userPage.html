@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>GrocerEase Create Recipe</title>
-    <meta name="recipe" content="GrocerEase Recipes" />
+    <title>GrocerEase User</title>
+    <meta name="fridge" content="GrocerEase Fridge" />
 
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -32,7 +32,7 @@
     <!-------------------------------------------------------->
     <link rel="stylesheet" href="../styles/style.css" />
 
-    <!-- Footer Script -->
+    <!-------------------- Footer Script --------------------->
     <script src="../components/footer.js" type="text/javascript" defer></script>
   </head>
   <body>
@@ -40,8 +40,15 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-success-subtle">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">GrocerEase</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -60,7 +67,13 @@
             </li>
           </ul>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search for recipes" aria-label="Search" name="search"/>
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search for recipes"
+              aria-label="Search"
+              name="search"
+            />
             <button type="button" class="btn btn-outline-success btn-floating">
               <i class="fas fa-search"></i>
             </button>
@@ -69,44 +82,18 @@
       </div>
     </nav>
 
-    <div class="container">
-      <br>
-      <h1>Create a new recipe!</h1>
-      <br>
-      <form>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Add a recipe title</label>
-            <input type="text" class="form-control" id="title" placeholder="E.g. Apple Pie">
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="exampleFormControlSelect2">How long is the cook time?</label>
-          <input type="text" class="form-control" id="duration" placeholder="E.g. 1 hr 30 mins">
-        </div>    
-        <br>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Provide a short description of the recipe</label>
-          <textarea class="form-control" id="description" rows="3"></textarea>
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Add recipe ingredients</label>
-          <textarea class="form-control" id="ingredients" rows="3"></textarea>
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Provide recipe instructions</label>
-          <textarea class="form-control" id="instructions" rows="3"></textarea>
-        </div>
-        <br>
-        <div class="d-flex justify-content-end">
-          <button type="button" class="btn btn-lg btn-primary pull-right" onclick="createRecipe()">Submit</button>
-        </div>
-      </form>
+    <div class="px-4 my-5 text-left border-bottom">
+      <h1 class="display-6 fw-bold" id="mypageheader">Dashboard</h1>
     </div>
-    <br><br>
 
-    <footer id="footer"></footer>
-
+    
+  <footer id="footer"></footer>
+  <!---------------------------------------------->
+  <!------------ JavaScript functions------------->
+  <!---------------------------------------------->
+  <!-- <script src="./scripts/skeleton.js"></script> -->
+  <!-- <script src="./scripts/script.js"></script> -->
+  <script src="../scripts/firebaseAPI_BBY02.js"></script>
+  <script src="../scripts/userPage.js"></script>
   </body>
 </html>
