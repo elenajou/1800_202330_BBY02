@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>GrocerEase Fridge</title>
-    <meta name="fridge" content="GrocerEase Fridge">
-    
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+  <title>GrocerEase Homepage</title>
+  <meta name="recipe" content="GrocerEase Recipes">
+  
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <!--------------------------------------------------------->
   <!------------- Boostrap, Google Fonts ---------->
   <!----- PLEASE READ head.js BEFORE ADDING ANY LINKS ------->
@@ -35,7 +35,7 @@
   <!-- NavBar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-success-subtle">
       <div class="container-fluid">
-      <a class="navbar-brand" href="#">GrocerEase</a>
+      <a class="navbar-brand" href="index.html">GrocerEase</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -46,13 +46,13 @@
               <hr class="dropdown-divider" style="background-color: azure;">
           </li>
           <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
+              <a class="nav-link" href="fridge.html">Fridge</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Contact Us</a>
+              <a class="nav-link" href="recipeMenu.html">Recipes</a>
           </li>
           </ul>
           <form class="d-flex">
@@ -64,37 +64,39 @@
       </div>
       </div>
   </nav>
-
-  <div class="px-4 my-5 text-left border-bottom">
-    <h1 class="display-6 fw-bold" id="mypageheader">Fridge</h1>
-
-    <!--Container-->  
-    <div class="container px-4 my-5 text-left border-bottom">
-      <h1 class="display-6 fw-bold" id="mypageheader">Current Ingredients</h1>
-      <div class="container">
-        <div id="ingredients-go-here" class="row row-cols-auto">
-        </div>
+  
+  <!--Container-->  
+  <div class="container px-4 my-5 text-left border-bottom">
+    <h1 class="display-6 fw-bold" id="mypageheader">Popular Recipes</h1>
+    <div class="container">
+      <div id="recipes-go-here" class="row row-cols-auto">
       </div>
-    </div>  
-
-    <!--Recipe card templates, not displayed-->
-    <template id="fridgeCardTemplate">
-      <div class="card py-2 mx-2" style="width: 18rem; height: auto">
-        <img class="card-image card-img-top" src=" ..." alt="..." />
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-qty">placeholder</p>
-        </div>
-      </div>
-    </template>
     </div>
-  </div>
+  </div>  
 
-  <footer id="footer"></footer>
+  <!--Recipe card templates, not displayed-->
+  <template id="recipeCardTemplate">
+    <div class="card py-2 mx-2" style="width: 18rem; height: auto">
+      <img class="card-image card-img-top" src=" ..." alt="..." />
+      <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-time">placeholder</p>
+          <br />
+          <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+          </p>
+          <a class="btn btn-primary card-href">Read more</a>
+      </div>
+    </div>
+  </template>
+
   <!---------------------------------------------->
   <!------  JavaScript functions go here --------->
   <!---------------------------------------------->
   <script src="../scripts/firebaseAPI_BBY02.js"></script>
-  <script src="../scripts/fridge.js"></script>
+  <script src="../scripts/recipeMenu.js"></script>
+  <!-- <script src="../scripts/populateUsers.js"></script> -->
+
 </body>
 </html>
