@@ -1,10 +1,10 @@
 function displayGroceryItems() {
   let params = new URL(window.location.href);
-  let ID = "yrx60kXc7EuhjYKXrSfC";
+  let ID = "yzc3UAmLrESJEuWplVCE";
   console.log(ID);
 
   db.collection("users").doc(ID).collection("groceryLists").get()
-    .then((querySnapshot) => {
+    .then((querySnapshot) => 
       querySnapshot.forEach((doc) => {
         const {name, qty} = doc.data();
         // Create a new list element
@@ -24,7 +24,6 @@ function displayGroceryItems() {
         newIngredient.innerHTML += qty + " " + name;
 
         document.getElementById("groceryList").appendChild(newIngredient);
-      });
-    });
-}
+      }));
+    };
 displayGroceryItems();
