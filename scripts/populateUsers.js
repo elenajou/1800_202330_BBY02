@@ -107,19 +107,20 @@ function writeGroceryList() {
 // writeFridge();
 
 function writeFridge() {
+  var ingredientName = "cake";
   var userRef = db.collection("users");
   userRef.doc('yrx60kXc7EuhjYKXrSfC')
     .get()
     .then(function(doc) {
       fridgeRef = userRef.doc(doc.id).collection("fridge");
-      ingredientRef = fridgeRef.doc("egg").get().then(ingredientSnapshot => {
+      ingredientRef = fridgeRef.doc(ingredientName).get().then(ingredientSnapshot => {
         if (ingredientSnapshot.exists) {
           console.log("it exists");
-          fridgeRef.doc("egg").update({ qty: firebase.firestore.FieldValue.increment(1) });
+          fridgeRef.doc(ingredientName).update({ qty: firebase.firestore.FieldValue.increment(1) });
         } else {
           console.log("does not exist");
-          fridgeRef.doc("egg").set({
-            name: "egg",
+          fridgeRef.doc(ingredientName).set({
+            name: ingredientName,
             qty: 1
           })
         }

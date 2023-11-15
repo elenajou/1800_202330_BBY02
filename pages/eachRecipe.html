@@ -27,9 +27,6 @@
   <!------------------------ Styles ------------------------>
   <!-------------------------------------------------------->
   <link rel="stylesheet" href="../styles/style.css">
-
-  <!-------------------- Footer Script --------------------->
-  <script src="../components/footer.js" type="text/javascript" defer></script>
 </head>
 <body>
     <!-- NavBar -->
@@ -71,7 +68,7 @@
                 <h1 class="display-6 fw-bold" id="recipeName"></h1>
         </div>
         <div class="col-md-6 text-md-end">
-          <button type="button" class="btn btn-ge-primary btn-lg pull-right" id="add-button" 
+          <button type="button" class="btn btn-ge-primary btn-lg" id="add-button" 
           onclick="addRecipe()">Add</button>
         </div>
       </div>
@@ -101,14 +98,14 @@
         </div>
       </ul>
     </div>
+  </div>
     
-    <footer id="footer"></footer>
+  <footer id="footerPlaceholder"></footer>
   <!---------------------------------------------->
   <!------------ JavaScript functions------------->
   <!---------------------------------------------->
-  <!-- <script src="./scripts/skeleton.js"></script> -->
-  <!-- <script src="./scripts/script.js"></script> -->
   <script src="../scripts/firebaseAPI_BBY02.js"></script>
+  <script src="../scripts/skeleton.js"></script>
   <script src="../scripts/eachRecipe.js"></script>
 </body>
 </html>

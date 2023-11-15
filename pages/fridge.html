@@ -27,55 +27,19 @@
   <!------------------------ Styles ------------------------>
   <!-------------------------------------------------------->
   <link rel="stylesheet" href="../styles/style.css">
-
-  <!-------------------- Footer Script --------------------->
-  <script src="../components/footer.js" type="text/javascript" defer></script>
 </head>
 <body>
-  <!-- NavBar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-success-subtle">
-      <div class="container-fluid">
-      <a class="navbar-brand" href="#">GrocerEase</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li>
-              <hr class="dropdown-divider" style="background-color: azure;">
-          </li>
-          <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">Contact Us</a>
-          </li>
-          </ul>
-          <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search for recipes" aria-label="Search" name="search">
-          <button type="button" class="btn btn-outline-success btn-floating">
-              <i class="fas fa-search"></i>
-          </button>
-          </form>
-      </div>
-      </div>
-  </nav>
+  <!-- Navbar -->
+  <nav id="navbarPlaceholder"></nav>
 
-  <div class="px-4 my-5 text-left border-bottom">
+  <div class="container px-4 my-5 text-left border-bottom">
     <h1 class="display-6 fw-bold" id="mypageheader">Fridge</h1>
 
     <!--Container-->  
-    <div class="container px-4 my-5 text-left border-bottom">
-      <h1 class="display-6 fw-bold" id="mypageheader">Current Ingredients</h1>
-      <div class="container">
-        <div id="ingredients-go-here" class="row row-cols-auto">
-        </div>
-      </div>
-    </div>  
+    <h2 class="fw-bold" id="mypageheader">What you currently have</h2>
+    <div class="container">
+      <div id="ingredients-go-here" class="row row-cols-auto"></div>
+    </div>
 
     <!--Recipe card templates, not displayed-->
     <template id="fridgeCardTemplate">
@@ -84,17 +48,22 @@
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-qty">placeholder</p>
+            <input type="button" class="btn btn-primary card-subtract-btn" value="-" id="" onclick="subtractQty(this.id)">
+            <input type="button" class="btn btn-primary card-add-btn" value="+" id="" onclick="addQty(this.id)">
         </div>
       </div>
     </template>
-    </div>
   </div>
 
+  <!-- Footer -->
+  <footer id="footerPlaceholder"></footer>
   
   <!---------------------------------------------->
   <!------  JavaScript functions go here --------->
   <!---------------------------------------------->
   <script src="../scripts/firebaseAPI_BBY02.js"></script>
+  <script src="../scripts/skeleton.js"></script>
   <script src="../scripts/fridge.js"></script>
+  <!-- <script src="../scripts/populateUsers.js"></script> -->
 </body>
 </html>
