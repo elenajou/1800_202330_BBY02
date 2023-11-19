@@ -38,8 +38,13 @@
 
     <div class="container">
       <br>
-      <h1>Create a new recipe!</h1>
+      <div class="row">
+        <div class="col-md-6 text-start">
+          <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
+        </div>
+      </div>
       <br>
+      <h1 class="display-6 fw-bold" id="mypageheader">Create new recipe</h1>
       <form>
         <div class="form-group">
             <label for="exampleFormControlInput1">Add a recipe title</label>
@@ -78,5 +83,6 @@
     <!-------------------------------------------------------->
     <script src="../scripts/firebaseAPI_BBY02.js"></script>
     <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/goBack.js"></script>
   </body>
 </html>

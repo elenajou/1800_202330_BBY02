@@ -34,9 +34,17 @@
   
   <!--Container-->  
   <div class="container px-4 my-5 text-left border-bottom">
-    <h1 class="display-6 fw-bold" id="mypageheader">Popular Recipes</h1>
     <div class="container">
-      <button class="btn btn-primary" onclick="window.location.href='createRecipe.html';">Create Recipe</button>
+      <div class="row">
+        <div class="col-md-6 text-start">
+          <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
+        </div>
+        <div class="col-md-6 text-end">
+          <button class="btn btn-primary" onclick="window.location.href='createRecipe.html';">Create Recipe</button>
+        </div>
+      </div>
+      <br>
+      <h1 class="display-6 fw-bold" id="mypageheader">Popular Recipes</h1>
       <div id="recipes-go-here" class="row row-cols-auto"></div>
     </div>
   </div>  
@@ -66,6 +74,7 @@
   <script src="../scripts/firebaseAPI_BBY02.js"></script>
   <script src="../scripts/skeleton.js"></script>
   <script src="../scripts/recipeMenu.js"></script>
+  <script src="../scripts/goBack.js"></script>
   <!-- <script src="../scripts/populateUsers.js"></script> -->
   
 </body>

@@ -64,12 +64,14 @@
 
     <div class="px-4 my-5 text-left border-bottom">
       <div class="row">
-        <div class="col-md-6">
-                <h1 class="display-6 fw-bold" id="recipeName"></h1>
+         <!-- <div class="col-md-6">
+          <h1 class="display-6 fw-bold" id="recipeName"></h1>
+        </div> -->
+        <div class="col-md-6 text-start">
+            <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
         </div>
-        <div class="col-md-6 text-md-end">
-          <button type="button" class="btn btn-ge-primary btn-lg" id="add-button" 
-          onclick="addRecipe()">Add</button>
+        <div class="col-md-6 text-end">
+          <button type="button" class="btn btn-primary" id="add-button" onclick="addRecipe()">Add</button>
         </div>
       </div>
     </div>
@@ -107,5 +109,6 @@
   <script src="../scripts/firebaseAPI_BBY02.js"></script>
   <script src="../scripts/skeleton.js"></script>
   <script src="../scripts/eachRecipe.js"></script>
+  <script src="../scripts/goBack.js"></script>
 </body>
 </html>
