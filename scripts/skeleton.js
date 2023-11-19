@@ -4,6 +4,10 @@ function loadSkeleton() {
             // User is signed in
             $('#navbarPlaceholder').load('../components/nav_after_login.html', function() {
                 console.log('Logged in header loaded successfully');
+                $('#logout-button').on('click', function () {
+                    // Call the logout function when the button is clicked
+                    logout();
+                });
             });
             $('#footerPlaceholder').load('../components/footer.html', function() {
                 console.log('Footer loaded successfully');
