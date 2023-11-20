@@ -16,7 +16,7 @@ app.use("/pages", express.static(path.join(__dirname, "./pages")));
 
 app.get("/", function (req, res) {
     // retrieve and send an HTML document from the file system
-    let doc = fs.readFileSync("./pages/index.html");
+    let doc = fs.readFileSync("pages/index.html");
     res.send(doc);
 })
 
@@ -24,6 +24,7 @@ app.get("/eachRecipe", function (req, res) {
   let dov = fs.readFileSync("pages/eachRecipe.html");
   res.send(doc);
 })
+
 app.get("/recipes", function (req, res) {
   // retrieve and send an HTML document from the file system
   let doc = fs.readFileSync("pages/recipeMenu.html");
