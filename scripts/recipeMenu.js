@@ -15,7 +15,7 @@ function displayCardsDynamically(collection) {
         newCard.querySelector('.card-title').innerHTML = title;
         newCard.querySelector('.card-time').innerHTML = "Total time: " + cookTime + "mins";
         newCard.querySelector('.card-text').innerHTML = description.slice(0,80) + "...";
-        newCard.querySelector('.card-image').src = `../images/${recipeCode}.jpg`;
+        newCard.querySelector('.card-image').src = `/images/${recipeCode}.jpg`;
         newCard.querySelector('a').href = "eachRecipe.html?docID="+docID;
 
         document.getElementById(collection + "-go-here").appendChild(newCard);

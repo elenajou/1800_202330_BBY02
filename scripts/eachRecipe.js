@@ -2,7 +2,6 @@ function displayRecipeInfo() {
 
   let params = new URL( window.location.href ); //get URL of search bar
   let ID = params.searchParams.get( "docID" ); //get value for key "id"
-  console.log( ID );
 
   var recipeRef = db.collection("recipes").doc(ID);
 
@@ -14,21 +13,26 @@ function displayRecipeInfo() {
       recipeName = doc.data().name;
       recipeDesc = doc.data().description;
       recipeInstr = doc.data().instructions;
+      recipeIngre = doc.data().ingredients;
       
       document.getElementById( "recipeName" ).innerHTML = recipeName;
       document.getElementById( "recipeDesc" ).innerHTML = recipeDesc;
       document.getElementById( "recipeInstr" ).innerHTML = recipeInstr;
+      
+      let ingredientList = document.getElementById( "recipeIngre" );
 
-      recipeRef
-        .collection("ingredients")
-        .get()
-        .then(snapshot => {
-          snapshot.forEach(ingreDoc => {
-            const newIngredient = document.createElement("li");
-            newIngredient.innerHTML = ingreDoc.data().name + `: ` + ingreDoc.data().qty;
-            document.getElementById( "recipeIngre" ).appendChild(newIngredient);
-          });
-        });
+      // Iterates through the ingredients array and maps out each item
+      recipeIngre.forEach( ingredient => {
+        const { ingredientID, qty } = ingredient;
+        // ingredientID points to a firestore object referencing an ingredients document
+        ingredientID
+          .get()
+          .then( doc => {
+            let listItem = document.createElement('li');
+            listItem.innerHTML = doc.data().name + ": " + qty;
+            ingredientList.appendChild(listItem);
+          })
+      });
     });
 }
 

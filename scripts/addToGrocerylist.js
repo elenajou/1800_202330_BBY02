@@ -1,37 +1,41 @@
-const db = firebase.firestore();
+function addToGroceryList() {
+  // get the recipeID from the URL
+  let params = new URL( window.location.href ); //get URL of search bar
+  let docID = params.searchParams.get( "docID" )
+  var currentUser;
 
-const userId = 'YOUR_USER_ID';
-const userRef = db.collection('users').doc(userId);
+  firebase.auth().onAuthStateChanged(user => {
+    // Check if user is signed in:
+    if (!(user)) {
+      // No user is signed in.
+      console.log ("No user is signed in");
+    } else {
+      //go to the correct user document by referencing to the user uid
+      currentUser = db.collection("users").doc(user.uid)
+      //get the document for current user.
+      currentUser
+        .get()
+        .then( userDoc => {
+          var userGroceryList;
 
-//using data from the first fake recipe created in the database
-const recipeIngredients = [
-  {
-    name: "peach jam",
-    qty: 1
-  },
-  {
-    name: "lemon juice",
-    qty: 2
-  },
-  {
-    name: "whiskey",
-    qty: 2
-  }
-];
+          // create a new recipe key value pair
+          const addRecipe = {
+            recipeID: db.doc('recipes/' + docID),
+            qty: 1
+          }
 
-recipeIngredients.forEach((ingredient) => {
-  const groceryItem = {
-    date: new Date(),
-    ingredient: ingredient.name,
-    amount: ingredient.qty,
-  };
+          // if there is an existing list, append the new recipe
+          if (userDoc.data().groceryList) {
+            userGroceryList = userDoc.data().groceryList;
+            userGroceryList[userGroceryList.length] = addRecipe;
+            console.log("Added to grocery list");
+          } else { // else create a new list and add the recipe
+            console.log("Created a new grocery list");
+            userGroceryList[0] = addRecipe;
+          }
 
-  // Add the grocery item to the user's grocery list
-  userRef.collection('groceryList').add(groceryItem)
-    .then((docRef) => {
-      console.log('Grocery item added with ID: ', docRef.id);
-    })
-    .catch((error) => {
-      console.error('Error adding grocery item: ', error);
-    });
-});
+          currentUser.update({ groceryList: userGroceryList });
+        });
+    }
+  });
+}

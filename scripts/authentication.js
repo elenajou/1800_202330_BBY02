@@ -6,13 +6,13 @@ var uiConfig = {
         var user = authResult.user;                            // get the user object from the Firebase authentication database
         if (authResult.additionalUserInfo.isNewUser) {         //if new user
             db.collection("users").doc(user.uid).set({         //write to firestore. We are using the UID for the ID in users collection
-                   name: user.displayName,                    //"users" collection
-                   email: user.email,                         //with authenticated user's ID (user.uid)
+                name: user.displayName,                    //"users" collection
+                email: user.email,                         //with authenticated user's ID (user.uid)
             }).then(function () {
-                   console.log("New user added to firestore");
+                console.log("New user added to firestore");
                    window.location.assign("index.html");       //re-direct to index.html that has the afterlogin navbar after signup
             }).catch(function (error) {
-                   console.log("Error adding new user: " + error);
+                console.log("Error adding new user: " + error);
             });
         } else {
             return true;

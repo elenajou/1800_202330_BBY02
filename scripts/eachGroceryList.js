@@ -1,29 +1,53 @@
 function displayGroceryItems() {
-  let params = new URL(window.location.href);
-  let ID = "yzc3UAmLrESJEuWplVCE";
-  console.log(ID);
+  var currentUser;
 
-  db.collection("users").doc(ID).collection("groceryLists").get()
-    .then((querySnapshot) => 
-      querySnapshot.forEach((doc) => {
-        const {name, qty} = doc.data();
-        // Create a new list element
-        const newIngredient = document.createElement("li");
-        newIngredient.className = "list-group-item border-0 d-flex align-items-center ps-0";
+  firebase.auth().onAuthStateChanged(user => {
+    // Check if user is signed in:
+    if (!(user)) {
+      // No user is signed in.
+      console.log ("No user is signed in");
+    } else {
+      //go to the correct user document by referencing to the user uid
+      currentUser = db.collection("users").doc(user.uid)
+      //get the document for current user.
+      currentUser
+        .get()
+        .then( userDoc => {
+          var userGroceryList = userDoc.data().groceryList;
+          
+          if (userGroceryList) {
+            console.log("found a grocery list!");
+            // Iterates through the ingredients array and maps out each item
+            userGroceryList.forEach( recipe => {
+              const { recipeID } = recipe;
+              // ingredientID points to a firestore object referencing an ingredients document
+              recipeID.get().then( recDoc => {
+                thisRecipe = recDoc.data();
+                const ingredients = recDoc.data().ingredients;
 
-        // Create checkbox element
-        const checkbox= document.createElement("input");
-        checkbox.className = "form-check-input me-3";
-        checkbox.type = "checkbox";
-        checkbox.box = "";
-        checkbox.setAttribute("arial-label", "...");
+                ingredients.forEach( ingredient => {
+                  const { ingredientID, qty } = ingredient;
 
-        // // Append checkbox to the list item
-        newIngredient.appendChild(checkbox);
+                  ingredientID.get().then( doc => {
+                    let ingredientList = document.getElementById("ingredients-go-here");
+                    let cardTemplate = document.getElementById("ingredientCardTemplate");
+                    // Clone the HTML template to create a new card (newCard) that will be filled with Firestore data
+                    let newCard = cardTemplate.content.cloneNode(true);
 
-        newIngredient.innerHTML += qty + " " + name;
+                    //update title and text and image
+                    newCard.querySelector('.card-image').src = `/images/recipe01.jpg`;
+                    newCard.querySelector('.card-title').innerHTML = qty + " &times " + doc.data().name;
 
-        document.getElementById("groceryList").appendChild(newIngredient);
-      }));
-    };
+                    ingredientList.appendChild(newCard);
+                  });
+                });
+              })
+            });
+          } else {
+            console.log("No Grocery Lists");
+          }
+        });
+    }
+  });
+}
 displayGroceryItems();

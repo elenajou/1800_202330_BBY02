@@ -1,0 +1,30 @@
+/users/u-EJL/name: 'Elena Jou Luo'
+            /email: 'elenajou.ej@gmail.com'
+            /savedRecipes: [1-111, 1-222, 1-333] // array of recipeIDs, duplicate not allowed
+            /groceryList: {
+              [2-111, 2-222, 2-333], // array of recipeIDs
+              [ // array of additional ingredients
+                { 
+                  ingredientID: i-apple
+                  qty: 2
+                },
+                {
+                  ingredientID: i-flour,
+                  qty: 1
+                }
+              ]
+            }
+
+/recipes/r-applePie/name: 'Apple Pie'
+                   /ingredients: [
+                      {
+                        ingredientID: i-apple
+                        qty: 2
+                      },
+                      {
+                        
+                      }
+                    ]
+
+/ingredients/i-apple/name: 'apple'
+                    /daysToExpiration: 28
