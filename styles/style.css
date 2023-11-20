@@ -300,3 +300,7 @@ input, label {
 .grocery-list-container {
       height: 60vh;
 }
+
+.material-icons{
+  cursor: pointer;
+}
