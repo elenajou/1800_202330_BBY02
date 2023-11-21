@@ -8,7 +8,6 @@ app.use(express.json());
 // just like a simple web server like Apache web server
 // we are mapping file system paths to the app's virtual paths
 app.use("/scripts", express.static(path.join(__dirname, "./scripts")));
-app.use("/firebase", express.static(path.join(__dirname, "./node_modules/firebase")));
 app.use("/components", express.static(path.join(__dirname, "./components")));
 app.use("/styles", express.static(path.join(__dirname, "./styles")));
 app.use("/images", express.static(path.join(__dirname, "./images")));
@@ -16,19 +15,18 @@ app.use("/pages", express.static(path.join(__dirname, "./pages")));
 
 app.get("/", function (req, res) {
     // retrieve and send an HTML document from the file system
-    let doc = fs.readFileSync("pages/index.html");
-    res.send(doc);
-})
-
-app.get("/eachRecipe", function (req, res) {
-  let dov = fs.readFileSync("pages/eachRecipe.html");
-  res.send(doc);
+    let doc = fs.readFileSync(path.join(__dirname, "./pages/home.html"), "utf8");
+    res.type('html').send(doc);
 })
 
 app.get("/recipes", function (req, res) {
-  // retrieve and send an HTML document from the file system
-  let doc = fs.readFileSync("pages/recipeMenu.html");
-  res.send(doc);
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/eachRecipe.html"), "utf8");
+  res.type('html').send(doc);
+})
+
+app.get("/fridge", function (req, res) {
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/fridge.html"), "utf8");
+  res.type('html').send(doc);
 })
 
 // for page not found (i.e., 404)

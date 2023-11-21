@@ -26,7 +26,7 @@
   <!-------------------------------------------------------->
   <!------------------------ Styles ------------------------>
   <!-------------------------------------------------------->
-  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="/styles/style.css">
 
 </head>
 <body>
@@ -34,7 +34,7 @@
 
     <div class="px-4 my-5 text-left border-bottom">
       <div class="row">
-         <!-- <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <h1 class="display-6 fw-bold" id="recipeName"></h1>
         </div> -->
         <div class="col-md-6 text-start">
@@ -48,6 +48,9 @@
     </div>
 
     <div class="card" style="width: 95%;">
+      <ul class="list-group list-group-flush">
+        <h1 class="list-group-item" id="recipeName"><b>Title</b></h1>
+      </ul>
       <img src="../images/applePie.webp" class="card-img img-thumbnail custom-size mx-auto d-block" alt="...">
       <ul class="list-group list-group-flush">
         <!-- <li class="list-group-item text-center"><b>Serving Size</b></li> -->
@@ -80,8 +83,9 @@
   <script src="/scripts/firebaseAPI_BBY02.js"></script>
   <script src="/scripts/skeleton.js"></script>
   <script src="/scripts/eachRecipe.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <script src="/scripts/addToGroceryList.js"></script>
-  <script src="../scripts/goBack.js"></script>
-  <script src="../scripts/logout.js"></script>
+  <script src="/scripts/goBack.js"></script>
+  <script src="/scripts/logout.js"></script>
 </body>
 </html>
