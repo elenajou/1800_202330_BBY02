@@ -16,25 +16,41 @@ function addToGroceryList() {
       currentUser
         .get()
         .then( userDoc => {
-          var userGroceryList;
+          // grab existing list otherwise set var to empty array
+          var userGroceryList = userDoc.data().groceryList || [];
 
           // create a new recipe key value pair
           const addRecipe = {
             recipeID: db.doc('recipes/' + docID),
             qty: 1
           }
+          
+          // Check if the recipeID already exists in userGroceryList
+          // Using Deep Comparison lodal to compare Firestore document reference
+          const existingRecipe = userGroceryList.find(item => _.isEqual(item.recipeID.id, addRecipe.recipeID.id));
 
-          // if there is an existing list, append the new recipe
-          if (userDoc.data().groceryList) {
-            userGroceryList = userDoc.data().groceryList;
-            userGroceryList[userGroceryList.length] = addRecipe;
-            console.log("Added to grocery list");
-          } else { // else create a new list and add the recipe
-            console.log("Created a new grocery list");
-            userGroceryList[0] = addRecipe;
+          if (existingRecipe) {
+            // If the recipe already exists in the list, increment the qty property
+            existingRecipe.qty += 1;
+            
+            // Find the index of the document reference in the array
+            const index = userGroceryList.findIndex(item => _.isEqual(item.recipeID.id, existingRecipe.recipeID.id));
+
+            // Update the qty in Firestore
+            if (index != -1) {
+              userGroceryList[index].qty = existingRecipe.qty;
+              // Update the qty property of the specific document reference in the array
+              currentUser
+                .update({ groceryList: userGroceryList })
+                .then(() => { console.log('Qty updated in Firestore successfully'); })
+                .catch(error => { console.error('Error updating qty in Firestore:', error); });
+            }
+          } else {
+            currentUser
+              .update({ groceryList: firebase.firestore.FieldValue.arrayUnion(addRecipe) })
+              .then(console.log("Added to grocery list"))
+              .catch(error => { console.error('Error adding recipe to Firestore:', error); });
           }
-
-          currentUser.update({ groceryList: userGroceryList });
         });
     }
   });

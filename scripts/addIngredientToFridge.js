@@ -20,4 +20,4 @@ function addIngredientToFridge(ingredient) {
       });
   }
   
-  addIngredientToFridge();
+  // addIngredientToFridge();

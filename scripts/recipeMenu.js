@@ -64,7 +64,8 @@ function displayCardsDynamically(collection) {
 
   function saveBookmark(recipeDocID) {
     currentUser.get().then(userDoc => {
-      var bookmarks = userDoc.data().bookmarks || []; 
+      var bookmarks = userDoc.data().bookmarks || [];
+
       var isBookmarked = bookmarks.includes(recipeDocID);
       if (isBookmarked) {
         currentUser.update({
