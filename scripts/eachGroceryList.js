@@ -112,3 +112,41 @@ function displayIngredientList() {
 
 displayIngredientList();
 
+function addToFridge() {
+  firebase.auth().onAuthStateChanged(user => {
+    if (!user) {
+      console.log("No user is signed in");
+    } else {
+      const currentUser = db.collection("users").doc(user.uid);
+
+      currentUser.get().then(userDoc => {
+        const userIngredientList = userDoc.data().ingredientList || [];
+        const userFridge = userDoc.data().fridge || [];
+
+        if (userIngredientList.length < 1) {
+          console.log("No ingredients to add to fridge");
+          return;
+        }
+        
+        for (const ingredient of userIngredientList) {
+          const existIngredIndex = userFridge.findIndex(item => 
+            _.isEqual(item.ingredientID.id, ingredient.ingredientID.id)
+          );
+            console.log(ingredient.ingredientID.id);
+          if (existIngredIndex !== -1) {
+            // ingredient already in the list
+            userFridge[existIngredIndex].qty += ingredient.qty;
+          } else {
+            userFridge.push(ingredient);
+          }
+          currentUser
+            .update({ fridge: userFridge })
+            .then(() => console.log('fridge updated in Firestore successfully'))
+            .catch(error => console.error('Error updating fridge in Firestore:', error));
+        }
+      });
+    }
+  });
+}
+
+
