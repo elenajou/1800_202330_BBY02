@@ -1,31 +1,44 @@
-function displayIngredientsDynamically(userID) {
-  let cardTemplate = document.getElementById("fridgeCardTemplate");
+function displayFridge() {
+  const ingredientList = document.getElementById("ingredients-go-here");
+  const cardTemplate = document.getElementById("fridgeCardTemplate");
 
-  db.collection('users').doc(userID).collection('fridge').get()   //the collection called "recipes"
-    .then(allIngredients => {
-      allIngredients.forEach(doc => {
-        var title = doc.data().name;
-        var qty = doc.data().qty;
-      //   var ingredientCode = doc.data().code;
-        let newCard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newCard) that will be filled with Firestore data
-        var docID = doc.id;
+  firebase.auth().onAuthStateChanged(async user => {
+    try {
+      if (!user) {
+        console.log("No user is signed in");
+        return;
+      }
 
-        //update title and text and image
-        newCard.querySelector('.card-title').innerHTML = title;
-        newCard.querySelector('.card-qty').innerHTML = "Qty: " + qty;
-        newCard.querySelector('.card-image').src = `../images/recipe01.jpg`;
+      const currentUser = db.collection("users").doc(user.uid);
+      const userDoc = await currentUser.get();
+      const userFridge = userDoc.data().fridge || [];
 
-        // set value for buttons
-        newCard.querySelector('.card-add-btn').id = `${docID}`;
-        newCard.querySelector('.card-subtract-btn').id = `${docID}`;
-        document.getElementById("ingredients-go-here").appendChild(newCard);
-      })
-    
-    })
+      if (userFridge.length === 0) {
+        console.log("Nothing in your fridge");
+        return;
+      }
+
+      for (const item of userFridge) {
+        const { ingredientID, qty } = item;
+        const ingredient = await ingredientID.get();
+        
+        const newCard = cardTemplate.content.cloneNode(true);
+
+        newCard.querySelector('.card-image').src = `/images/recipe01.jpg`;
+        newCard.querySelector('.card-title').innerHTML = qty + " &times " + ingredient.data().name;
+
+        ingredientList.appendChild(newCard);
+        console.log(ingredient.data().name);
+
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });
 }
-  
-displayIngredientsDynamically("yrx60kXc7EuhjYKXrSfC"); // Elena Jou Luo's ID
 
+displayFridge();
+  
 function addQty(ingredientID) {
   var ingredientName = ingredientID;
   var userRef = db.collection("users");

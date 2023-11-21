@@ -22,6 +22,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 
   <!-------------------------------------------------------->
   <!------------------------ Styles ------------------------>
@@ -56,7 +57,9 @@
     <div class="card py-2 mx-2" style="width: 18rem; height: auto">
       <img class="card-image card-img-top" src=" ..." alt="..." />
       <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">Card title</h5>
+        <input type="button" class="btn btn-primary card-subtract-btn" value="-" id="" onclick="">
+        <input type="button" class="btn btn-primary card-add-btn" value="+" id="" onclick="">
       </div>
     </div>
   </template>
@@ -71,7 +74,6 @@
   <script src="/scripts/skeleton.js"></script>
   <script src="/scripts/goBack.js"></script>
   <script src="/scripts/logout.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <script src="/scripts/eachGroceryList.js" defer></script>
 </body>
 </html>
