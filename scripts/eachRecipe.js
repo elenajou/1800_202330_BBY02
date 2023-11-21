@@ -9,11 +9,12 @@ function displayRecipeInfo() {
     .get()
     .then( doc => {
       thisRecipe = doc.data();
+      console.log(thisRecipe.name);
       recipeCode = thisRecipe.code;
-      recipeName = doc.data().name;
-      recipeDesc = doc.data().description;
-      recipeInstr = doc.data().instructions;
-      recipeIngre = doc.data().ingredients;
+      recipeName = thisRecipe.name;
+      recipeDesc = thisRecipe.description;
+      recipeInstr = thisRecipe.instructions;
+      recipeIngre = thisRecipe.ingredients;
       
       document.getElementById( "recipeName" ).innerHTML = recipeName;
       document.getElementById( "recipeDesc" ).innerHTML = recipeDesc;
