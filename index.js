@@ -15,17 +15,49 @@ app.use("/pages", express.static(path.join(__dirname, "./pages")));
 
 app.get("/", function (req, res) {
     // retrieve and send an HTML document from the file system
-    let doc = fs.readFileSync(path.join(__dirname, "./pages/home.html"), "utf8");
+    let doc = fs.readFileSync(path.join(__dirname, "./pages/home/home.html"), "utf8");
     res.type('html').send(doc);
 })
 
+app.get("/home", function (req, res) {
+  // retrieve and send an HTML document from the file system
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/home/home.html"), "utf8");
+  res.type('html').send(doc);
+})
+
+app.get("/login", function (req, res) {
+  // retrieve and send an HTML document from the file system
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/login/login.html"), "utf8");
+  res.type('html').send(doc);
+})
+
 app.get("/recipes", function (req, res) {
-  let doc = fs.readFileSync(path.join(__dirname, "./pages/eachRecipe.html"), "utf8");
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/eachRecipe/eachRecipe.html"), "utf8");
+  res.type('html').send(doc);
+})
+
+app.get("/recipeMenu", function (req, res) {
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/recipeMenu/recipeMenu.html"), "utf8");
+  res.type('html').send(doc);
+})
+
+app.get("/eachRecipe", function (req, res) {
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/eachRecipe/eachRecipe.html"), "utf8");
+  res.type('html').send(doc);
+})
+
+app.get("/eachGroceryList", function (req, res) {
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/eachGroceryList/eachGroceryList.html"), "utf8");
   res.type('html').send(doc);
 })
 
 app.get("/fridge", function (req, res) {
-  let doc = fs.readFileSync(path.join(__dirname, "./pages/fridge.html"), "utf8");
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/fridge/fridge.html"), "utf8");
+  res.type('html').send(doc);
+})
+
+app.get("/savedRecipes", function (req, res) {
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/savedRecipes/savedRecipes.html"), "utf8");
   res.type('html').send(doc);
 })
 

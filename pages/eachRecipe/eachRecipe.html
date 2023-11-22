@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>GrocerEase Grocery List</title>
+    <title>GrocerEase Homepage</title>
     <meta name="recipe" content="GrocerEase Recipes">
     
     <!-- Required meta tags -->
@@ -29,51 +29,63 @@
   <!-------------------------------------------------------->
   <link rel="stylesheet" href="/styles/style.css">
 
-  <!-- Footer Script -->
-  <!-- <script src="../components/footer.js" type="text/javascript" defer></script> -->
 </head>
 <body>
+    <nav id="navbarPlaceholder"></nav>
 
-  <!-- Navbar -->
-  <nav id="navbarPlaceholder"></nav>
-
-  <div class="container px-4 my-5 text-left border-bottom">
-    <div class="container px-4 my-5 text-left border-bottom">
+    <div class="px-4 my-5 text-left border-bottom">
       <div class="row">
+        <!-- <div class="col-md-6">
+          <h1 class="display-6 fw-bold" id="recipeName"></h1>
+        </div> -->
         <div class="col-md-6 text-start">
-          <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
-          <button type="button" class="btn btn-secondary" id="addToFridge" onclick="addToFridge()">I Bought These Items Today</button>
+            <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <button type="button" class="btn btn-ge-primary btn-lg" id="add-button" 
+          onclick="addToGroceryList()">Add</button>
         </div>
       </div>
-      <br>
-    <h1 class="display-6 fw-bold" id="mypageheader">Grocery List</h1>
-    <div class="container">
-      <div id="ingredients-go-here" class="row row-cols-auto"></div>
+    </div>
+
+    <div class="card" style="width: 95%;">
+      <ul class="list-group list-group-flush">
+        <h1 class="list-group-item" id="recipeName"><b>Title</b></h1>
+      </ul>
+      <img src="../images/applePie.webp" class="card-img img-thumbnail custom-size mx-auto d-block" alt="...">
+      <ul class="list-group list-group-flush">
+        <!-- <li class="list-group-item text-center"><b>Serving Size</b></li> -->
+        <li class="list-group-item"><b>Description</b></li>
+        <div class="card-body">
+          <p class="card-text" id="recipeDesc"></p>
+        </div>
+      </ul>
+      <ul class="list-group list-group-flush">
+        <!-- <li class="list-group-item text-center"><b>Serving Size</b></li> -->
+        <li class="list-group-item"><b>Ingredients</b></li>
+        <div class="card-body">
+          <ul class="card-text" id="recipeIngre"></ul>
+        </div>
+      </ul>
+      <ul class="list-group list-group-flush">
+        <!-- <li class="list-group-item text-center"><b>Serving Size</b></li> -->
+        <li class="list-group-item"><b>Cooking Instructions</b></li>
+        <div class="card-body">
+          <p class="card-text" id="recipeInstr"></p>
+        </div>
+      </ul>
     </div>
   </div>
-
-    <!--Recipe card templates, not displayed-->
-  <template id="ingredientCardTemplate">
-    <div class="card py-2 mx-2" style="width: 18rem; height: auto">
-      <img class="card-image card-img-top" src=" ..." alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <input type="button" class="btn btn-primary card-subtract-btn" value="-" id="" onclick="">
-        <input type="button" class="btn btn-primary card-add-btn" value="+" id="" onclick="">
-      </div>
-    </div>
-  </template>
-  
+    
   <footer id="footerPlaceholder"></footer>
   <!---------------------------------------------->
   <!------------ JavaScript functions------------->
   <!---------------------------------------------->
-  <!-- <script src="./scripts/skeleton.js"></script> -->
-  <!-- <script src="./scripts/script.js"></script> -->
   <script src="/scripts/firebaseAPI_BBY02.js"></script>
   <script src="/scripts/skeleton.js"></script>
+  <script src="/pages/eachRecipe/eachRecipe.js"></script>
+  <script src="/pages/eachRecipe/addToGroceryList.js"></script>
   <script src="/scripts/goBack.js"></script>
   <script src="/scripts/logout.js"></script>
-  <script src="/scripts/eachGroceryList.js" defer></script>
 </body>
 </html>

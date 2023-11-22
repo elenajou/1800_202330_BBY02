@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>GrocerEase Homepage</title>
-  <meta name="comp1800 template" content="My 1800 App">
-
+  <title>GrocerEase Saved Recipes</title>
+  <meta name="recipe" content="GrocerEase Recipes">
+  
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  
   <!--------------------------------------------------------->
   <!------------- Boostrap, Google Fonts ---------->
   <!----- PLEASE READ head.js BEFORE ADDING ANY LINKS ------->
@@ -28,48 +27,55 @@
   <!------------------------ Styles ------------------------>
   <!-------------------------------------------------------->
   <link rel="stylesheet" href="/styles/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-
 <body>
-  <!------------------------------>
-  <!------ Your HTML Layouut ----->
-  <!------------------------------>
-  <!----------- Navbar ------------>
+
+  <!-- Navbar -->
   <nav id="navbarPlaceholder"></nav>
 
-  <!------------------ Welcome banner -------------------------->
-  <div class="container welcome-banner col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-2">
-      <div class="col-10 col-sm-8 col-lg-6">
-        <img src="/images/phone-fridge.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" loading="lazy">
-      </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">Welcome to <span class="accent">GrocerEase!</span></h1>
-        <p class="lead">
-          An app that compiles all your recipes and generates a grocery list for you.
-          <br>
-          It can track the
-          items you have bought, used, and have left for your next grocery list.
-        </p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <a href="/pages/login.html" class="btn btn-ge-primary btn-lg px-4 me-md-2" role="button">Log In</a>
-          <a href="/pages/signup.html" class="btn btn-ge-outline-secondary btn-lg px-4" role="button">Sign up</a>
+  <!--Container-->  
+  <div class="container px-4 my-5 text-left border-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-start">
+          <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
         </div>
       </div>
+      <br>
+      <h1 class="display-6 fw-bold" id="mypageheader">Saved Recipes</h1>
+      <div id="saved-recipes-go-here" class="row row-cols-auto"></div>
     </div>
-  </div>
+  </div> 
+  
+  <!--Recipe card templates, not displayed-->
+  <template id="savedRecipeCardTemplate">
+    <div class="card py-2 mx-2" style="width: 18rem; height: auto">
+      <img class="card-image card-img-top" src=" ..." alt="..." />
+      <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-time">placeholder</p>
+          <br />
+          <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+          </p>
+          <a class="btn btn-primary card-href">Read more</a>
+          <i class="material-icons">bookmark_border</i>
+      </div>
+    </div>
+  </template>
+
   <footer id="footerPlaceholder"></footer>
+
   <!---------------------------------------------->
   <!------  JavaScript functions go here --------->
   <!---------------------------------------------->
   <script src="/scripts/firebaseAPI_BBY02.js"></script>
   <script src="/scripts/skeleton.js"></script>
-  <script src="../scripts/firebaseAPI_BBY02.js"></script>
-  <script src="../scripts/skeleton.js"></script>
-  <script src="../scripts/logout.js"></script>
-  <!-- <script src="./scripts/populateRecipes.js"></script> -->
-  <!-- <script src="./scripts/addToGroceryList.js"></script> -->
+  <script src="/pages/savedRecipes/savedRecipes.js"></script>
+  <script src="/scripts/goBack.js"></script>
+  <script src="/scripts/logout.js"></script>
 
 </body>
-
 </html>
