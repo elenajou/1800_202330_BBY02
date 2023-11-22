@@ -11,7 +11,7 @@ function displayCardsDynamically(collection) {
         var cookTime = doc.data().cook_time;
         var description = doc.data().description;
         var recipeCode = doc.data().code;
-        let newCard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newCard) that will be filled with Firestore data
+        var newCard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newCard) that will be filled with Firestore data
         var docID = doc.id;
 
         // update title and text and image
@@ -29,19 +29,19 @@ function displayCardsDynamically(collection) {
         const storage = firebase.storage();
         var imageRef = storage.ref(recipeCode + ".jpg");
         imageRef.getDownloadURL().then((url) => {
-          newCard.querySelector(".card-image").src = url;
-        });
+          localStorage.setItem(title, url);
+        }); 
+        
+        newCard.querySelector(".card-image").src = localStorage.getItem(title);
 
-        // var imageURL = `https://storage.googleapis.com/bby02-grocerease.appspot.com/${recipeCode}.jpg`;
-        // newCard.querySelector('.card-image').src = imageURL;
-
-        currentUser.get().then((userDoc) => {
-          //get the user name
-          var bookmarks = userDoc.data().bookmarks || [];
-          if (bookmarks.includes(docID)) {
-            iconElement.innerHTML = "bookmark";
-          }
-        });
+          currentUser.get().then((userDoc) => {
+            //get bookmarks if they exist
+            var bookmarks = userDoc.data().bookmarks || [];
+            if (bookmarks.includes(docID)) {
+              iconElement.innerHTML = "bookmark";
+            }
+          });
+       
         document.getElementById(collection + "-go-here").appendChild(newCard);
       });
     });

@@ -26,6 +26,7 @@ function displaySavedRecipes() {
               document.getElementById('save-' + recipeDocID).innerText = 'bookmark';
             }
           })
+          console.log(recipeDocID);
           document.getElementById("saved-recipes-go-here").appendChild(newCard);
         }
       })

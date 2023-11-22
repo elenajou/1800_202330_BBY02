@@ -85,7 +85,7 @@ function bookmarkRecipe() {
         ? firebase.firestore.FieldValue.arrayRemove(recipeID)
         : firebase.firestore.FieldValue.arrayUnion(recipeID),
     }).then(() => {
-      console.log("Bookmark has been " + (isBookmarked ? "removed" : "saved") + "for " + recipeID);
+      console.log("Bookmark has been " + (isBookmarked ? "removed" : "saved") + " for " + recipeID);
       let bookmarkButton = document.getElementById("bookmark-button");
       bookmarkButton.innerHTML = isBookmarked ? "Bookmark" : "Bookmarked";
       }).catch((error) => {
