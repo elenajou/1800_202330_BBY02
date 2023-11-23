@@ -35,9 +35,9 @@ function addToGroceryList() {
             .catch(error => console.error('Error adding recipe to Firestore:', error));
         }
 
-        const addIngredients = db.doc(`recipes/${recipeID}`).get().then( doc => {
-          const ingredArray = doc.data().ingredients;
-          ingredArray.forEach( ingredient => {
+        db.doc(`recipes/${recipeID}`).get().then( doc => {
+          const recipeIngredArray = doc.data().ingredients ;
+          recipeIngredArray.forEach( ingredient => {
             const existIngredIndex = userIngredientList.findIndex(item => 
               _.isEqual(item.ingredientID.id, ingredient.ingredientID.id)
             );
