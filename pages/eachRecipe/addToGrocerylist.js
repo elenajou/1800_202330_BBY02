@@ -9,51 +9,35 @@ function addToGroceryList() {
       const currentUser = db.collection("users").doc(user.uid);
 
       currentUser.get().then(userDoc => {
-        const userGroceryList = userDoc.data().groceryList || [];
+        // const userGroceryList = userDoc.data().groceryList || [];
         const userIngredientList = userDoc.data().ingredientList || [];
         const addRecipe = {
           recipeID: db.doc(`recipes/${recipeID}`),
           qty: 1
         };
         
-        const existingRecipeIndex = userGroceryList.findIndex(item =>
-          _.isEqual(item.recipeID.id, addRecipe.recipeID.id)
-        );
+        // const existingRecipeIndex = findIndex(addRecipe.recipeID.id, userGroceryList);
 
-        if (existingRecipeIndex !== -1) {
-          // Recipe exists, update qty
-          userGroceryList[existingRecipeIndex].qty += 1;
-          currentUser
-            .update({ groceryList: userGroceryList })
-            .then(() => console.log('recipe qty updated in Firestore successfully'))
-            .catch(error => console.error('Error updating qty in Firestore:', error));
-        } else {
-          // Recipe doesn't exist, add to the list
-          currentUser
-            .update({ groceryList: firebase.firestore.FieldValue.arrayUnion(addRecipe) })
-            .then(() => console.log('Added to grocery list'))
-            .catch(error => console.error('Error adding recipe to Firestore:', error));
-        }
+        // if (existingRecipeIndex !== -1) {
+        //   // Recipe exists, update qty
+        //   userGroceryList[existingRecipeIndex].qty += 1;
+        //   updateGroceryListInFirestore(currentUser, userGroceryList);
+        // } else {
+        //   // Recipe doesn't exist, add to the list
+        //   updateGroceryListInFirestore(currentUser, firebase.firestore.FieldValue.arrayUnion(addRecipe));
+        // }
 
         db.doc(`recipes/${recipeID}`).get().then( doc => {
           const recipeIngredArray = doc.data().ingredients ;
           recipeIngredArray.forEach( ingredient => {
-            const existIngredIndex = userIngredientList.findIndex(item => 
-              _.isEqual(item.ingredientID.id, ingredient.ingredientID.id)
-            );
+            const existingIngredIndex = findIndex(ingredient.ingredientID.id, userIngredientList);
 
-            if (existIngredIndex !== -1) {
+            if (existingIngredIndex !== -1) {
               // ingredient already in the list
               userIngredientList[existIngredIndex].qty += ingredient.qty;
-              currentUser
-                .update({ ingredientList: userIngredientList })
-                .then(() => console.log('ingredient qty updated in Firestore successfully'))
-                .catch(error => console.error('Error updating ingredient in Firestore:', error));
+              updateIngredientListInFirestore(currentUser, userIngredientList);
             } else {
-              currentUser
-                .update({ ingredientList: firebase.firestore.FieldValue.arrayUnion(ingredient) })
-                .then(() => console.log('Added to ingredients list'))
-                .catch(error => console.error('Error adding ingredient to Firestore:', error));
+              updateIngredientListInFirestore(currentUser, firebase.firestore.FieldValue.arrayUnion(ingredient));
             }
           });
         });
