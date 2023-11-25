@@ -21,10 +21,10 @@ function displayCardsDynamically(collection) {
         newCard.querySelector(".card-text").innerHTML =
           description.slice(0, 80) + "...";
         // newCard.querySelector('.card-image').src = `../images/${recipeCode}.jpg`;
-        newCard.querySelector("a").href = "eachRecipe.html?docID=" + docID;
-        newCard.querySelector("i").id = "save-" + docID;
-        newCard.querySelector("i").onclick = () => saveBookmark(docID);
-
+        newCard.querySelector('a').href = "/eachRecipe?docID=" + docID;
+        newCard.querySelector('i').id = 'save-' + docID;
+        newCard.querySelector('i').onclick = () => saveBookmark(docID); 
+        
         // get image URL from FireBase Storage
         const storage = firebase.storage();
         var imageRef = storage.ref(recipeCode + ".jpg");

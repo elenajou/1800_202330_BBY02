@@ -101,7 +101,7 @@ function displayIngredientList() {
         newCard.querySelector('.card-title').innerHTML = qty + " &times " + ingredient.data().name;
 
         ingredientList.appendChild(newCard);
-        console.log(ingredient.data().name);
+        // console.log(ingredient.data().name);
 
       }
     } catch (error) {
@@ -132,7 +132,7 @@ function addToFridge() {
           const existIngredIndex = userFridge.findIndex(item => 
             _.isEqual(item.ingredientID.id, ingredient.ingredientID.id)
           );
-            console.log(ingredient.ingredientID.id);
+            // console.log(ingredient.ingredientID.id);
           if (existIngredIndex !== -1) {
             // ingredient already in the list
             userFridge[existIngredIndex].qty += ingredient.qty;

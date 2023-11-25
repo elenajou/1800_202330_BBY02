@@ -1,33 +1,54 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-success-subtle">
+<nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/pages/home.html">GrocerEase</a>
+    <a class="navbar-brand" href="/home">GrocerEase</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
       aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span><i class="fa-solid fa-bars"></i></span>
     </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li>
-        <hr class="dropdown-divider" style="background-color: azure;">
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/pages/home.html"><span class="icon-space"><i class="fa-solid fa-house"></i></span>Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/pages/recipeMenu.html"><span class="icon-space"><i class="fa-solid fa-book"></i></span>Recipes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/pages/eachGroceryList.html"><span class="icon-space"><i class="fa-solid fa-basket-shopping"></i></span>Grocery List</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/pages/fridge.html"><span class="icon-space"><i class="fa-regular fa-rectangle-list"></i></span>Fridge</a>
-        <!-- <a class="nav-link" href="#"><span class="icon-space"><img width="18" height="18" src="https://img.icons8.com/ios-filled/50/fridge.png" alt="fridge"/></span>Fridge</a> -->
-      </li>
-    </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/home"><span class="icon-space"><i class="fa-solid fa-house"></i></span>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/recipeMenu"><span class="icon-space"><i class="fa-solid fa-book"></i></span>Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/eachGroceryList"><span class="icon-space"><i class="fa-solid fa-basket-shopping"></i></span>Grocery List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/fridge"><span class="icon-space"><i class="fa-regular fa-rectangle-list"></i></span>Fridge</a>
+        </li>
+        <li class="d-lg-none">
+          <div class="d-block d-lg-flex ms-auto">
+            <a id="logout-button" class="btn">Logout</a>
+          </div>
+        </li>   
+      </ul>
     </div>
-    <div class="d-flex">
-      <a id="logout-button" class="btn btn-outline-success">Logout</a>
+    <div class="d-none d-lg-block ms-auto"><!-- Visible on larger screens -->
+      <a id="logout-button" class="btn">Logout</a>
     </div>
   </div>
 </nav>
+
+<!-- Mobile Bottom Navbar -->
+<nav>
+  <div class="small-navbar">
+    <a href="/home"><i class="fas fa-house-user"></i></a>
+    <a href="/recipeMenu"><i class="fas fa-book"></i></a>
+    <a href="/eachGroceryList"><i class="fas fa-shopping-basket"></i></a>
+    <a href="/fridge"><i class="fas fa-file-alt"></i></a>
+    <a id="logout-button" class="btn">Logout</a>
+  </div>  
+</nav>
+
+<!-- Mobile Page Banner -->
+
+<div class="page-banner">
+  <h1 class="page-title">GrocerEase</h1>
+</div>
