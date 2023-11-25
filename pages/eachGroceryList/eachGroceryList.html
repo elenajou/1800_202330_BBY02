@@ -27,7 +27,7 @@
   <!-------------------------------------------------------->
   <!------------------------ Styles ------------------------>
   <!-------------------------------------------------------->
-  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="/pages/eachGroceryList/eachGroceryList.css">
 
   <!-- Footer Script -->
   <!-- <script src="../components/footer.js" type="text/javascript" defer></script> -->
@@ -38,31 +38,96 @@
   <nav id="navbarPlaceholder"></nav>
 
   <div class="container px-4 my-5 text-left border-bottom">
-    <div class="container px-4 my-5 text-left border-bottom">
-      <div class="row">
-        <div class="col-md-6 text-start">
-          <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
-          <button type="button" class="btn btn-secondary" id="addToFridge" onclick="addToFridge()">I Bought These Items Today</button>
-        </div>
+    <div class="row">
+      <div class="col-md-6 text-start">
+        <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
+        <button type="button" class="btn btn-secondary" id="addToFridge" onclick="addToFridge()">I Bought These Items Today</button>
       </div>
-      <br>
-    <h1 class="display-6 fw-bold" id="mypageheader">Grocery List</h1>
-    <div class="container">
-      <div id="ingredients-go-here" class="row row-cols-auto"></div>
     </div>
   </div>
 
-    <!--Recipe card templates, not displayed-->
-  <template id="ingredientCardTemplate">
-    <div class="card py-2 mx-2" style="width: 18rem; height: auto">
-      <img class="card-image card-img-top" src=" ..." alt="..." />
-      <div class="card-body">
-        <h5 class="card-qty">Qty</h5> &times; <h5 class="card-name">Name</h5>
-        <input type="button" class="btn btn-primary card-subtract-btn" value="-" id="" onclick="">
-        <input type="button" class="btn btn-primary card-add-btn" value="+" id="" onclick="">
+  <section class="vh-100">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
+            <div class="card-body py-4 px-4 px-md-5">
+  
+              <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+                <i class="fas fa-check-square me-1"></i>
+                <u>My Grocery List</u>
+              </p>
+  
+              <div class="pb-2">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-row align-items-center">
+                      <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                        placeholder="Add new...">
+                      <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i
+                          class="fas fa-calendar-alt fa-lg me-3"></i></a>
+                      <div>
+                        <button type="button" class="btn btn-primary">Add</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <hr class="my-4">
+              <!-- Ingredients go here -->
+              <div id="ingredients-go-here" class="row row-cols-auto"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </template>
+  </section>
+
+  <!--Recipe card templates, not displayed-->
+<template id="groceryListTemplate">
+  <ul class="gl-item list-group list-group-horizontal rounded-0 bg-transparent" id="">
+    <li class="list-group-item d-flex align-items-center pe-3 py-1 rounded-0 bg-transparent">
+      <div class="form-check">
+        <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
+          aria-label="..." checked/> <!-- On click must toggle "checked" attribute-->
+      </div>
+    </li>
+    <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 bg-transparent">
+      <p class="lead fw-normal mb-0 gl-item-name">ingredient 1</p>
+    </li>
+    <li class="list-group-item ps-3 rounded-0 bg-transparent">
+      <div class="d-flex flex-row justify-content-end mb-1">
+        <input type="button" class="btn btn-primary gl-item-subtract-btn" value="-" id="" onclick="">
+      </div>
+    </li>
+    <li class="list-group-item px-3 py-1 d-flex align-items-center bg-transparent">
+      <p class="lead fw-normal mb-0 gl-item-qty">Qty</p>
+    </li>
+    <li class="list-group-item ps-3 rounded-0 bg-transparent">
+      <div class="d-flex flex-row justify-content-end mb-1">
+        <input type="button" class="btn btn-primary gl-item-add-btn" value="+" id="" onclick="">
+      </div>
+    </li>
+    <!-- <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
+        class="fas fa-trash-alt"></i></a> -->
+  </ul>
+</template>
+  <!-- <template id="ingredientCardTemplate">
+    <div class="card py-2 mx-2" style="width: 18rem; height: auto">
+      <div class="card-body">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            <h5 class="card-name">Name</h5>
+            <input type="button" class="btn btn-primary gl-item-subtract-btn" value="-" id="" onclick="">
+            <div class="gl-item-qty">Qty</div>
+            <input type="button" class="btn btn-primary gl-item-add-btn" value="+" id="" onclick="">
+          </label>
+        </div>
+      </div>
+    </div>
+  </template> -->
   
   <footer id="footerPlaceholder"></footer>
   <!---------------------------------------------->

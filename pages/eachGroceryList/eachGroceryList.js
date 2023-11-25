@@ -2,7 +2,7 @@
 needs to buy. */
 function displayIngredientList() {
   const ingredientList = document.getElementById("ingredients-go-here");
-  const cardTemplate = document.getElementById("ingredientCardTemplate");
+  const listItemTemplate = document.getElementById("groceryListTemplate");
   ingredientList.innerHTML = "";
   
   firebase.auth().onAuthStateChanged(async user => {
@@ -21,9 +21,9 @@ function displayIngredientList() {
       for (let index = 0; index < userIngredientList.length; index++) {
         const { ingredientID, qty } = userIngredientList[index];
         const ingredientDoc = await ingredientID.get();
-        const newCard = createIngredientCard(cardTemplate, ingredientDoc, qty)
+        const newListItem = createIngredientItem(listItemTemplate, ingredientDoc, qty)
 
-        ingredientList.appendChild(newCard);
+        ingredientList.appendChild(newListItem);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -31,18 +31,17 @@ function displayIngredientList() {
   });
 }
 
-// Creates and returns a new Bootstrap card with ingredient details
-function createIngredientCard(cardTemplate, ingredientDoc, qty) {
-  const newCard = cardTemplate.content.cloneNode(true);
+// Creates and returns a new Bootstrap listItem with ingredient details
+function createIngredientItem(listItemTemplate, ingredientDoc, qty) {
+  const newListItem = listItemTemplate.content.cloneNode(true);
 
-  newCard.querySelector('.card').id = ingredientDoc.id;
-  newCard.querySelector('.card-image').src = `/images/recipe01.jpg`;
-  newCard.querySelector('.card-qty').innerHTML = qty;
-  newCard.querySelector('.card-name').innerHTML = ingredientDoc.data().name;
-  newCard.querySelector('.card-add-btn').onclick = () => changeQty(ingredientDoc.id, "+");
-  newCard.querySelector('.card-subtract-btn').onclick = () => changeQty(ingredientDoc.id, "-");
+  newListItem.querySelector('.gl-item').id = ingredientDoc.id;
+  newListItem.querySelector('.gl-item-qty').innerHTML = qty;
+  newListItem.querySelector('.gl-item-name').innerHTML = ingredientDoc.data().name;
+  newListItem.querySelector('.gl-item-add-btn').onclick = () => changeQty(ingredientDoc.id, "+");
+  newListItem.querySelector('.gl-item-subtract-btn').onclick = () => changeQty(ingredientDoc.id, "-");
   
-  return newCard;
+  return newListItem;
 }
 
 displayIngredientList();
@@ -77,10 +76,10 @@ function changeQty(htmlElementID, action) {
         userIngredientList.splice(index, 1);
         htmlElement.remove();
       } else {
-        htmlElement.getElementsByClassName('card-qty')[0].innerHTML = currentQty;
+        htmlElement.getElementsByClassName('gl-item-qty')[0].innerHTML = currentQty;
       }
       
-      updateIngredientListInFirestore(currentUser, userIngredientList);
+      updateUserFieldInFirestore(currentUser, 'ingredientList', userIngredientList);
     } catch (error) {
       console.error('Error:', error);
     }
