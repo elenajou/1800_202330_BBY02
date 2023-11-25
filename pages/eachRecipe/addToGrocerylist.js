@@ -21,10 +21,10 @@ function addToGroceryList() {
         // if (existingRecipeIndex !== -1) {
         //   // Recipe exists, update qty
         //   userGroceryList[existingRecipeIndex].qty += 1;
-        //   updateGroceryListInFirestore(currentUser, userGroceryList);
+        //   updateUserFieldInFirestore(currentUser, 'groceryList', userGroceryList);
         // } else {
         //   // Recipe doesn't exist, add to the list
-        //   updateGroceryListInFirestore(currentUser, firebase.firestore.FieldValue.arrayUnion(addRecipe));
+        //   updateUserFieldInFirestore(currentUser, 'groceryList', firebase.firestore.FieldValue.arrayUnion(addRecipe));
         // }
 
         db.doc(`recipes/${recipeID}`).get().then( doc => {
@@ -34,10 +34,12 @@ function addToGroceryList() {
 
             if (existingIngredIndex !== -1) {
               // ingredient already in the list
-              userIngredientList[existIngredIndex].qty += ingredient.qty;
-              updateIngredientListInFirestore(currentUser, userIngredientList);
+              userIngredientList[existingIngredIndex].qty += ingredient.qty;
+              updateUserFieldInFirestore(currentUser, 'ingredientList', userIngredientList);
+              // updateIngredientListInFirestore(currentUser, userIngredientList);
             } else {
-              updateIngredientListInFirestore(currentUser, firebase.firestore.FieldValue.arrayUnion(ingredient));
+              const fieldValue = firebase.firestore.FieldValue.arrayUnion(ingredient);
+              updateUserFieldInFirestore(currentUser, 'ingredientList', fieldValue);
             }
           });
         });

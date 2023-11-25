@@ -35,8 +35,8 @@ Here are some known bugs:
 
 ## 6. Features for Future
 What we'd like to build in the future:
-* ...
-* ...
+* Provide ability to import recipes from other websites
+* Ability to share grocery lists with other users
 * ...
 	
 ## 7. Contents of Folder

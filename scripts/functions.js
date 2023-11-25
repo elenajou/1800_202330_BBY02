@@ -5,23 +5,53 @@ function findIndex(docID, arrayList) {
   return arrayList.findIndex(docRef => _.isEqual(docID, docRef.ingredientID.id));
 }
 
-// receives current active user and updates the userFridge list
-function updateFridgeInFirestore(currentUser, userFridge) {
-  currentUser.update({ fridge: userFridge })
-    .then(() => console.log('Fridge updated in Firestore successfully'))
-    .catch(error => console.error('Error updating fridge in Firestore:', error));
+/* Generic function to update a specific field of the users document in Firestore. */
+function updateUserFieldInFirestore(currentUser, fieldName, fieldValue) {
+  const updateObject = {};
+  updateObject[fieldName] = fieldValue;
+
+  currentUser.update(updateObject)
+    .then(() => console.log(`${fieldName} updated in Firestore successfully`))
+    .catch(error => console.error(`Error updating ${fieldName} in Firestore:`, error));
 }
 
-// receives current active user and updates the ingredientList
-function updateIngredientListInFirestore(currentUser, userIngredientList) {
-  currentUser.update({ ingredientList: userIngredientList })
-    .then(() => console.log('ingredientList updated in Firestore successfully'))
-    .catch(error => console.error('Error updating ingredientList Firestore:', error));
+// Example usage:
+// updateFieldInFirestore(currentUser, 'fridge', userFridge, 'Fridge');
+// updateFieldInFirestore(currentUser, 'ingredientList', userIngredientList, 'ingredientList');
+// updateFieldInFirestore(currentUser, 'groceryList', userGroceryList, 'groceryList');
+
+/* Call this function when the "logout" button is clicked. */
+function logout() {
+  firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+      console.log("Logging out user");
+      window.location.href = "/pages/home.html";
+    }).catch((error) => {
+      // An error happened.
+    });
 }
 
-// receives current active user and updates the groceryList
-function updateGroceryListInFirestore(currentUser, userGroceryList) {
-  currentUser.update({ groceryList: userGroceryList })
-    .then(() => console.log('groceryList updated in Firestore successfully'))
-    .catch(error => console.error('Error updating groceryList Firestore:', error));
+/* Creates a 'back' button that allows users to go back to the previous page. */
+let returnBack = document.querySelector('#back-button');
+if (returnBack) {
+  returnBack.addEventListener('click', () => {
+    console.log('Back button clicked.');
+    window.history.back();
+  })
+}
+
+/* gets the timestamp saved in boughtDate and returns it as a JS string */
+function getBoughtDateTimestamp(collectionRef, documentID) {
+  collectionRef.doc(documentID).get().then( doc => {
+    const timestamp = doc.data().boughtDate;
+    return timestamp.toDate();
+  });
+}
+
+/* Calculates the expiry date and returns it as a Date object */
+function calculateExpiryDate(ingredientDocRef, boughtDate) {
+  // 1 Day: 86,400 seconds, One second = 1 in UNIX time
+  const daysToExpiry = ingredientDocRef.data().expiryDays * 86400 * 1000;
+  const unixBoughtDate = Date.parse(boughtDate.toDate());
+  return new Date(unixBoughtDate + daysToExpiry);
 }

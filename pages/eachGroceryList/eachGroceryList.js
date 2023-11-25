@@ -96,19 +96,27 @@ function addToFridge() {
       if (!user) return console.log("No user is signed in");
 
       const currentUser = db.collection("users").doc(user.uid);
-      
+      const userFridgeRef = currentUser.collection("refridgerator");
+
       currentUser.get().then(userDoc => {
         const userIngredientList = userDoc.data().ingredientList || [];
-        const userFridge = userDoc.data().fridge || [];
 
         if (userIngredientList.length < 1) return console.log("No ingredients to add");
         
-        for (const ingredient of userIngredientList) {
-          const existingIngredIndex = findIndex(ingredient.ingredientID.id, userFridge);
-          (existingIngredIndex !== -1) ? userFridge[existingIngredIndex].qty += ingredient.qty : userFridge.push(ingredient);
-          updateFridgeInFirestore(currentUser, userFridge);
-        }
-        
+        // const userFridge = userDoc.data().fridge || [];
+        // for (const ingredient of userIngredientList) {
+        //   const existingIngredIndex = findIndex(ingredient.ingredientID.id, userFridge);
+        //   (existingIngredIndex !== -1) ? userFridge[existingIngredIndex].qty += ingredient.qty : userFridge.push(ingredient);
+        //   updateUserFieldInFirestore(currentUser, 'fridge', userFridge);
+        // }
+
+        userFridgeRef
+          .add({
+            ingredientList: userIngredientList,
+            boughtDate: firebase.firestore.FieldValue.serverTimestamp()
+          })
+          .then( () => { console.log("Added refridgerator document successfully") })
+          .catch(error => console.error(`Error updating refridgerator in Firestore:`, error));        
       });
     } catch (error) {
       console.error('Error:', error);
@@ -116,19 +124,3 @@ function addToFridge() {
   });
 }
 
-// receives current active user and updates the userFridge list
-function updateFridgeInFirestore(currentUser, userFridge) {
-  currentUser.update({ fridge: userFridge })
-    .then(() => console.log('Fridge updated in Firestore successfully'))
-    .catch(error => console.error('Error updating fridge in Firestore:', error));
-}
-
-function updateIngredientListInFirestore(currentUser, userIngredientList) {
-  if (userIngredientList.length === 0) {
-    currentUser.update({ ingredientList: firebase.firestore.FieldValue.delete() });
-  } else {
-    currentUser.update({ ingredientList: userIngredientList })
-      .then(() => console.log('Fridge updated in Firestore successfully'))
-      .catch(error => console.error('Error updating fridge in Firestore:', error));
-  }
-}
