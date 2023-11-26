@@ -11,21 +11,6 @@ function addToGroceryList() {
       currentUser.get().then(userDoc => {
         // const userGroceryList = userDoc.data().groceryList || [];
         const userIngredientList = userDoc.data().ingredientList || [];
-        const addRecipe = {
-          recipeID: db.doc(`recipes/${recipeID}`),
-          qty: 1
-        };
-        
-        // const existingRecipeIndex = findIndex(addRecipe.recipeID.id, userGroceryList);
-
-        // if (existingRecipeIndex !== -1) {
-        //   // Recipe exists, update qty
-        //   userGroceryList[existingRecipeIndex].qty += 1;
-        //   updateUserFieldInFirestore(currentUser, 'groceryList', userGroceryList);
-        // } else {
-        //   // Recipe doesn't exist, add to the list
-        //   updateUserFieldInFirestore(currentUser, 'groceryList', firebase.firestore.FieldValue.arrayUnion(addRecipe));
-        // }
 
         db.doc(`recipes/${recipeID}`).get().then( doc => {
           const recipeIngredArray = doc.data().ingredients ;
@@ -38,6 +23,8 @@ function addToGroceryList() {
               updateUserFieldInFirestore(currentUser, 'ingredientList', userIngredientList);
               // updateIngredientListInFirestore(currentUser, userIngredientList);
             } else {
+              const newIngredientInGroceryList = ingredient;
+              newIngredientInGroceryList['checked'] = false;
               const fieldValue = firebase.firestore.FieldValue.arrayUnion(ingredient);
               updateUserFieldInFirestore(currentUser, 'ingredientList', fieldValue);
             }
