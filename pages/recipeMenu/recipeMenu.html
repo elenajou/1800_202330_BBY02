@@ -27,7 +27,7 @@
   <!-------------------------------------------------------->
   <!------------------------ Styles ------------------------>
   <!-------------------------------------------------------->
-  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="/styles/recipeMenu.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -35,35 +35,47 @@
   <nav id="navbarPlaceholder"></nav>
   
   <!--Container-->  
-  <div class="container px-4 my-5 text-left">
-    <div class="container">
+  <div id="main-recipe-container" class="container container px-4 my-5 text-left">
+    <div id="recipe-container" class="container">
       <div class="row">
         <div class="col-md-6 text-start">
-          <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
+          <button type="button" class="btn btn-ge-primary" id="back-button" onclick="returnBack()">Back</button>
         </div>
         <div class="col-md-6 text-end">
-          <button class="btn btn-primary" onclick="window.location.href='createRecipe.html';">Create Recipe</button>
+          <button class="btn btn-ge-primary" onclick="window.location.href='createRecipe.html';">Create Recipe</button>
         </div>
       </div>
       <br>
       <h1 class="display-6 fw-bold" id="mypageheader">Popular Recipes</h1>
+      <p class="page-message">From mouthwatering main courses to delectable desserts, discover a curated selection of recipes that have captured the hearts and taste buds of our vibrant community.</p>
       <div id="recipes-go-here" class="row row-cols-auto"></div>
     </div>
   </div>  
-
+  <!-- Button Toolbar used to navigate pages to load more recipes -->
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group me-2" role="group" aria-label="First group">
+      <button type="button" class="btn btn-ge-primary">1</button>
+      <button type="button" class="btn btn-ge-primary">2</button>
+      <button type="button" class="btn btn-ge-primary">3</button>
+      <button type="button" class="btn btn-ge-primary">4</button>
+      <button type="button" class="btn btn-ge-primary">5</button>
+      <button type="button" class="btn btn-ge-primary">6</button>
+      <button type="button" class="btn btn-ge-primary">7</button>
+      <button type="button" class="btn btn-ge-primary">8</button>
+    </div>
+  </div>
   <!--Recipe card templates, not displayed-->
   <template id="recipeCardTemplate">
     <div class="card py-2 mx-2" style="width: 18rem; height: auto">
       <img class="card-image card-img-top" src="..." alt="..."/>
       <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h4 class="card-title">Card title</h4>
           <p class="card-time">placeholder</p>
-          <br />
           <p class="card-text">
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
           </p>
-          <a class="btn btn-primary card-href">Read more</a>
+          <a class="btn btn-ge-primary card-href">Read more</a>
           <i class="material-icons">bookmark_border</i>
       </div>
     </div>
@@ -76,9 +88,8 @@
   <!---------------------------------------------->
   <script src="/scripts/firebaseAPI_BBY02.js"></script>
   <script src="/scripts/skeleton.js"></script>
+  <script src="/scripts/functions.js"></script>
   <script src="/pages/recipeMenu/recipeMenu.js"></script>
-  <script src="/scripts/goBack.js"></script>
-  <script src="/scripts/logout.js"></script>
   <!-- <script src="../scripts/populateUsers.js"></script> -->
   
 </body>

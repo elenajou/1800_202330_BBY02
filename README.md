@@ -35,33 +35,44 @@ Here are some known bugs:
 
 ## 6. Features for Future
 What we'd like to build in the future:
-* Create a separate Navbar component and use JS to reference the component
-* ...
+* Provide ability to import recipes from other websites
+* Ability to share grocery lists with other users
 * ...
 	
 ## 7. Contents of Folder
 
 ```
  Top level of project folder: 
-├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
+├── .gitignore              # Git ignore file
+├── index.js                # Runs the application's startup, routing, 
+|                             and other functions. Accessed with Nodejs
+|                             at http://localhost:8000/eachGroceryList
+├── package.json            # JS file with Nodejs to access web pages
+├── package-lock.json       # JS file with Nodejs to access web pages
 └── README.md
 
 It has the following subfolders and files:
-├── .git                     # Folder for git repo
-├── images                   # Folder for images
-    /                        # Acknowledge source
-├── scripts                  # Folder for scripts
-    /                        # 
-├── styles                   # Folder for styles
-    style.css                # All the custom styles for GrocerEase
-├── components               # Folder all the reusable html components
-    /head                    # Contains the general links for Bootstrap and Libraries 
-                             # used in all the html pages
-    /footer                  # Contains the general footer for GrocerEase 
-├── pages                    # Folder the different web pages of GrocerEase
-    /fridge.html             # Page showing the fridge items in the account
-    /recipe.html             # Page showing a recipe item in the account 
+├── .git                    # Folder for git repo
+├-- components              # Folder for reused html items (i.e. navbar)
+├── images                  # Folder for static images
+├── node_modules            # Folder with libraries and Nodejs packages
+├── scripts                 # Folder for scripts used in multiple pages
+|   ├── authentication.js   #Firestore authentication
+├── styles                  # Folder for styles
+|   └-- style.css           # All the custom styles for GrocerEase
+├── pages                   # Contains subfolders for each web page and their
+|   |                         corresponding files javascript files
+|   ├── createRecipe        # Web form for users to add recipes in the database
+|   ├── eachGroceryList     # Web page showing the current user grocery list
+|   ├── eachRecipe          # View of a selected recipe document
+|   ├── fridge              # Web page simulating the ingredients in the
+|   |                         current user's physical refridgerator
+|   ├── home                # Landing page and main page of the web app
+|   ├── login               # Login form for user to access account or sign up
+|   ├── recipeMenu          # Web page showing a collection of recipes for 
+|   |                         user to check out
+|   ├── savedRecipes        # Web page showing the current user saved recipes
+|   └── userPage            # Has a summary of user's details
 ```
 
 

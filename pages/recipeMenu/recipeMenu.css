@@ -170,12 +170,12 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
 /* Welcome banner responsive for screens under 1000px. */ 
 
 @media only screen and (max-width: 1000px) {
-  .container.welcome-banner .row {
+  .container .welcome-banner .row {
     flex-direction: column-reverse;
     align-items: center;
   }
 
-  .container.welcome-banner .row .col-10 {
+  .container .welcome-banner .row .col-10 {
     width: 100%;
     text-align: center;
     margin-bottom: 20px;
@@ -203,7 +203,7 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
   }
 }
 
-/* Navbar & welcome banner responsive for screens under 500px. */
+/* Navbar & welcome banner responsive for screens under 700px. */
 
 @media only screen and (max-width: 500px) {
   .container, .welcome-banner {
@@ -283,19 +283,6 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
   }
 } 
 
-/* Welcome banner CSS. */
-.accent {
-  color: #BADA07;
-}
-
-.grocery-list-container {
-      height: 60vh;
-}
-
-.btn-ge-outline-secondary {
-  border: 2px solid #c1cacb;
-}
-
 /* Buttons CSS. */
 
 .btn-ge-primary {
@@ -307,6 +294,97 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
   padding-bottom: 40px;
 }
 
-.back-button-mobile {
-  display: none;
+/* Recipe cards CSS. */
+
+.page-message {
+  font-size: 1.3em;
+  font-weight: lighter;
+}
+
+.card:hover  {
+  border: 2px solid var(--primary-alternative);
+}
+.card-image {
+  width: 262px;
+  height: 175px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+/* New styles for responsive layout */
+@media only screen and (max-width: 500px) {
+  .page-banner {
+    position: fixed;
+    display: inline;
+    width: 100%;
+    top: 0;
+    padding-top: 25px;
+  }
+
+  .button-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  } 
+
+  .page-title {
+    width: 50%;
+    padding-top: 0;
+    text-align: end;
+  }
+
+  .small-navbar {
+    z-index: 100;
+  }
+
+  #main-recipe-container {
+     margin-top: 140px !important;
+     margin-bottom: 0 !important;
+     padding-bottom: 0 !important;
+  }
+
+  #recipe-container {
+    margin: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+  }
+
+  .col-md-6 {
+    width: 50%;
+  }
+
+  .card {
+    width: 100%;
+  }
+ 
+  #recipes-go-here {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-toolbar {
+    margin-bottom: 100px;
+  }
+
+  #back-button {
+    display: none;
+  }
+
+  .back-button-mobile {
+    display: block;
+    float: left;
+  }
+
+  .fa-arrow-left {
+    color: white;
+  }
 }

@@ -27,20 +27,20 @@
   <!-------------------------------------------------------->
   <!------------------------ Styles ------------------------>
   <!-------------------------------------------------------->
-  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="/styles/eachRecipe.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 <body>
     <nav id="navbarPlaceholder"></nav>
 
-    <div class="px-4 my-5 text-left border-bottom">
+    <div class="px-4 my-5 text-left main-container">
       <div class="row">
         <!-- <div class="col-md-6">
           <h1 class="display-6 fw-bold" id="recipeName"></h1>
         </div> -->
         <div class="col-md-6 text-start">
-            <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
+            <button type="button" class="btn btn-ge-primary" id="back-button" onclick="returnBack()">Back</button>
         </div>
         <div class="col-md-6 text-md-end">
           <button type="button" class="btn btn-ge-primary" id="bookmark-button" onclick="bookmarkRecipe()">Bookmark</button>
@@ -50,28 +50,28 @@
       </div>
     </div>
 
-    <div class="card" style="width: 95%;">
+    <div class="card border-0">
       <ul class="list-group list-group-flush">
-        <h1 class="list-group-item" id="recipeName"><b>Title</b></h1>
+        <h1 class="list-group-item font-bold" id="recipeName"><b>Title</b></h1>
       </ul>
       <img src="../images/applePie.webp" class="card-img img-thumbnail custom-size mx-auto d-block" alt="...">
       <ul class="list-group list-group-flush">
         <!-- <li class="list-group-item text-center"><b>Serving Size</b></li> -->
-        <li class="list-group-item"><b>Description</b></li>
+        <li class="list-group-item font-16"><b>Description</b></li>
         <div class="card-body">
           <p class="card-text" id="recipeDesc"></p>
         </div>
       </ul>
       <ul class="list-group list-group-flush">
         <!-- <li class="list-group-item text-center"><b>Serving Size</b></li> -->
-        <li class="list-group-item"><b>Ingredients</b></li>
+        <li class="list-group-item font-16"><b>Ingredients</b></li>
         <div class="card-body">
           <ul class="card-text" id="recipeIngre"></ul>
         </div>
       </ul>
       <ul class="list-group list-group-flush">
         <!-- <li class="list-group-item text-center"><b>Serving Size</b></li> -->
-        <li class="list-group-item"><b>Cooking Instructions</b></li>
+        <li class="list-group-item font-16"><b>Cooking Instructions</b></li>
         <div class="card-body">
           <p class="card-text" id="recipeInstr"></p>
         </div>
@@ -83,11 +83,11 @@
   <!---------------------------------------------->
   <!------------ JavaScript functions------------->
   <!---------------------------------------------->
+  <script src="/scripts/functions.js"></script>
   <script src="/scripts/firebaseAPI_BBY02.js"></script>
   <script src="/scripts/skeleton.js"></script>
+  <!-- Do not move function.js as it needs to be placed above some scripts -->
   <script src="/pages/eachRecipe/eachRecipe.js"></script>
   <script src="/pages/eachRecipe/addToGroceryList.js"></script>
-  <script src="/scripts/goBack.js"></script>
-  <script src="/scripts/logout.js"></script>
 </body>
 </html>
