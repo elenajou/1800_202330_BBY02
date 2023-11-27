@@ -34,8 +34,6 @@ function createIngredientItem(listItemTemplate, ingredientDoc, ingredientListIte
   newListItem.querySelector('.gl-item-name').innerHTML = ingredientDoc.data().name;
   newListItem.querySelector('.gl-item-add-btn').onclick = () => changeQty(ingredientDoc.id, "+");
   newListItem.querySelector('.gl-item-subtract-btn').onclick = () => changeQty(ingredientDoc.id, "-");
-  document.getElementById('addToFridgeModalLabel').innerHTML = 
-  `Added your purchased ingredients to your pantry`;
   
   const checkboxElement = newListItem.querySelector('.form-check-input');
   checkboxElement.id = "checkbox-" + ingredientDoc.id;
@@ -140,10 +138,16 @@ function addToFridge() {
               boughtDate: firebase.firestore.FieldValue.serverTimestamp()
             })
             .then( () => { console.log("Added refridgerator document successfully") })
-            .catch(error => console.error(`Error updating refridgerator in Firestore:`, error));        
+            .catch(error => console.error(`Error updating refridgerator in Firestore:`, error));     
+
+        $('#addedToFridgeMsg').modal('show');
       });
     } catch (error) {
       console.error('Error:', error);
     }
   });
 }
+
+$(".modal").on("hidden.bs.modal", function () {
+  window.location = "/fridge";
+});
