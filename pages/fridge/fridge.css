@@ -1,33 +1,31 @@
-@import url("https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
 
-html,
-body {
-  font-family: "Asap";
+html, body {
+  font-family:'Asap';
   font-size: bold;
   padding: 0;
-  margin: 0;
+  margin: 0;;
 }
 
 :root {
-  --primary-color: #86bbd8;
-  --primary-alternative: #bada07;
-  --darkest: #33658a;
-  --secondary-color: #f4a615;
+  --primary-color: #86BBD8;
+  --primary-alternative: #BADA07;
+  --darkest: #33658A;
+  --secondary-color: #F4A615;
   --accent: white;
-}
+} 
 
 /* Navbar CSS. */
 
-.small-navbar,
-.page-banner {
+.small-navbar, .page-banner {
   display: none;
 }
 
 .navbar {
   z-index: 100;
   background-color: var(--primary-color);
-  padding-left: 20px;
-  padding-bottom: 6px;
+  padding-left:20px;
+  padding-bottom:6px;
 }
 
 .navbar-brand {
@@ -36,8 +34,7 @@ body {
   color: white;
 }
 
-.navbar-brand:hover,
-.nav-link:hover {
+.navbar-brand:hover, .nav-link:hover {
   color: white;
 }
 
@@ -49,8 +46,7 @@ body {
   box-shadow: 0 0 0 1px white;
 }
 
-.fa-solid,
-.fa-bars {
+.fa-solid, .fa-bars {
   color: white;
 }
 
@@ -59,20 +55,15 @@ body {
   transform: translateY(-2px);
 }
 
-.nav-link,
-#logout-button {
+.nav-link, #logout-button {
   color: white;
 }
 
-.icon-space,
-.d-lg-inline {
+.icon-space, .d-lg-inline {
   display: none;
 }
 
-fa-house,
-fa-book,
-fa-basket-shopping,
-fa-rectagle-list {
+fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
   display: inline;
   font-size: 1.5em;
 }
@@ -86,8 +77,8 @@ fa-rectagle-list {
 }
 
 .container.welcome-banner .row img {
-  width: 60%;
-  max-width: 100%;
+  width: 60%; 
+  max-width: 100%; 
   margin: 0 auto;
 }
 
@@ -153,7 +144,7 @@ fa-rectagle-list {
 }
 
 .footer .social-links a:hover {
-  background-color: #bada07;
+  background-color: #BADA07;
 }
 
 .footer h4 {
@@ -166,7 +157,7 @@ fa-rectagle-list {
 }
 
 .footer h4::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: -10px;
@@ -196,8 +187,8 @@ fa-rectagle-list {
     background: white;
     position: absolute;
     content: "";
-    left: 0;
-    right: 0;
+    left:0;
+    right:0;
     bottom: -40px;
     height: 80px;
     width: 100%;
@@ -219,31 +210,34 @@ fa-rectagle-list {
   }
 
   .small-navbar {
-    z-index: 100;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #86bbd8;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 40px 40px 0 0;
+      z-index: 100;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #86BBD8;
+      padding: 20px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-radius: 40px 40px 0 0;
   }
 
   .small-navbar a {
-    color: white;
-    z-index: 100;
-    font-size: 2em;
-    text-decoration: none;
+      color: white;
+      text-decoration: none;
+      font-size: 2em;
   }
 
   #logout-button {
-    display: none;
+    display: none; 
   }
 
   .footer {
     display: none;
+  }
+
+  .top-container {
+    margin-top: 80px !important;
   }
 
   .button-content {
@@ -265,66 +259,65 @@ fa-rectagle-list {
     color: white;
   }
 
-  /* Styles specific to eachGroceryList only */
+  .card {
+    width: 45% !important;
+    margin: 5px;
+  }
+
+  .card-image {
+    max-width: 100%;
+    height: 120px !important;
+  }
+
+  .card-body p {
+    margin: 0;
+  }
 
   .btn-container {
-    margin-top: 150px !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+    display: none;
   }
 
-  .row {
-    margin-bottom: 0 !important;
+  #mypageheader {
+    margin: 0;
   }
-
-  .col-md {
-    width: 100%;
-  }
-
-  #addToFridge {
-    display: block;
-    width: 60%;
-    margin-left: auto;
-  }
-}
+} 
 
 /* Buttons CSS. */
 
-#ingredients-go-here {
-  display: block;
-}
-.gl-item-subtract-btn,
-.gl-item-add-btn {
-  display: inline-block;
-  margin-left: 2px;
-  margin-right: 2px;
+.btn-ge-primary {
+  background-color: #c1cacb;
 }
 
-.list-group-item {
-  border-left: 0;
-  border-right: 0;
+/* Fridge cards CSS. */
+
+.page-message {
+  font-size: 1.3em;
+  font-weight: lighter;
 }
 
-.fa-check-square {
-  color: var(--primary-alternative);
+.card:hover  {
+  border: 2px solid var(--primary-alternative);
+}
+.card-image {
+  width: 262px;
+  height: 175px;
+  object-fit: cover;
 }
 
-.h1 u {
-  color: black;
-  text-decoration: none;
+.card-name {
+  text-transform: capitalize;
 }
 
-.form-check-input:checked {
-  background-color: var(--primary-alternative) !important;
+.card-qty {
+  color: gray;
+  font-size: smaller;
 }
 
-/* #list1 .form-control {
-  border-color: transparent;
+.card-expiry {
+  color: gray;
 }
-#list1 .form-control:focus {
-  border-color: transparent;
-  box-shadow: none;
+
+#times-symb {
+  color: gray;
 }
-#list1 .select-input.form-control[readonly]:not([disabled]) {
-  background-color: #fbfbfb;
-} */
+
