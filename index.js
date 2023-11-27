@@ -61,6 +61,16 @@ app.get("/savedRecipes", function (req, res) {
   res.type('html').send(doc);
 })
 
+app.get("/createRecipe", function (req, res) {
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/createRecipe/createRecipe.html"), "utf8");
+  res.type('html').send(doc);
+})
+
+app.get("/newIngredient", function (req, res) {
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/newIngredient/newIngredient.html"), "utf8");
+  res.type('html').send(doc);
+})
+
 // for page not found (i.e., 404)
 app.use(function (req, res, next) {
   // this could be a separate file too - but you'd have to make sure that you have the path

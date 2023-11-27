@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Create a Recipe</title>
-    <meta name="recipe" content="GrocerEase Recipes" />
+    <title>Add New Ingredient</title>
+    <meta name="recipe" content="Add New Ingredient" />
 
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -29,7 +29,7 @@
     <!-------------------------------------------------------->
     <!------------------------ Styles ------------------------>
     <!-------------------------------------------------------->
-    <link rel="stylesheet" href="/pages/createRecipe/createRecipe.css" />
+    <link rel="stylesheet" href="/pages/newIngredient/newIngredient.css" />
   </head>
   <body>
     <!-- Navbar component loaded here -->
@@ -43,57 +43,30 @@
         </div>
       </div>
       <br>
-      <h1 class="display-6 fw-bold" id="mypageheader">Create new recipe</h1>
+      <h1 class="display-6 fw-bold" id="mypageheader">Add a New Ingredient</h1>
 
-      <form name="createRecipe" action="javascript: createRecipe()">
+      <form name="addNewIngredient" action="javascript: createIngredient()">
         <div class="form-group">
-            <label for="recipeName">Add a recipe name</label>
-            <input type="text" class="form-control" id="recipeName" 
-            placeholder="E.g. Apple Pie" required>
+            <label for="ingredientName">Inredient name</label>
+            <input type="text" class="form-control" id="ingredientName" 
+            placeholder="E.g. apple" required>
         </div>
         <br>
         <div class="form-group">
-          <label for="cookingTime">How long is the cook time?</label>
-          <input type="number" name="cookingTime" id="cookingTime" min="1" max="100" required>
+          <label for="expiryDays">How many days to expire?</label>
+          <input type="number" name="expiryDays" id="expiryDays" min="1" max="100" required>
         </div>    
-        <br>
-        <div class="form-group">
-          <label for="description">Provide a short description of the recipe</label>
-          <textarea class="form-control" id="description" rows="3" required></textarea>
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="ingredients-dropdowns">Add recipe ingredients</label>
-          <div id="ingredients-dropdowns">
-            <template id="addDropdownTemplate">
-              <div>
-                <select class="ingredients-menu"></select>
-                <label for="quantity">Quantity:</label>
-                <input type="number" class="quantity" name="quantity" min="1" max="100" required>
-              </div>
-            </template>
-            <template id="chooseIngredientTemplate">
-              <option class="dropdown-item" id="">Ingredient</option>
-            </template>
-          </div>
-          <button type="button" onclick="addIngredientBtn()">+</button>
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="instructions">Provide recipe instructions</label>
-          <textarea class="form-control" id="instructions" rows="3" required></textarea>
-        </div>
         <br>
         <div class="d-flex justify-content-end">
           <button type="submit" class="btn btn-lg btn-primary pull-right">Submit</button>
         </div>
 
         <!-- Modal triggered by the 'Add' button -->
-        <div class="modal fade" id="createdRecipe" tabindex="-1" aria-labelledby="createdRecipeModalLabel" aria-hidden="true">
+        <div class="modal fade" id="newIngredientMsg" tabindex="-1" aria-labelledby="newIngredientModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-body">
-                <p id="addToGLModalLabel">Your recipe has been created</p>
+                <p id="addToGLModalLabel">Your ingredient has been added</p>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
@@ -110,6 +83,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="/scripts/firebaseAPI_BBY02.js"></script>
     <script src="/scripts/functions.js"></script>
-    <script src="/pages/createRecipe/createRecipe.js"></script>
+    <script src="/pages/newIngredient/newIngredient.js"></script>
   </body>
 </html>

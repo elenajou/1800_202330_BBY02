@@ -266,7 +266,7 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
       justify-content: space-around;
       align-items: center;
       border-radius: 40px 40px 0 0;
-      z-index: 1;
+      z-index: -1;
   }
 
   .small-navbar a {

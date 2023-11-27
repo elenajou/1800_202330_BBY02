@@ -1,5 +1,3 @@
-var currentUser;
-
 function displayCardsDynamically(collection) {
   let cardTemplate = document.getElementById("recipeCardTemplate");
 
@@ -41,7 +39,6 @@ function displayCardsDynamically(collection) {
               iconElement.innerHTML = "bookmark";
             }
           });
-       
         document.getElementById(collection + "-go-here").appendChild(newCard);
       });
     });
@@ -49,9 +46,8 @@ function displayCardsDynamically(collection) {
 
 function doAll() {
   firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      currentUser = db.collection("users").doc(user.uid); //global
-      console.log(currentUser);
+    try {
+      setCurrentUser(user);
       displayCardsDynamically("recipes");
 
       currentUser.get().then((userDoc) => {
@@ -74,9 +70,8 @@ function doAll() {
           }
         });
       });
-    } else {
-      console.log("No user is signed in");
-      window.location.href = "login.html";
+    } catch (error) {
+      console.error('Error:', error);
     }
   });
 }

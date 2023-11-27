@@ -1,18 +1,3 @@
-let currentUser;
-let userDoc;
-
-// Function to set or update currentUser
-async function setCurrentUser(user) {
-  currentUser = user ? db.collection("users").doc(user.uid) : null;
-}
-
-// Function to get user document
-async function getUserDoc() {
-  if (currentUser) {
-    userDoc = await currentUser.get();
-  }
-}
-
 /* Displays the ingredients in ingredientList representing items the user
 needs to buy. */
 function displayIngredientList() {

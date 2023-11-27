@@ -1,8 +1,7 @@
 function doAll() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      currentUser = db.collection("users").doc(user.uid); //global
-      console.log(currentUser);
+      setCurrentUser(user);
 
       currentUser.get().then((userDoc) => {
         var bookmarks = userDoc.data().bookmarks || [];

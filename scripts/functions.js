@@ -1,3 +1,18 @@
+let currentUser;
+let userDoc;
+
+// Function to set or update currentUser
+async function setCurrentUser(user) {
+  currentUser = user ? db.collection("users").doc(user.uid) : null;
+}
+
+// Function to get user document
+async function getUserDoc() {
+  if (currentUser) {
+    userDoc = await currentUser.get();
+  }
+}
+
 /* Common used functions are placed here to be access by multiple js files. */
 
 function loadSkeleton() {
@@ -87,9 +102,7 @@ function calculateExpiryDate(ingredientDocRef, boughtDate) {
 /* Sets title of each page */
 function setPageTitle() { 
   const headerTitle = document.title;
-  console.log(headerTitle);
   let pageTitle = document.getElementById("pageTitle");
-  console.log(pageTitle);
   if (pageTitle) {
       pageTitle.textContent = headerTitle;
   }

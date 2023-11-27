@@ -5,12 +5,7 @@ function displayFridge() {
   
   firebase.auth().onAuthStateChanged(async user => {
     try {
-      if (!user) {
-        console.log("No user is signed in");
-        return;
-      }
-
-      const currentUser = db.collection("users").doc(user.uid);
+      setCurrentUser(user);
       const userFridgeRef = currentUser.collection('refridgerator');
       const userFridgeDocuments = await userFridgeRef.get();
 
@@ -56,12 +51,11 @@ displayFridge();
 function changeQty(htmlElementID, action) {
   firebase.auth().onAuthStateChanged(async user => {
     try {
-      if (!user) return console.log("No user is signed in");
+      setCurrentUser(user);
 
       const htmlElement = document.getElementById(htmlElementID)
       // htmlElementID = fridge document id + ingredient document id stored inside
       const [ fridgeDocID, ingredientDocID ] = htmlElementID.split("+");
-      const currentUser = db.collection("users").doc(user.uid);
       const userFridgeDocRef = currentUser.collection('refridgerator').doc(fridgeDocID);
       const userFridgeDoc = await userFridgeDocRef.get();
       const fridgeIngredientList = await userFridgeDoc.data().ingredientList || [];
