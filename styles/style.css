@@ -76,7 +76,7 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
   background-color: var(--primary-alternative);
 }
 
-.container.welcome-banner .row img {
+.container .welcome-banner .row img {
   width: 60%; 
   max-width: 100%; 
   margin: 0 auto;
@@ -266,6 +266,7 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
       justify-content: space-around;
       align-items: center;
       border-radius: 40px 40px 0 0;
+      z-index: 1;
   }
 
   .small-navbar a {

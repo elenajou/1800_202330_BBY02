@@ -49,7 +49,7 @@ function createIngredientItem(listItemTemplate, ingredientDoc, ingredientListIte
   newListItem.querySelector('.gl-item-name').innerHTML = ingredientDoc.data().name;
   newListItem.querySelector('.gl-item-add-btn').onclick = () => changeQty(ingredientDoc.id, "+");
   newListItem.querySelector('.gl-item-subtract-btn').onclick = () => changeQty(ingredientDoc.id, "-");
-  document.getElementById("addToFridgeModalLabel").innerHTML = 
+  document.getElementById('addToFridgeModalLabel').innerHTML = 
   `Added your purchased ingredients to your pantry`;
   
   const checkboxElement = newListItem.querySelector('.form-check-input');

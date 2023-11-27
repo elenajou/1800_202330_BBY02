@@ -1,5 +1,33 @@
 /* Common used functions are placed here to be access by multiple js files. */
 
+function loadSkeleton() {
+  firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+          // User is signed in
+          $('#navbarPlaceholder').load('../components/nav_after_login.html', function() {
+              console.log('Logged in header loaded successfully');
+              $('#logout-button').on('click', function () {
+                  // Call the logout function when the button is clicked
+                  logout();
+              })
+              setPageTitle();
+          });
+          $('#footerPlaceholder').load('../components/footer.html', function() {
+              console.log('Footer loaded successfully');
+          });
+      } else {
+          // No user is signed in
+          $('#navbarPlaceholder').load('../components/nav_before_login.html', function() {
+              console.log('Logged out header loaded successfully');
+          });
+          $('#footerPlaceholder').load('../components/footer.html', function() {
+              console.log('Footer loaded successfully');
+          });
+      }
+  })
+}
+loadSkeleton(); //invoke the function
+
 // Finds the index of ingredientID within the provided arrayList
 function findIndex(docID, arrayList) {
   return arrayList.findIndex(docRef => _.isEqual(docID, docRef.ingredientID.id));
@@ -57,9 +85,12 @@ function calculateExpiryDate(ingredientDocRef, boughtDate) {
 }
 
 /* Sets title of each page */
-function setPageTitle(title) {
+function setPageTitle() { 
+  const headerTitle = document.title;
+  console.log(headerTitle);
   let pageTitle = document.getElementById("pageTitle");
+  console.log(pageTitle);
   if (pageTitle) {
-      pageTitle.textContent = title;
+      pageTitle.textContent = headerTitle;
   }
 }
