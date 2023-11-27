@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>GrocerEase Grocery List</title>
+  <title>Grocery List</title>
     <meta name="recipe" content="GrocerEase Recipes">
     
     <!-- Required meta tags -->
@@ -27,7 +27,6 @@
   <!-------------------------------------------------------->
   <!------------------------ Styles ------------------------>
   <!-------------------------------------------------------->
-  <link rel="stylesheet" href="/pages/eachGroceryList/eachGroceryList.css">
   <link rel="stylesheet" href="/pages/eachGroceryList/eachGroceryList.css">
 
   <!-- Footer Script -->
@@ -58,55 +57,32 @@
                 <i class="fas fa-check-square me-1"></i>
                 <u>My Grocery List</u>
               </p>
-<!--   
-              <div class="pb-2">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex flex-row align-items-center">
 
-                      <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                        placeholder="Add new...">
-                      <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i
-                          class="fas fa-calendar-alt fa-lg me-3"></i></a>
-                      <div>
-                        <button type="button" class="btn btn-primary">
-                          Add
-                        </button>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-  
-              <!-- <hr class="my-4"> -->
               <!-- Ingredients go here -->
               <div id="ingredients-go-here" class="row row-cols-auto"></div>
             </div>
           </div>
           <button type="button" class="btn btn-secondary" id="add-button" onclick="addToFridge()"
-          data-bs-toggle="modal" data-bs-target="#addToFridge">
+          data-bs-toggle="modal" data-bs-target="#fridgeModal">
             I Bought These Items Today
           </button>
-
-          <!-- Modal triggered by the 'Add' button -->
-          <div class="modal fade" id="addToFridge" tabindex="-1" aria-labelledby="addToFridgeModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <p id="addToFridgeModalLabel">Modal message</p>
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
 
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Modal triggered by the 'Add' button -->
+  <div class="modal fade" id="fridgeModal" tabindex="-1" aria-labelledby="addToFridgeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p id="addToFridgeModalLabel">Modal message</p>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!--Recipe card templates, not displayed-->
   <template id="groceryListTemplate">
     <ul class="gl-item list-group list-group-horizontal rounded-0 bg-transparent" id="">
@@ -143,7 +119,6 @@
   <!---------------------------------------------->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="/scripts/firebaseAPI_BBY02.js"></script>
-  <script src="/scripts/skeleton.js"></script>
   <!-- Do not move function.js as it needs to be placed above some scripts -->
   <script src="/scripts/functions.js"></script>
   <script src="/pages/eachGroceryList/eachGroceryList.js" defer></script>

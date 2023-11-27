@@ -18,8 +18,7 @@ body {
 
 /* Navbar CSS. */
 
-.small-navbar,
-.page-banner {
+.small-navbar, .page-banner {
   display: none;
 }
 

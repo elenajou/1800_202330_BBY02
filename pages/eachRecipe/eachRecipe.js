@@ -63,8 +63,6 @@ function displayRecipeInfo() {
       });
     });
 
-    setPageTitle("Recipe");
-
     currentUser.get().then((userDoc) => {
       var bookmarks = userDoc.data().bookmarks || [];
       var isBookmarked = bookmarks.includes(ID);

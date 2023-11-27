@@ -1,37 +1,3 @@
-/* Displays the ingredients in 'Fridge' representing items the user
-keeps in the physical refridgerator. */
-/*
-function displayFridge() {
-  const fridgeList = document.getElementById("ingredients-go-here");
-  const cardTemplate = document.getElementById("fridgeCardTemplate");
-  fridgeList.innerHTML = "";
-  
-  firebase.auth().onAuthStateChanged(async user => {
-    try {
-      if (!user) {
-        console.log("No user is signed in");
-        return;
-      }
-
-      const currentUser = db.collection("users").doc(user.uid);
-      const userDoc = await currentUser.get();
-      const userFridgeArray = userDoc.data().fridge || [];
-
-      if (userFridgeArray.length === 0) { return; }
-
-      for (let index = 0; index < userFridgeArray.length; index++) {
-        const { ingredientID, qty } = userFridgeArray[index];
-        const ingredientDoc = await ingredientID.get();
-        const newCard = createIngredientCard(cardTemplate, ingredientDoc, qty)
-
-        fridgeList.appendChild(newCard);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  });
-}*/
-
 function displayFridge() {
   const fridgeList = document.getElementById("ingredients-go-here");
   const cardTemplate = document.getElementById("fridgeCardTemplate");
@@ -86,47 +52,6 @@ function createFridgeCard(cardTemplate, fridgeDoc, ingredientDoc, qty) {
 }
 
 displayFridge();
-
-/* Linked to buttons in eachGroceryList.thml used to add or remove ingredients.
-The ingredients get deleted from fridgeList if qty reaches 0. Cannot pass index
-to the function as index changes if it gets deleted. Any files passed into this function
-could be outdated. */
-/*
-function changeQty(htmlElementID, action) {
-  firebase.auth().onAuthStateChanged(async user => {
-    try {
-      if (!user) return console.log("No user is signed in");
-
-      const currentUser = db.collection("users").doc(user.uid);
-      const userDoc = await currentUser.get();
-      const userFridgeArray = userDoc.data().fridge || [];
-      const htmlElement = document.getElementById(htmlElementID);
-
-      if (userFridgeArray.length === 0) return;
-
-      const index = findIndex(htmlElementID, userFridgeArray);
-
-      var currentQty = ( () => {
-        switch(action) {
-          case "+": return ++userFridgeArray[index].qty;
-          case "-": return --userFridgeArray[index].qty;
-          default: return userFridgeArray[index].qty;
-        }
-      })();
-
-      if (currentQty < 1) {
-        userFridgeArray.splice(index, 1);
-        htmlElement.remove();
-      } else {
-        htmlElement.getElementsByClassName('card-qty')[0].innerHTML = currentQty;
-      }
-      
-      updateUserFieldInFirestore(currentUser,'fridge', userFridgeArray);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  });
-}*/
 
 function changeQty(htmlElementID, action) {
   firebase.auth().onAuthStateChanged(async user => {
