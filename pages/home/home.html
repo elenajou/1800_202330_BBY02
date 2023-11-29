@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Homepage</title>
+  <title>GrocerEase</title>
   <meta name="comp1800 template" content="My 1800 App">
 
   <!-- Required meta tags -->
@@ -27,7 +27,7 @@
   <!-------------------------------------------------------->
   <!------------------------ Styles ------------------------>
   <!-------------------------------------------------------->
-  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="/pages/home/home.css">
 </head>
 
 <body>
@@ -38,25 +38,27 @@
   <nav id="navbarPlaceholder"></nav>
 
   <!------------------ Welcome banner -------------------------->
-  <div class="container welcome-banner col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-2">
-      <div class="col-10 col-sm-8 col-lg-6">
-        <img src="/images/phone-fridge.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" loading="lazy">
-      </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">Welcome to <span class="accent">GrocerEase!</span></h1>
-        <p class="lead">
-          An app that compiles all your recipes and generates a grocery list for you.
-          <br>
-          It can track the
-          items you have bought, used, and have left for your next grocery list.
-        </p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <a href="/login" id="btn_signup" class="btn btn-ge-primary btn-lg px-4 me-md-2" role="button">Login / Sign Up</a>
+  <div class="display-container">
+    <div class="container welcome-banner col-xxl-8 px-4 py-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-2">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img src="/images/phone-fridge.png" class="d-block mx-lg-auto img-fluid" id="phone-img" alt="Bootstrap Themes" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold lh-1 mb-3">Welcome to <span class="accent">GrocerEase!</span></h1>
+          <p class="lead">
+            An app that compiles all your recipes and generates a grocery list for you.
+            <br>
+            It can track the
+            items you have bought, used, and have left for your next grocery list.
+          </p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="/login" id="btn_signup" class="btn btn-ge-primary btn-lg px-4 me-md-2" role="button">Login / Sign Up</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> 
   <footer id="footerPlaceholder"></footer>
   <!---------------------------------------------->
   <!------  JavaScript functions go here --------->
