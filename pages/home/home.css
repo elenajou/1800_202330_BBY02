@@ -1,0 +1,97 @@
+/* Welcome banner */
+
+.container,
+.welcome-banner,
+.row img {
+  width: 60%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.accent {
+  color: #bada07;
+}
+
+.grocery-list-container {
+  height: 60vh;
+}
+
+.btn-ge-outline-secondary {
+  border: 2px solid #c1cacb;
+}
+
+#btn_signup {
+  background-color: #c1cacb;
+}
+
+/* Tablet view (< 1000px) */
+
+@media only screen and (max-width: 1000px) {
+  .container,
+  .welcome-banner,
+  .row {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+  }
+
+  #btn_signup {
+    width: 100%;
+  }
+
+  .col-md-6 {
+    width: 50%;
+  }
+}
+
+/* Mobile view (< 500px) */
+
+@media only screen and (max-width: 500px) {
+  .display-container {
+    display: flex;
+    height: 80% !important;
+    border-radius: 40px 40px 40px 40px !important;
+  }
+
+  .container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  #btn_signup {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  #phone-img {
+    display: none !important;
+  }
+
+  .display-5, .lead {
+    text-align: center;
+  }
+
+  .lead {
+    font-size: 13pt;
+  }
+
+  .page-banner {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .small-navbar {
+    display: none;
+  }
+}

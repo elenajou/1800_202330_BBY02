@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>GrocerEase Homepage</title>
+  <title>GrocerEase</title>
   <meta name="comp1800 template" content="My 1800 App">
 
   <!-- Required meta tags -->
@@ -26,29 +26,32 @@
   <!-------------------------------------------------------->
   <!------------------------ Styles ------------------------>
   <!-------------------------------------------------------->
-  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="/pages/login/login.css">
 </head>
 </head>
 
 <body>
   <!-- NavBar -->
   <nav id="navbarPlaceholder"></nav>
-
-  <div class="container px-4 my-5 text-left border-bottom">
-    <div class="row">
-      <div class="col-md-6 text-start">
-        <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
-      </div>
-    </div>
-    <br>
-
-  <!--Login Widget-->
-  <div class="login-container">
-    <h1>Account Login</h1>
-  </div>
-  <div id="firebaseui-auth-container"></div>
-  <div id="loader">Loading...</div>
-
+  <div class="display-container">
+    <div class="container px-4 my-5 text-left">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-start">
+            <button type="button" class="btn btn-ge-primary" id="back-button" onclick="returnBack()">Back</button>
+          </div>
+          <!--Login Widget-->
+          <div class="login-container">
+            <br>
+            <h1 class="display-6 fw-bold">Account Login</h1>
+          </div>
+          <div id="firebaseui-auth-container"></div>
+          <div id="loader">Loading...</div>
+        </div>
+      </div> 
+      <br>
+    </div> 
+  </div>      
   <!-- Footer -->
   <footer id="footerPlaceholder"></footer>
 

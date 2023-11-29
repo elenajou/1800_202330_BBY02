@@ -1,0 +1,64 @@
+/* Buttons */
+
+.btn-ge-primary {
+  background-color: #c1cacb;
+}
+
+/* Main content */
+
+.row {
+  width: 100%;
+}
+
+#firebaseui-auth-container {
+  margin: 30px;
+}
+
+/* Mobile view (< 500px) */
+
+@media only screen and (max-width: 500px) {
+  .display-container {
+    display: flex;
+    height: 80% !important;
+    border-radius: 40px 40px 40px 40px !important;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .row {
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .small-navbar {
+    display: none;
+  }
+
+  .page-banner {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  } 
+
+  .back-button-mobile {
+    display: block;
+    float: left;
+  }
+
+  .fa-arrow-left {
+    color: white;
+  }
+
+  #back-button {
+    display: none;
+  } 
+}

@@ -231,6 +231,7 @@ fa-rectagle-list {
     justify-content: space-around;
     align-items: center;
     border-radius: 40px 40px 0 0;
+    pointer-events: auto;
   }
 
   .small-navbar a {
@@ -238,6 +239,7 @@ fa-rectagle-list {
     z-index: 100;
     font-size: 2em;
     text-decoration: none;
+    pointer-events: auto;
   }
 
   #logout-button {
@@ -285,8 +287,12 @@ fa-rectagle-list {
 
   #addToFridge {
     display: block;
-    width: 60%;
+    width: 70%;
     margin-left: auto;
+  }
+
+  .modal {
+    z-index: 90;
   }
 }
 

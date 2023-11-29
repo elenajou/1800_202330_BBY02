@@ -71,6 +71,11 @@ app.get("/newIngredient", function (req, res) {
   res.type('html').send(doc);
 })
 
+app.get("/dashboard", function (req, res) {
+  let doc = fs.readFileSync(path.join(__dirname, "./pages/dashboard/dashboard.html"), "utf8");
+  res.type('html').send(doc);
+})
+
 // for page not found (i.e., 404)
 app.use(function (req, res, next) {
   // this could be a separate file too - but you'd have to make sure that you have the path

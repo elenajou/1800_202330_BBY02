@@ -1,0 +1,106 @@
+.card-header {
+  background-color: var(--primary-alternative);
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+#welcome-banner {
+  padding-bottom: 0 !important;
+}
+
+#main-container {
+  margin-bottom: 96px;
+}
+
+#recipe-menu-body {
+  background: rgba(255, 255, 255, 0.7) url(/images/cooking_pan.jpg) center no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: lighten;
+}
+
+#grocery-list-body {
+  background: rgba(255, 255, 255, 0.7) url(/images/grocery_list.jpg) center no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: lighten;
+}
+
+#fridge-body {
+  background: rgba(255, 255, 255, 0.7) url(/images/fridge.jpg) center no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: lighten;
+}
+
+
+#saved-recipe-body {
+  background: rgba(255, 255, 255, 0.7) url(/images/saved_recipes.jpg) center no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: lighten;
+}
+
+#create-recipe-body {
+  background: rgba(255, 255, 255, 0.7) url(/images/create_recipe.jpeg) center no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: lighten;
+}
+
+#add-ingredient-body {
+  background: rgba(255, 255, 255, 0.7) url(/images/add_ingredient.jpg) center no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: lighten;
+}
+
+#logout-container {
+  display: none;
+}
+
+.card {
+  margin-bottom: 30px !important;
+}
+
+.card-text {
+  color: black;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Mobile view (< 500px) */
+
+@media (max-width: 500px) {
+  #welcome-banner {
+    position: relative;
+  }
+
+  #main-container {
+    z-index: 100;
+    padding-top: 0 !important;
+  }
+
+  #logout-container {
+    display: inline;
+  }
+
+  .card {
+    flex: 0 0 100%;
+    max-width: 100%; 
+  }
+
+  .card-body {
+    display: none; /* Hide card bodies */
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-container {
+    width: 60% !important;
+  }
+}
