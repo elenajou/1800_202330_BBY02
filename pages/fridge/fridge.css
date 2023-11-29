@@ -170,6 +170,9 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
 /* Navbar and content responsive for screens under 500px. */
 
 @media only screen and (max-width: 500px) {
+  html, body {
+    font-size: 13px;
+  }
   .page-banner {
     background: var(--primary-color);
     z-index: 100;

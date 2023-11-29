@@ -2,3 +2,11 @@
   max-height: 280px;
   overflow-y: auto;
 }
+
+.hidden {
+  display: none;
+}
+
+#newIngredientMsg {
+  color: blue;
+}
