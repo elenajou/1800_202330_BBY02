@@ -34,7 +34,7 @@ function createFridgeCard(cardTemplate, fridgeDoc, ingredientDoc, qty) {
 
   const thisElementID = fridgeDoc.id + "+" + ingredientDoc.id;
   newCard.querySelector('.card').id = thisElementID;
-  newCard.querySelector('.card-image').src = `/images/recipe01.jpg`;
+  // newCard.querySelector('.card-image').src = `/images/recipe01.jpg`;
   newCard.querySelector('.card-qty').innerHTML = qty;
   newCard.querySelector('.card-name').innerHTML = ingredientDoc.data().name;
   newCard.querySelector('.card-add-btn').onclick = () => changeQty(thisElementID, "+");
@@ -64,13 +64,8 @@ function changeQty(htmlElementID, action) {
 
       const index = findIndex(ingredientDocID, fridgeIngredientList);
 
-      var currentQty = ( () => {
-        switch(action) {
-          case "+": return ++fridgeIngredientList[index].qty;
-          case "-": return --fridgeIngredientList[index].qty;
-          default: return fridgeIngredientList[index].qty;
-        }
-      })();
+      var currentQty = calculateNewQty(action, fridgeIngredientList[index].qty);
+      fridgeIngredientList[index].qty = currentQty;
       
       if (currentQty < 1) {
         fridgeIngredientList.splice(index, 1);

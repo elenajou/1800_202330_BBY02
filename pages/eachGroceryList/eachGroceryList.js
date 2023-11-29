@@ -61,13 +61,8 @@ function changeQty(htmlElementID, action) {
 
       const index = findIndex(htmlElementID, userIngredientList);
 
-      var currentQty = ( () => {
-        switch(action) {
-          case "+": return ++userIngredientList[index].qty;
-          case "-": return --userIngredientList[index].qty;
-          default: return userIngredientList[index].qty;
-        }
-      })();
+      var currentQty = calculateNewQty(action, userIngredientList[index].qty);
+      userIngredientList[index].qty = currentQty;
 
       if (currentQty < 1) {
         userIngredientList.splice(index, 1);
@@ -83,6 +78,7 @@ function changeQty(htmlElementID, action) {
   });
 }
 
+// Updates the checkbox value in firestore for the grocery list
 function updateCheckboxValue(checkbox) {
   getUserDoc().then(() => {
       const userIngredientList = userDoc.data().ingredientList;
@@ -113,10 +109,12 @@ function updateCheckboxValue(checkbox) {
 and bought all the listed ingredients in 'groceryList', this function will store the time stamp and
 populate those ingredients in the 'fridge'. */
 function addToFridge() {
-  firebase.auth().onAuthStateChanged(user => {
+  firebase.auth().onAuthStateChanged(async user => {
     try {
       setCurrentUser(user);
       const userFridgeRef = currentUser.collection("refridgerator");
+      const lastBoughtDateRef = await userFridgeRef.orderBy('boughtDate', 'desc').limit(1).get();
+      const sameDate = checkSameDate(lastBoughtDateRef);
 
       currentUser.get().then(userDoc => {
         const userIngredientList = userDoc.data().ingredientList || [];
@@ -126,21 +124,19 @@ function addToFridge() {
 
         // Add items that are checked as true
         for (const ingredientListItem of userIngredientList) {
-          if (ingredientListItem.checked) {
-            ingredientItemsToAdd.push(ingredientListItem);
-          }
+          if (ingredientListItem.checked) ingredientItemsToAdd.push(ingredientListItem);
         }
 
-        // Add the selected ingredients to the fridge
-        userFridgeRef
-            .add({
-              ingredientList: ingredientItemsToAdd,
-              boughtDate: firebase.firestore.FieldValue.serverTimestamp()
-            })
-            .then( () => { console.log("Added refridgerator document successfully") })
-            .catch(error => console.error(`Error updating refridgerator in Firestore:`, error));     
-
-        $('#addedToFridgeMsg').modal('show');
+        // Add the checked ingredients to the fridge. Combine if applicable
+        if (lastBoughtDateRef.empty || !sameDate) {
+          addDocumentInFirestore(userFridgeRef, 'ingredientList', 
+            ingredientItemsToAdd, 'boughtDate');
+          $('#addedToFridgeMsg').modal('show');
+        } else {
+          lastBoughtDateRef.forEach(async doc => {
+            await updateIngredientsInFridge(userFridgeRef, doc.id, ingredientItemsToAdd);
+          })
+        }
       });
     } catch (error) {
       console.error('Error:', error);
@@ -148,6 +144,34 @@ function addToFridge() {
   });
 }
 
+// Checks the current date and the date of the last list of bought items
+function checkSameDate(lastBoughtDateRef) {
+  const currentBoughtDateRef = firebase.firestore.Timestamp.now();
+  const currentBoughtDate = currentBoughtDateRef.toDate().toDateString();
+  var sameDate = false;
+  lastBoughtDateRef.forEach(doc => {
+    const lastBoughtDate = doc.data().boughtDate.toDate().toDateString();
+    (currentBoughtDate === lastBoughtDate) ? sameDate = true : sameDate = false;
+  })
+
+  return sameDate;
+}
+
+// Function to update ingredients in the refridgerator document
+async function updateIngredientsInFridge(userFridgeRef, docId, ingredientItemsToAdd) {
+  const fridgeIngredientList = (await userFridgeRef.doc(docId).get()).data().ingredientList || [];
+
+  ingredientItemsToAdd.forEach((item) => {
+    const { ingredientID, qty } = item;
+    const index = findIndex(ingredientID.id, fridgeIngredientList);
+    (index !== -1) ? fridgeIngredientList[index].qty += item.qty : fridgeIngredientList.push(item);
+  });
+
+  updateUserFieldInFirestore(userFridgeRef.doc(docId), 'ingredientList', fridgeIngredientList);
+  $('#addedToFridgeMsg').modal('show');
+}
+
+// Redirects the page on closing the modal
 $(".modal").on("hidden.bs.modal", function () {
   window.location = "/fridge";
 });
