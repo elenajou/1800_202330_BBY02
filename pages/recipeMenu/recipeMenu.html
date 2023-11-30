@@ -45,9 +45,6 @@
           <div class="col-md-6 text-end">
             <a class="btn btn-ge-primary" href="/createRecipe">Create Recipe</a>
           </div>
-          <div class="col-md-6 text-end">
-            <a class="btn btn-ge-primary" href="/newIngredient">Add a new ingredient</a>
-          </div>
         </div>
         <br>
         <h1 class="display-6 fw-bold" id="mypageheader">Popular Recipes</h1>
@@ -58,19 +55,21 @@
     
     <!--Recipe card templates, not displayed-->
     <template id="recipeCardTemplate">
-      <div class="card py-2 mx-2">
-        <img class="card-image card-img-top" src="..." alt="..."/>
-        <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-time">placeholder</p>
-            <p class="card-text">
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-            </p>
-            <a class="btn btn-ge-primary card-href" id="read-more-btn">Read more</a>
-            <i class="material-icons">bookmark_border</i>
+        <div class="card py-2 mx-2">
+          <a class="recipe-card nostyle">
+            <img class="card-image card-img-top" src="..." alt="..."/>
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-time">placeholder</p>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+                <a class="btn btn-ge-primary card-href read-more-btn">Read more</a>
+                <i class="material-icons">bookmark_border</i>
+            </div>
+          </a>
         </div>
-      </div>
     </template>
     <footer id="footerPlaceholder"></footer>
   </div>

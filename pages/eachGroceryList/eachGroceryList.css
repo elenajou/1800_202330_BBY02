@@ -290,10 +290,6 @@ fa-rectagle-list {
     width: 70%;
     margin-left: auto;
   }
-
-  .modal {
-    z-index: 90;
-  }
 }
 
 /* Buttons CSS. */

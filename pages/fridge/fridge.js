@@ -6,7 +6,7 @@ function displayFridge() {
   firebase.auth().onAuthStateChanged(async user => {
     try {
       setCurrentUser(user);
-      const userFridgeRef = currentUser.collection('refridgerator');
+      const userFridgeRef = currentUser.collection('refrigerator');
       const userFridgeDocuments = await userFridgeRef.get();
 
       userFridgeDocuments.forEach(fridgeDoc => {
@@ -52,11 +52,12 @@ function changeQty(htmlElementID, action) {
   firebase.auth().onAuthStateChanged(async user => {
     try {
       setCurrentUser(user);
+      await getUserDoc();
 
       const htmlElement = document.getElementById(htmlElementID)
       // htmlElementID = fridge document id + ingredient document id stored inside
       const [ fridgeDocID, ingredientDocID ] = htmlElementID.split("+");
-      const userFridgeDocRef = currentUser.collection('refridgerator').doc(fridgeDocID);
+      const userFridgeDocRef = currentUser.collection('refrigerator').doc(fridgeDocID);
       const userFridgeDoc = await userFridgeDocRef.get();
       const fridgeIngredientList = await userFridgeDoc.data().ingredientList || [];
       

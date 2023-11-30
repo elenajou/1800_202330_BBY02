@@ -1,47 +1,55 @@
 function displayCardsDynamically(collection) {
-  let cardTemplate = document.getElementById("recipeCardTemplate");
 
   db.collection(collection)
     .get() //the collection called "recipes"
     .then((allRecipes) => {
       allRecipes.forEach((doc) => {
-        var title = doc.data().name;
-        var cookTime = doc.data().cook_time;
-        var description = doc.data().description;
-        var recipeCode = doc.data().code;
-        var newCard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newCard) that will be filled with Firestore data
-        var docID = doc.id;
+        const newCard = createNewRecipeCard(doc);
 
-        // update title and text and image
-        newCard.querySelector(".card-title").innerHTML = title;
-        newCard.querySelector(".card-time").innerHTML =
-          "Total time: " + cookTime + " mins";
-        newCard.querySelector(".card-text").innerHTML =
-          description.slice(0, 80) + "...";
-        // newCard.querySelector('.card-image').src = `../images/${recipeCode}.jpg`;
-        newCard.querySelector('a').href = "/eachRecipe?docID=" + docID;
-        newCard.querySelector('i').id = 'save-' + docID;
-        newCard.querySelector('i').onclick = () => saveBookmark(docID); 
-        
-        // get image URL from FireBase Storage
-        const storage = firebase.storage();
-        var imageRef = storage.ref(recipeCode + ".jpg");
-        imageRef.getDownloadURL().then((url) => {
-          localStorage.setItem(title, url);
-        }); 
-        
-        newCard.querySelector(".card-image").src = localStorage.getItem(title);
-
-          currentUser.get().then((userDoc) => {
-            //get bookmarks if they exist
-            var bookmarks = userDoc.data().bookmarks || [];
-            if (bookmarks.includes(docID)) {
-              iconElement.innerHTML = "bookmark";
-            }
-          });
+        currentUser.get().then((userDoc) => {
+          //get bookmarks if they exist
+          var bookmarks = userDoc.data().bookmarks || [];
+          if (bookmarks.includes(docID)) {
+            iconElement.innerHTML = "bookmark";
+          }
+        });
         document.getElementById(collection + "-go-here").appendChild(newCard);
       });
     });
+}
+
+function createNewRecipeCard(doc) {
+  const cardTemplate = document.getElementById("recipeCardTemplate");
+
+  const title = doc.data().name;
+  const cookTime = doc.data().cook_time;
+  const description = doc.data().description;
+  const recipeCode = doc.data().code;
+  const docID = doc.id;
+  // Clone the HTML template to create a new card (newCard) that will be filled with Firestore data
+  var newCard = cardTemplate.content.cloneNode(true);
+  // update title and text and image
+  newCard.querySelector(".card-title").innerHTML = title;
+  newCard.querySelector(".card-time").innerHTML =
+    "Total time: " + cookTime + " mins";
+  newCard.querySelector(".card-text").innerHTML =
+    description.slice(0, 80) + "...";
+  // newCard.querySelector('.card-image').src = `../images/${recipeCode}.jpg`;
+  newCard.querySelector('.read-more-btn').href = "/eachRecipe?docID=" + docID;
+  newCard.querySelector('.recipe-card').href = "/eachRecipe?docID=" + docID;
+  newCard.querySelector('i').id = 'save-' + docID;
+  newCard.querySelector('i').onclick = () => saveBookmark(docID); 
+
+  // get image URL from FireBase Storage
+  const storage = firebase.storage();
+  var imageRef = storage.ref(recipeCode + ".jpg");
+  imageRef.getDownloadURL().then((url) => {
+    localStorage.setItem(title, url);
+  }); 
+  
+  newCard.querySelector(".card-image").src = localStorage.getItem(title);
+
+  return newCard;
 }
 
 function doAll() {

@@ -112,7 +112,7 @@ function addToFridge() {
   firebase.auth().onAuthStateChanged(async user => {
     try {
       setCurrentUser(user);
-      const userFridgeRef = currentUser.collection("refridgerator");
+      const userFridgeRef = currentUser.collection("refrigerator");
       const lastBoughtDateRef = await userFridgeRef.orderBy('boughtDate', 'desc').limit(1).get();
       const sameDate = checkSameDate(lastBoughtDateRef);
 

@@ -34,6 +34,12 @@
   font-weight: bold;
 }
 
+a.nostyle {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
+
 /* Mobile view (< 500px) */
 
 @media only screen and (max-width: 500px) {
@@ -75,9 +81,14 @@
     align-items: center;
   }
 
-  .card-image {
+  .recipe-card {
     width: 30%;
     height: 70px;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 
@@ -106,7 +117,7 @@
     display: none;
   }
 
-  #read-more-btn {
+  .read-more-btn {
     display: none;
     /* font-size: 9pt;
     width: 60%;
@@ -116,7 +127,7 @@
   .material-icons {
     float: right;
   }
- 
+
   #recipes-go-here {
     justify-content: center;
     align-items: center;

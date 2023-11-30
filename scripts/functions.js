@@ -73,13 +73,9 @@ function logout() {
     });
 }
 
-/* Creates a 'back' button that allows users to go back to the previous page. */
-let returnBack = document.querySelector('#back-button');
-if (returnBack) {
-  returnBack.addEventListener('click', () => {
-    console.log('Back button clicked.');
-    window.history.back();
-  })
+/* Creates a 'back' button that allows users to go back to the previous page. in mobile view */
+function returnBack() {
+  window.history.back();
 }
 
 /* Calculates the expiry date and returns it as a Date object */
