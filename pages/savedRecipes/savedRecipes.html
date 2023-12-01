@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>GrocerEase Saved Recipes</title>
+  <title>Saved Recipes</title>
   <meta name="recipe" content="GrocerEase Recipes">
   
   <!-- Required meta tags -->
@@ -26,7 +26,7 @@
   <!-------------------------------------------------------->
   <!------------------------ Styles ------------------------>
   <!-------------------------------------------------------->
-  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="/pages/savedRecipes/savedRecipes.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -35,39 +35,40 @@
   <nav id="navbarPlaceholder"></nav>
 
   <!--Container-->  
-  <div class="container px-4 my-5 text-left border-bottom">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 text-start">
-          <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
+  <div class="display-container">
+    <div class="container px-4 my-5 text-left">
+        <div class="row">
+          <div class="col-md-6 text-start">
+            <button type="button" class="btn btn-ge-primary" id="back-button" onclick="returnBack()">Back</button>
+          </div>
         </div>
+        <br>
+        <h1 class="display-6 fw-bold" id="mypageheader">Saved Recipes</h1>
+        <p class="page-message">Bookmark and savour your favourite recipes in one place!</p>
+        <div id="saved-recipes-go-here" class="row row-cols-auto"></div>
+    </div> 
+    
+    <!--Recipe card templates, not displayed-->
+    <template id="savedRecipeCardTemplate">
+      <div class="card py-2 mx-2">
+        <a class="recipe-card nostyle">
+          <img class="card-image card-img-top" src=" ..." alt="..." />
+          <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-time">placeholder</p>
+              <p class="card-text">
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+              </p>
+              <a class="btn btn-ge-primary card-href read-more-btn">Read more</a>
+              <i class="material-icons">bookmark_border</i>
+          </div>
+        </a>
       </div>
-      <br>
-      <h1 class="display-6 fw-bold" id="mypageheader">Saved Recipes</h1>
-      <div id="saved-recipes-go-here" class="row row-cols-auto"></div>
-    </div>
-  </div> 
+    </template>
   
-  <!--Recipe card templates, not displayed-->
-  <template id="savedRecipeCardTemplate">
-    <div class="card py-2 mx-2" style="width: 18rem; height: auto">
-      <img class="card-image card-img-top" src=" ..." alt="..." />
-      <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-time">placeholder</p>
-          <br />
-          <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-          </p>
-          <a class="btn btn-primary card-href">Read more</a>
-          <i class="material-icons">bookmark_border</i>
-      </div>
-    </div>
-  </template>
-
   <footer id="footerPlaceholder"></footer>
-
+  </div>
   <!---------------------------------------------->
   <!------  JavaScript functions go here --------->
   <!---------------------------------------------->

@@ -23,129 +23,89 @@
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-  <!-------------------------------------------------------->
-  <!------------------------ Styles ------------------------>
-  <!-------------------------------------------------------->
-  <link rel="stylesheet" href="/pages/createRecipe/createRecipe.css" />
-</head>
-
-<body>
-  <!-- Navbar component loaded here -->
-  <nav id="navbarPlaceholder"></nav>
-
-    <div class="container top-container px-4 my-5 text-left">
-      <div class="row">
-        <div class="col-md-6 text-start">
-          <button type="button" class="btn btn-primary" id="back-button" onclick="returnBack()">Back</button>
+    <!-------------------------------------------------------->
+    <!------------------------ Styles ------------------------>
+    <!-------------------------------------------------------->
+    <link rel="stylesheet" href="/pages/createRecipe/createRecipe.css" />
+  </head>
+  <body>
+    <!-- Navbar component loaded here -->
+    <nav id="navbarPlaceholder"></nav>
+    <div class="display-container">
+      <div class="container top-container px-4 my-5 text-left">
+        <div class="row">
+          <div class="col-md-6 text-start">
+            <button type="button" class="btn btn-ge-primary" id="back-button" onclick="returnBack()">Back</button>
+          </div>
         </div>
-      </div>
-      <br>
-      <h1 class="display-6 fw-bold" id="mypageheader">Create new recipe</h1>
-
-    <form name="createRecipe" action="javascript: createRecipe()">
-      <div class="form-group">
-        <label for="recipeName">Add a recipe name</label>
-        <input type="text" class="form-control" id="recipeName" placeholder="E.g. Apple Pie" required>
-      </div>
-      <br>
-      <div class="form-group">
-        <label for="cookingTime">How long is the cook time?</label>
-        <input type="number" name="cookingTime" id="cookingTime" min="1" max="100" required>
-      </div>
-      <br>
-      <div class="form-group">
-        <label for="description">Provide a short description of the recipe</label>
-        <textarea class="form-control" id="description" rows="3" required></textarea>
-      </div>
-      <br>
-
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newIngredientModal">
-        Add New Ingredient
-      </button>
-      <br>
-
-      <div class="form-group">
-        <label for="ingredients-dropdowns">Add recipe ingredients</label>
-        <div id="ingredients-dropdowns">
-          <template id="addDropdownTemplate">
-            <div>
-              <select class="ingredients-menu"></select>
-              <label for="quantity">Quantity:</label>
-              <input type="number" class="quantity" name="quantity" min="1" max="100" required>
+        <br>
+        <h1 class="display-6 fw-bold" id="mypageheader">Create Recipe</h1>
+        <h1 class="display-6 fw-bold" id="mobilePageHeader">Create Recipe</h1>
+        <form name="createRecipe" action="javascript: createRecipe()">
+          <div class="form-group">
+              <label for="recipeName">Recipe name:</label>
+              <input type="text" class="form-control" id="recipeName" 
+              placeholder="E.g. Apple Pie" required>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="cookingTime">Cook time: </label>
+            <input type="number" name="cookingTime" id="cookingTime" min="1" max="100" required>
+            <label for="cookingTime"> mins</label>
+          </div>    
+          <br>
+          <div class="form-group">
+            <label for="description">Short description:</label>
+            <textarea class="form-control" id="description" rows="3" required></textarea>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="ingredients-dropdowns">Add ingredients:</label>
+            <div id="ingredients-dropdowns">
+              <template id="addDropdownTemplate">
+                <div>
+                  <select class="ingredients-menu"></select>
+                  <label for="quantity">Quantity:</label>
+                  <input type="number" class="quantity" name="quantity" min="1" max="100" required>
+                </div>
+              </template>
+              <template id="chooseIngredientTemplate">
+                <option class="dropdown-item" id="">Ingredient</option>
+              </template>
             </div>
-          </template>
-          <template id="chooseIngredientTemplate">
-            <option class="dropdown-item" id="">Ingredient</option>
-          </template>
-        </div>
-        <button type="button" onclick="addIngredientBtn()">+</button>
-      </div>
-      <br>
-      <div class="form-group">
-        <label for="instructions">Provide recipe instructions</label>
-        <textarea class="form-control" id="instructions" rows="3" required></textarea>
-      </div>
-      <br>
-      <div class="d-flex justify-content-end">
-        <button type="submit" class="btn btn-lg btn-primary pull-right">Submit</button>
-      </div>
-
-    </form>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="newIngredientModal" tabindex="-1" aria-labelledby="newIngredientModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="newIngredientModalLabel">Add new ingredient to the list</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form name="addNewIngredient" action="javascript: createIngredient()">
-            <div class="form-group">
-              <label for="ingredientName">Inredient name</label>
-              <input type="text" class="form-control" id="ingredientName" placeholder="E.g. apple" required>
+            <button type="button" class="btn btn-ge-primary" id="add-ingredients" onclick="addIngredientBtn()">+</button>
+            <label for="add-ingredients" id="add-ingredients-label">Click to add more ingredients</label>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="instructions">Cooking instructions: </label>
+            <textarea class="form-control" id="instructions" rows="3" required></textarea>
+          </div>
+          <br>
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-lg btn-ge-primary pull-right" id="submit">Submit</button>
+          </div>
+          <!-- Modal triggered by the 'Add' button -->
+          <div class="modal fade" id="createdRecipe" tabindex="-1" aria-labelledby="createdRecipeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <p id="addToGLModalLabel">Your recipe has been created</p>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
             </div>
-            <br>
-            <div class="form-group">
-              <label for="expiryDays">How many days to expire?</label>
-              <input type="number" name="expiryDays" id="expiryDays" min="1" max="100" required>
-            </div>
-            <br>
-            <p id="newIngredientMsg" class="hidden">Your ingredient has been added</p>
-            <div class="d-flex justify-content-end">
-              <button type="submit" class="btn btn-lg btn-primary pull-right">Submit</button>
-            </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
-  </div>
-
-  <!-- Modal triggered by the 'Add' button -->
-  <div class="added-recipe modal fade" id="createdRecipe" tabindex="-1" aria-labelledby="createdRecipeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <p id="addToGLModalLabel">Your recipe has been created</p>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <footer id="footerPlaceholder"></footer>
-  <!-------------------------------------------------------->
-  <!-------------------Javascript -------------------------->
-  <!-------------------------------------------------------->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
-  <script src="/scripts/firebaseAPI_BBY02.js"></script>
-  <script src="/scripts/functions.js"></script>
-  <script src="/pages/createRecipe/createRecipe.js"></script>
-</body>
-
+    <footer id="footerPlaceholder"></footer>
+    <!-------------------------------------------------------->
+    <!-------------------Javascript -------------------------->
+    <!-------------------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/scripts/firebaseAPI_BBY02.js"></script>
+    <script src="/scripts/functions.js"></script>
+    <script src="/pages/createRecipe/createRecipe.js"></script>
+  </body>
 </html>

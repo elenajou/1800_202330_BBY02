@@ -1,252 +1,131 @@
-@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
+/* Buttons */
 
-html, body {
-  font-family:'Asap';
-  font-size: bold;
-  padding: 0;
-  margin: 0;;
+.btn-ge-primary {
+  background-color: #c1cacb;
 }
 
-:root {
-  --primary-color: #86BBD8;
-  --primary-alternative: #BADA07;
-  --darkest: #33658A;
-  --secondary-color: #F4A615;
-  --accent: white;
-} 
-
-/* Navbar CSS. */
-
-.small-navbar, .page-banner {
-  display: none;
+/* Fridge cards */
+.container {
+  margin-bottom: 130px !important;
 }
 
-.navbar {
-  z-index: 100;
-  background-color: var(--primary-color);
-  padding-left:20px;
-  padding-bottom:6px;
+#mypageheader2 {
+  font-size: 1.3rem;
 }
 
-.navbar-brand {
-  font-style: italic;
+.page-message {
+  font-size: 1.3em;
+  font-weight: lighter;
+}
+
+.card {
+  width: 18rem;
+  height: auto;
+}
+
+.card:hover  {
+  border: 2px solid var(--primary-alternative);
+}
+.card-image {
+  width: 262px;
+  height: 175px;
+  object-fit: cover;
+}
+
+.card-name {
   font-weight: bold;
-  color: white;
-}
-
-.navbar-brand:hover, .nav-link:hover {
-  color: white;
-}
-
-.navbar-toggler {
-  border: 1px solid white;
-}
-
-.navbar-toggler:focus {
-  box-shadow: 0 0 0 1px white;
-}
-
-.fa-solid, .fa-bars {
-  color: white;
-}
-
-.nav-item:hover {
-  font-weight: bold;
-  transform: translateY(-2px);
-}
-
-.nav-link, #logout-button {
-  color: white;
-}
-
-.icon-space, .d-lg-inline {
-  display: none;
-}
-
-fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
-  display: inline;
-  font-size: 1.5em;
-}
-
-.btn {
-  border: 2px solid white;
-}
-
-.btn:hover {
-  background-color: var(--primary-alternative);
-}
-
-.container.welcome-banner .row img {
-  width: 60%; 
-  max-width: 100%; 
-  margin: 0 auto;
-}
-
-/* Footer CSS. */
-
-.footer {
-  width: 100%;
-  position: relative;
-  background-color: var(--primary-color);
-  max-width: 100vw;
-  padding: 70px;
-  margin: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
-.footer-col {
-  width: 33%;
-}
-
-.footer-row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.footer ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer ul li:not(:last-child) {
-  margin-bottom: 10px;
-}
-
-.footer ul li a {
-  color: white;
-  font-size: 16px;
   text-transform: capitalize;
-  text-decoration: none;
-  font-weight: 400;
-  display: block;
-  transition: all 0.3s ease;
+}
+  
+.card-qty {
+  color: gray;
+  font-size: smaller;
 }
 
-.footer ul li a:hover {
-  color: white;
-  font-weight: bold;
-  padding-left: 10px;
+.card-expiry {
+  color: gray;
 }
 
-.footer .social-links a {
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  background-color: rgba(255, 255, 255, 0.2);
-  margin: 0 10px 10px 0;
-  text-align: center;
-  line-height: 40px;
-  border-radius: 50%;
-  color: white;
-  transition: all 0.5s ease;
+#times-symb {
+  color: gray;
 }
 
-.footer .social-links a:hover {
-  background-color: #BADA07;
-}
-
-.footer h4 {
-  font-size: 18px;
-  color: white;
-  text-transform: capitalize;
-  margin-bottom: 30px;
-  font-weight: 500;
-  position: relative;
-}
-
-.footer h4::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  background-color: var(--primary-alternative);
-  height: 2px;
-  box-sizing: border-box;
-  width: 50px;
-}
-
-/* Navbar and content responsive for screens under 500px. */
+/* Mobile view (< 500px) */
 
 @media only screen and (max-width: 500px) {
-  html, body {
-    font-size: 13px;
-  }
-  .page-banner {
-    background: var(--primary-color);
-    z-index: 100;
-    position: fixed;
-    display: inline;
+  .container {
     width: 100%;
-    height: 130px;
-    top: 0;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  #ingredients-container {
+    padding: 0 !important;
+  }
+  
+  .row{
+    display: flex;
+    width: 100%; 
     margin: 0 auto;
-    padding-top: 25px;
-    text-align: center;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .page-banner:after {
-    background: white;
-    position: absolute;
-    content: "";
-    left:0;
-    right:0;
-    bottom: -40px;
-    height: 80px;
-    width: 100%;
-    border-radius: 40px 40px 0 0;
-  }
-
-  .page-title {
-    color: white;
-    font-size: 2em;
-    font-weight: bold;
-    width: 50%;
-    margin: 0;
-    padding-top: 0;
-    text-align: end;
-  }
-
-  .navbar {
-    display: none;
-  }
-
-  .small-navbar {
-      z-index: 100;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background-color: #86BBD8;
-      padding: 20px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      border-radius: 40px 40px 0 0;
-  }
-
-  .small-navbar a {
-      color: white;
-      text-decoration: none;
-      font-size: 2em;
-  }
-
-  #logout-button {
-    display: none; 
-  }
-
-  .footer {
-    display: none;
-  }
-
-  .top-container {
-    margin-top: 80px !important;
-  }
-
-  .button-content {
+ .button-content {
     display: flex;
     align-items: center;
     justify-content: space-around;
+  }
+
+  .col-md-6 {
+    width: 50%;
+  }
+
+  .page-title {
+    padding-left: 70px;
+  }
+
+  .page-message {
+    font-size: 11pt;
+  }
+
+  .card {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-body {
+    width: 70%;
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .card-name {
+    font-size: 13pt;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .card-expiry {
+    font-size: 10pt;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+
+  #saved-recipes-go-here {
+    justify-content: center;
+    align-items: center;
   }
 
   #back-button {
@@ -261,66 +140,5 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
   .fa-arrow-left {
     color: white;
   }
-
-  .card {
-    width: 45% !important;
-    margin: 5px;
-  }
-
-  .card-image {
-    max-width: 100%;
-    height: 120px !important;
-  }
-
-  .card-body p {
-    margin: 0;
-  }
-
-  .btn-container {
-    display: none;
-  }
-
-  #mypageheader {
-    margin: 0;
-  }
 } 
-
-/* Buttons CSS. */
-
-.btn-ge-primary {
-  background-color: #c1cacb;
-}
-
-/* Fridge cards CSS. */
-
-.page-message {
-  font-size: 1.3em;
-  font-weight: lighter;
-}
-
-.card:hover  {
-  border: 2px solid var(--primary-alternative);
-}
-.card-image {
-  width: 262px;
-  height: 175px;
-  object-fit: cover;
-}
-
-.card-name {
-  text-transform: capitalize;
-}
-
-.card-qty {
-  color: gray;
-  font-size: smaller;
-}
-
-.card-expiry {
-  color: gray;
-}
-
-#times-symb {
-  color: gray;
-}
 

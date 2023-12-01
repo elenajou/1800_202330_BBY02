@@ -36,35 +36,28 @@
 
   <!-- Navbar -->
   <nav id="navbarPlaceholder"></nav>
-
-  <div class="container btn-container px-4 my-5">
-    <div class="row">
-      <div class="col-md">
-        <button type="button" class="btn btn-ge-primary" id="back-button" onclick="returnBack()">Back</button>
-        <br>
-        <br>
-        <br>
-        <button type="button" class="btn btn-ge-primary" id="addToFridge" onclick="addToFridge()" 
-        data-bs-toggle="modal" data-bs-target="#addedToFridgeMsg" >
-          I Bought These Items Today</button>
+  <div class="display-container">
+    <div class="container btn-container px-4 my-5">
+      <div class="row">
+        <div class="col-md-6 text-start">
+          <button type="button" class="btn btn-ge-primary" id="back-button" onclick="returnBack()">Back</button>
+        </div>
       </div>
+      <br>
+      <h1 class="display-6 fw-bold" id="mypageheader">My Grocery List</h1>
     </div>
-  </div>
-
-  <section class="vh-100">
-    <div class="container">
+    <div class="container" id="content-container">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col">
-          <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
+          <div class="card" id="list1">
             <div class="card-body py-4 px-4 px-md-5">
-  
-              <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
-                <i class="fas fa-check-square me-1"></i>
-                <u>My Grocery List</u>
-              </p>
               <!-- Ingredients go here -->
               <div id="ingredients-go-here" class="row row-cols-auto"></div>
             </div>
+          </div>
+          <div class="col-md text-end">
+            <button type="button" class="btn btn-lg btn-ge-primary" id="addToFridge" onclick="addToFridge()" 
+            data-bs-toggle="modal" data-bs-target="#addedToFridgeMsg" >I Bought These Items Today</button>
           </div>
 
           <!-- Modal triggered by the 'Add' button -->
@@ -78,43 +71,39 @@
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
-  </section>
-
-  <!--Recipe card templates, not displayed-->
-  <template id="groceryListTemplate">
-    <ul class="gl-item list-group list-group-horizontal rounded-0 bg-transparent" id="">
-      <li class="list-group-item d-flex align-items-center pe-3 py-1 rounded-0 bg-transparent">
-        <div class="form-check">
-          <input class="form-check-input me-0" type="checkbox" value="" id=""
-            aria-label="..." onchange="updateCheckboxValue(this)"/> <!-- On click must toggle "checked" attribute-->
-        </div>
-      </li>
-      <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 bg-transparent">
-        <p class="lead fw-normal mb-0 gl-item-name">ingredient 1</p>
-      </li>
-      <li class="list-group-item ps-3 rounded-0 bg-transparent">
-        <div class="d-flex flex-row justify-content-end mb-1">
-          <input type="button" class="btn btn-ge-primary gl-item-subtract-btn" value="-" id="" onclick="">
-        </div>
-      </li>
-      <li class="list-group-item py-1 d-flex align-items-center bg-transparent">
-        <p class="lead fw-normal mb-0 gl-item-qty">Qty</p>
-      </li>
-      <li class="list-group-item ps-3 rounded-0 bg-transparent">
-        <div class="d-flex flex-row justify-content-end mb-1">
-          <input type="button" class="btn btn-ge-primary gl-item-add-btn" value="+" id="" onclick="">
-        </div>
-      </li>
-      <!-- <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
-          class="fas fa-trash-alt"></i></a> -->
-    </ul>
-  </template>
-  
+    <!--Recipe card templates, not displayed-->
+    <template id="groceryListTemplate">
+      <ul class="gl-item list-group list-group-horizontal rounded-0 bg-transparent" id="">
+        <li class="list-group-item d-flex align-items-center pe-3 py-1 rounded-0 bg-transparent">
+          <div class="form-check">
+            <input class="form-check-input me-0" type="checkbox" value="" id=""
+              aria-label="..." onchange="updateCheckboxValue(this)"/> <!-- On click must toggle "checked" attribute-->
+          </div>
+        </li>
+        <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 bg-transparent">
+          <p class="lead fw-normal mb-0 gl-item-name">ingredient 1</p>
+        </li>
+        <li class="list-group-item ps-3 rounded-0 bg-transparent">
+          <div class="d-flex flex-row justify-content-end mb-1">
+            <input type="button" class="btn btn-ge-primary gl-item-subtract-btn" value="-" id="" onclick="">
+          </div>
+        </li>
+        <li class="list-group-item py-1 d-flex align-items-center bg-transparent">
+          <p class="lead fw-normal mb-0 gl-item-qty">Qty</p>
+        </li>
+        <li class="list-group-item ps-3 rounded-0 bg-transparent">
+          <div class="d-flex flex-row justify-content-end mb-1">
+            <input type="button" class="btn btn-ge-primary gl-item-add-btn" value="+" id="" onclick="">
+          </div>
+        </li>
+        <!-- <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
+            class="fas fa-trash-alt"></i></a> -->
+      </ul>
+    </template>
+  </div>
   <footer id="footerPlaceholder"></footer>
   <!---------------------------------------------->
   <!------------ JavaScript functions------------->

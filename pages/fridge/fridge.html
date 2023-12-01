@@ -32,40 +32,37 @@
 <body>
   <!-- Navbar -->
   <nav id="navbarPlaceholder"></nav>
-
-  <div class="container top-container px-4 my-5 text-left border-bottom">
-    <div class="row">
-      <div class="col-md-6 text-start">
-        <button type="button" class="btn btn-ge-primary" id="back-button" onclick="returnBack()">Back</button>
-      </div>
-    </div>
-    <br>
-    <h1 class="display-6 fw-bold" id="mypageheader">Fridge</h1>
-    <p class="page-message">Where convenience meets freshness! Seamlessly manage your kitchen inventory and effortlessly track expiry dates anywhere!</p>
-
-
-    <!--Container-->  
-    <h2 class="fw-bold" id="mypageheader">What you currently have</h2>
-    <div class="container">
-      <div id="ingredients-go-here" class="row row-cols-auto"></div>
-    </div>
-
-    <!--Fridge card templates, not displayed-->
-    <template id="fridgeCardTemplate">
-      <div class="card py-2 mx-2" style="width: 18rem; height: auto">
-        <!-- <img class="card-image card-img-top" src=" ..." alt="..." /> -->
-        <div class="card-body">
-          <h5><span class="card-name">Name</span> <span id="times-symb">&times;</span> <span class="card-qty">Qty</span></h5>
-          <p><span class="card-expiry">Expires on:</span></p>
-          <div class="btn-container">
-            <input type="button" class="btn btn-ge-primary card-subtract-btn" value="-" id="" onclick="">
-            <input type="button" class="btn btn-ge-primary card-add-btn" value="+" id="" onclick="">
-          </div>
+  <div class="display-container">
+    <div class="container px-4 my-5 text-left">
+      <div class="row">
+        <div class="col-md-6 text-start">
+          <button type="button" class="btn btn-ge-primary" id="back-button" onclick="returnBack()">Back</button>
         </div>
       </div>
-    </template>
-  </div>
-
+      <br>
+      <h1 class="display-6 fw-bold" id="mypageheader">Fridge</h1>
+      <p class="page-message">Where convenience meets freshness! Seamlessly manage your kitchen inventory and effortlessly track expiry dates anywhere!</p>
+      <!--Container-->  
+      <h2 class="display-6 fw-bold" id="mypageheader2">What you currently have</h2>
+      <div class="container" id="ingredients-container">
+        <div id="ingredients-go-here" class="row row-cols-auto"></div>
+      </div>
+      <!--Fridge card templates, not displayed-->
+      <template id="fridgeCardTemplate">
+        <div class="card py-2 mx-2">
+          <img class="card-image card-img-top" src=" ..." alt="..."/>
+          <div class="card-body">
+            <h5><span class="card-name">Name</span> <span id="times-symb">&times;</span> <span class="card-qty">Qty</span></h5>
+            <p><span class="card-expiry">Expires on:</span></p>
+            <div class="btn-container">
+              <input type="button" class="btn btn-ge-primary card-subtract-btn" value="-" id="" onclick="">
+              <input type="button" class="btn btn-ge-primary card-add-btn" value="+" id="" onclick="">
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>  
   <!-- Footer -->
   <footer id="footerPlaceholder"></footer>
   
