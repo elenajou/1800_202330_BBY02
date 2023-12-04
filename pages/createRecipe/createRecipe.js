@@ -117,6 +117,6 @@ $('#newIngredientModal').on('shown.bs.modal', function () {
   $('#newIngredient').trigger('focus')
 })
 
-// $(".added-recipe").on("hidden.bs.modal", function () {
-//   window.location = "/recipeMenu";
-// });
+$(".added-recipe").on("hidden.bs.modal", function () {
+  window.location = "/pages/recipeMenu/recipeMenu.html";
+});

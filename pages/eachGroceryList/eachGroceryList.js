@@ -173,5 +173,5 @@ async function updateIngredientsInFridge(userFridgeRef, docId, ingredientItemsTo
 
 // Redirects the page on closing the modal
 $(".modal").on("hidden.bs.modal", function () {
-  window.location = "/fridge";
+  window.location = "/pages/fridge/fridge.html";
 });

@@ -1,3 +1,8 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .card-header {
   background-color: var(--primary-alternative);
   color: white;
@@ -11,7 +16,7 @@
 }
 
 #main-container {
-  margin-bottom: 96px;
+  margin-bottom: 90px;
 }
 
 #recipe-menu-body {

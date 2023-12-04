@@ -1,23 +1,10 @@
 function displaySavedRecipes() {
-  let savedCardTemplate = document.getElementById("savedRecipeCardTemplate");
   currentUser.get().then(userDoc => {
     var bookmarks = userDoc.data().bookmarks;
     bookmarks.forEach(recipeDocID => {
       db.collection("recipes").doc(recipeDocID).get().then(recipeDoc => {
         if (recipeDoc.exists) {
-          var title = recipeDoc.data().name;
-          var cookTime = recipeDoc.data().cook_time;
-          var description = recipeDoc.data().description;
-          var recipeCode = recipeDoc.data().code;
-          let newCard = savedCardTemplate.content.cloneNode(true);
-
-          newCard.querySelector('.card-title').innerHTML = title;
-          newCard.querySelector('.card-time').innerHTML = "Total time: " + cookTime + "mins";
-          newCard.querySelector('.card-text').innerHTML = description.slice(0, 80) + "...";
-          newCard.querySelector('.card-image').src = `../images/${recipeCode}.jpg`;
-          newCard.querySelector('a').href = "eachRecipe.html?docID=" + recipeDocID;
-          newCard.querySelector('i').id = 'save-' + recipeDocID;
-          newCard.querySelector('i').onclick = () => unsaveRecipe(recipeDocID); 
+          const newCard = populateSavedRecipes(recipeDoc, recipeDocID);
 
           currentUser.get().then(userDoc => {
             //get the user name
@@ -26,12 +13,41 @@ function displaySavedRecipes() {
               document.getElementById('save-' + recipeDocID).innerText = 'bookmark';
             }
           })
-          console.log(recipeDocID);
           document.getElementById("saved-recipes-go-here").appendChild(newCard);
         }
       })
     })
   })
+}
+
+function populateSavedRecipes(recipeDoc, recipeDocID){
+  let savedCardTemplate = document.getElementById("savedRecipeCardTemplate");
+
+  var title = recipeDoc.data().name;
+  var cookTime = recipeDoc.data().cook_time;
+  var description = recipeDoc.data().description;
+  var recipeCode = recipeDoc.data().code;
+  let newCard = savedCardTemplate.content.cloneNode(true);
+
+  newCard.querySelector('.card-title').innerHTML = title;
+  newCard.querySelector('.card-time').innerHTML = "Total time: " + cookTime + "mins";
+  newCard.querySelector('.card-text').innerHTML = description.slice(0, 80) + "...";
+  newCard.querySelector(".card-body").docID = recipeDocID;
+  newCard.querySelector(".recipe-img").docID = recipeDocID;
+  newCard.querySelector('a').href = "/pages/eachRecipe/eachRecipe.html?docID=" + recipeDocID;
+  newCard.querySelector('i').id = 'save-' + recipeDocID;
+  newCard.querySelector('i').onclick = () => unsaveRecipe(recipeDocID); 
+
+  // get image URL from FireBase Storage
+  const storage = firebase.storage();
+  var imageRef = storage.ref(recipeCode + ".jpg");
+  imageRef.getDownloadURL().then((url) => {
+    localStorage.setItem(title, url);
+  }); 
+  
+  newCard.querySelector(".card-image").src = localStorage.getItem(title);
+
+  return newCard;
 }
 
 function unsaveRecipe(recipeDocID) {
@@ -50,7 +66,6 @@ function initSavedRecipePage() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       currentUser = db.collection("users").doc(user.uid);
-      console.log(currentUser);
       displaySavedRecipes();
     } else {
       console.log("No user is signed in");

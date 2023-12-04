@@ -2,7 +2,6 @@
 
 html, body {
   font-family:'Asap';
-  font-size: bold;
   padding: 0;
   margin: 0;;
 }
@@ -16,11 +15,6 @@ html, body {
 } 
 
 /* Navbar CSS. */
-
-.small-navbar, .page-banner {
-  display: none;
-}
-
 .navbar {
   z-index: 100;
   background-color: var(--primary-color);
@@ -76,7 +70,7 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
   background-color: var(--primary-alternative);
 }
 
-.container.welcome-banner .row img {
+.container .welcome-banner .row img {
   width: 60%; 
   max-width: 100%; 
   margin: 0 auto;
@@ -187,7 +181,6 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
 /* Navbar and content responsive for screens under 500px. */
 
 @media only screen and (max-width: 500px) {
-
   .page-banner {
     background: var(--primary-color);
     z-index: 100;
@@ -214,12 +207,7 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
   }
 
   .page-title {
-    color: white;
-    font-size: 2em;
-    font-weight: bold;
     width: 50%;
-    margin: 0;
-    padding-top: 0;
     text-align: end;
   }
 
@@ -227,42 +215,11 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
     display: none;
   }
 
-  .small-navbar {
-    z-index: 100;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #86BBD8;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 40px 40px 0 0;
-  }
-
-  .small-navbar a {
-      color: white;
-      z-index: 100;
-      font-size: 2em;
-      text-decoration: none;
-  }
-
-  #logout-button {
-    display: none; 
-  }
-
-  .footer {
-    display: none;
-  }
-
   .button-content {
     display: flex;
+    padding: 0;
     align-items: center;
     justify-content: space-around;
-  } 
-
-  .main-container {
-    margin-bottom: 20px !important;
   }
 
   .row {
@@ -291,7 +248,7 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
   .card-img {
     width: 100%;
   }
- 
+
   .list-group-item {
     font-weight: bold;
   }

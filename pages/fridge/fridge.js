@@ -30,18 +30,29 @@ function displayFridge() {
 
 // Creates and returns a new Bootstrap card with ingredient details
 function createFridgeCard(cardTemplate, fridgeDoc, ingredientDoc, qty) {
+  thisIngredient = ingredientDoc.data();
   const newCard = cardTemplate.content.cloneNode(true);
 
   const thisElementID = fridgeDoc.id + "+" + ingredientDoc.id;
   newCard.querySelector('.card').id = thisElementID;
   // newCard.querySelector('.card-image').src = `/images/recipe01.jpg`;
   newCard.querySelector('.card-qty').innerHTML = qty;
-  newCard.querySelector('.card-name').innerHTML = ingredientDoc.data().name;
+  newCard.querySelector('.card-name').innerHTML = thisIngredient.name;
   newCard.querySelector('.card-add-btn').onclick = () => changeQty(thisElementID, "+");
   newCard.querySelector('.card-subtract-btn').onclick = () => changeQty(thisElementID, "-");
   
   var date = calculateExpiryDate(ingredientDoc, fridgeDoc.data().boughtDate);
   newCard.querySelector('.card-expiry').innerHTML = date.toDateString();
+
+  // get image URL from FireBase Storage
+  const storage = firebase.storage();
+  var imageRef = storage.ref(thisIngredient.ingredientCode + ".jpg");
+  console.log(thisIngredient.ingredientCode);
+  imageRef.getDownloadURL().then((url) => {
+    localStorage.setItem(thisIngredient.name, url);
+  }); 
+  newCard.querySelector(".card-image").src = localStorage.getItem(thisIngredient.name);
+
 
   return newCard;
 }

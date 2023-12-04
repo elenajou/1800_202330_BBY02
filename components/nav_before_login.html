@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/home">GrocerEase</a>
+    <a class="navbar-brand" href="./index.html">GrocerEase</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
       aria-label="Toggle navigation">
@@ -12,16 +12,16 @@
         <hr class="dropdown-divider">
       </li>
       <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="/home"><span class="icon-space"><i class="fa-solid fa-house"></i></span>Home</a>
+        <a class="nav-link" aria-current="page" href="index.html"><span class="icon-space"><i class="fa-solid fa-house"></i></span>Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/login"><span class="icon-space"><i class="fa-solid fa-book"></i></span>Recipes</a>
+        <a class="nav-link" href="./pages/login.html"><span class="icon-space"><i class="fa-solid fa-book"></i></span>Recipes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/login"><span class="icon-space"><i class="fa-solid fa-basket-shopping"></i></span>Grocery List</a>
+        <a class="nav-link" href="./pages/login.html"><span class="icon-space"><i class="fa-solid fa-basket-shopping"></i></span>Grocery List</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/login"><span class="icon-space"><i class="fa-regular fa-rectangle-list"></i></span>Fridge</a>
+        <a class="nav-link" href="./pages/login.html"><span class="icon-space"><i class="fa-regular fa-rectangle-list"></i></span>Fridge</a>
       </li>
     </ul>
     </div>
@@ -31,15 +31,17 @@
 <!-- Mobile Bottom Navbar -->
 <nav>
   <div class="small-navbar">
-    <a href="/home"><i class="fas fa-house-user"></i></a>
-    <a href="/login"><i class="fas fa-book"></i></a>
-    <a href="/login"><i class="fas fa-shopping-basket"></i></a>
-    <a href="/login"><i class="fas fa-file-alt"></i></a>
+    <a href="index.html"><i class="fas fa-house-user"></i></a>
+    <a href="./pages/login.html"><i class="fas fa-book"></i></a>
+    <a href="./pages/login.html"><i class="fas fa-shopping-basket"></i></a>
+    <a href="./pages/login.html"><i class="fas fa-file-alt"></i></a>
   </div>  
 </nav>
 
 <!-- Mobile Page Banner -->
-
 <div class="page-banner">
-  <h1 class="page-title">GrocerEase</h1>
+  <div class="button-content">
+    <button type="button" class="btn btn-ge-primary back-button-mobile" onclick="returnBack()"><i class="fas fa-arrow-left"></i></button>
+    <h1 class="page-title" id="pageTitle">GrocerEase</h1>
+  </div>
 </div>

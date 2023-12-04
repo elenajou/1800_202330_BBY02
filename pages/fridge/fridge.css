@@ -1,12 +1,12 @@
-/* Buttons */
-
-.btn-ge-primary {
-  background-color: #c1cacb;
-}
-
 /* Fridge cards */
 .container {
   margin-bottom: 130px !important;
+}
+
+.card-body > h5 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 #mypageheader2 {
@@ -50,6 +50,11 @@
   color: gray;
 }
 
+/* Buttons */
+.btn-ge-primary {
+  background-color: #c1cacb;
+}
+
 /* Mobile view (< 500px) */
 
 @media only screen and (max-width: 500px) {
@@ -71,7 +76,7 @@
     align-items: center;
   }
 
- .button-content {
+  .button-content {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -96,10 +101,14 @@
     align-items: center;
   }
 
+  .ingredient-img {
+    width: 30%;
+    height: 70px;
+  }
+
   .card-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
   }
 
   .card-body {

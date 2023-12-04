@@ -5,14 +5,6 @@ function displayCardsDynamically(collection) {
     .then((allRecipes) => {
       allRecipes.forEach((doc) => {
         const newCard = createNewRecipeCard(doc);
-
-        currentUser.get().then((userDoc) => {
-          //get bookmarks if they exist
-          var bookmarks = userDoc.data().bookmarks || [];
-          if (bookmarks.includes(docID)) {
-            iconElement.innerHTML = "bookmark";
-          }
-        });
         document.getElementById(collection + "-go-here").appendChild(newCard);
       });
     });
@@ -34,9 +26,8 @@ function createNewRecipeCard(doc) {
     "Total time: " + cookTime + " mins";
   newCard.querySelector(".card-text").innerHTML =
     description.slice(0, 80) + "...";
-  // newCard.querySelector('.card-image').src = `../images/${recipeCode}.jpg`;
-  newCard.querySelector('.read-more-btn').href = "/eachRecipe?docID=" + docID;
-  newCard.querySelector('.recipe-card').href = "/eachRecipe?docID=" + docID;
+  newCard.querySelector(".card-body").docID = docID;
+  newCard.querySelector(".recipe-img").docID = docID;
   newCard.querySelector('i').id = 'save-' + docID;
   newCard.querySelector('i').onclick = () => saveBookmark(docID); 
 

@@ -18,23 +18,21 @@ function loadSkeleton() {
   firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
           // User is signed in
-          $('#navbarPlaceholder').load('../components/nav_after_login.html', function() {
-              console.log('Logged in header loaded successfully');
+          $('#navbarPlaceholder').load('../../components/nav_after_login.html', function() {
               $('#logout-button').on('click', function () {
                   // Call the logout function when the button is clicked
                   logout();
               })
               setPageTitle();
           });
-          $('#footerPlaceholder').load('../components/footer.html', function() {
-              console.log('Footer loaded successfully');
+          $('#footerPlaceholder').load('../../components/footer.html', function() {
           });
       } else {
           // No user is signed in
-          $('#navbarPlaceholder').load('../components/nav_before_login.html', function() {
+          $('#navbarPlaceholder').load('../../components/nav_before_login.html', function() {
               console.log('Logged out header loaded successfully');
           });
-          $('#footerPlaceholder').load('../components/footer.html', function() {
+          $('#footerPlaceholder').load('../../components/footer.html', function() {
               console.log('Footer loaded successfully');
           });
       }
@@ -67,7 +65,7 @@ function logout() {
   firebase.auth().signOut().then(() => {
       // Sign-out successful.
       console.log("Logging out user");
-      window.location.href = "/pages/home.html";
+      window.location.href = "/index.html";
     }).catch((error) => {
       // An error happened.
     });
@@ -113,4 +111,8 @@ function addDocumentInFirestore(docRef, fieldName, fieldValue, timestampField) {
   docRef.add(addObject)
     .then(() => console.log(`${fieldName} updated in Firestore successfully`))
     .catch(error => console.error(`Error updating ${fieldName} in Firestore:`, error));
+}
+
+function readRecipe(docID) {
+  window.location.href = "/pages/eachRecipe/eachRecipe.html?docID=" + docID;
 }
