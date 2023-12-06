@@ -85,6 +85,10 @@ fa-rectagle-list {
   background-color: var(--primary-alternative);
 }
 
+.btn-ge-primary {
+  background-color: #c1cacb;
+}
+
 /* Footer */
 
 .footer {
