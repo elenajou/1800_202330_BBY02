@@ -1,3 +1,4 @@
+/** Common links used across all html pages */
 var string_of_links = document.head.innerHTML + `
   <!------------- Boostrap Library JS CDN ------------------>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -13,4 +14,5 @@ var string_of_links = document.head.innerHTML + `
   <link rel="stylesheet" href="../../styles/style.css">
 `;
 
+/** Populates the links to the page */
 document.head.innerHTML = string_of_links;

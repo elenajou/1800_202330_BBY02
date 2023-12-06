@@ -1,5 +1,7 @@
-/* Displays the ingredients in ingredientList representing items the user
-needs to buy. */
+/**
+ * Displays the ingredients in ingredientList (known as grocery list) 
+ * as a grocery list in this page.
+ */
 function displayIngredientList() {
   const ingredientList = document.getElementById("ingredients-go-here");
   const listItemTemplate = document.getElementById("groceryListTemplate");
@@ -25,7 +27,7 @@ function displayIngredientList() {
   });
 }
 
-// Creates and returns a new Bootstrap listItem with ingredient details
+/* Creates and returns an ingredient document as a list element. */
 function createIngredientItem(listItemTemplate, ingredientDoc, ingredientListItem) {
   const newListItem = listItemTemplate.content.cloneNode(true);
 
@@ -45,10 +47,11 @@ function createIngredientItem(listItemTemplate, ingredientDoc, ingredientListIte
 
 displayIngredientList();
 
-/* Linked to buttons in eachGroceryList.thml used to add or remove ingredients.
-The ingredients get deleted from ingredientList if qty reaches 0. Cannot pass index
-to the function as index changes if it gets deleted. Any files passed into this function
-could be outdated. */
+/** 
+ * Linked to buttons in eachGroceryList.html used to add or reduce ingredients.
+ * The ingredients get deleted from ingredientList if qty reaches 0. Cannot pass index
+ * to the function as index changes if it gets deleted.
+ */
 function changeQty(htmlElementID, action) {
   firebase.auth().onAuthStateChanged(async user => {
     try {
@@ -78,7 +81,7 @@ function changeQty(htmlElementID, action) {
   });
 }
 
-// Updates the checkbox value in firestore for the grocery list
+/* Updates the checkbox value in firestore for the ingredientList element. */
 function updateCheckboxValue(checkbox) {
   getUserDoc().then(() => {
       const userIngredientList = userDoc.data().ingredientList;
@@ -105,9 +108,11 @@ function updateCheckboxValue(checkbox) {
 }
 
 
-/* Used to add 'groceryList' ingredients to the 'fridge' list. If a user went to the store
-and bought all the listed ingredients in 'groceryList', this function will store the time stamp and
-populate those ingredients in the 'fridge'. */
+/**
+ * Adds 'ingredientList' ingredients to the refrigerator collection. If a user went to the store
+ * and bought all the listed ingredients in eachGroceryList.html, this function will add them to a
+ * refrigerator document with same date stamp or create a new document. 
+ */
 function addToFridge() {
   firebase.auth().onAuthStateChanged(async user => {
     try {
