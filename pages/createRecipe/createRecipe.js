@@ -1,5 +1,10 @@
+/** Tracks how many ingredients are added to firestore */
 let ingredientIndex = 1;
 
+/** 
+ * Adds a new dropdown menu to the form with all the 
+ * existing ingredient documents as options.
+ */
 function populateIngredientsMenu(dropdownID) {
   let listItemTemplate = document.getElementById("chooseIngredientTemplate");
 
@@ -23,17 +28,16 @@ function populateIngredientsMenu(dropdownID) {
   });
 }
 
-// Creates and returns a new Bootstrap listItem with ingredient details
-function createIngredientLI(listItemTemplate, ingredientDoc) {
-  const newListItem = listItemTemplate.content.cloneNode(true);
-  const item = newListItem.querySelector('.dropdown-item');
-
-  item.id = ingredientDoc.id;
-  item.innerHTML = ingredientDoc.data().name;
-
-  return newListItem;
+/** 
+ * Increases ingredient quantity count and adds a dropdown menu 
+ * if button is pressed. 
+ */
+function addIngredientBtn() {
+  ingredientIndex++;
+  addDropdown();
 }
 
+/* Creates and adds a new ingredient dropdown element to the page. */
 function addDropdown() {
   const ingredientsDropdowns = document.getElementById("ingredients-dropdowns");
   const addDropdownTemplate = document.getElementById("addDropdownTemplate");
@@ -48,15 +52,21 @@ function addDropdown() {
 }
 addDropdown();
 
-function addIngredientBtn() {
-  ingredientIndex++;
-  addDropdown();
-}
-// ingredientIndex++;
-// addDropdown();
-// ingredientIndex++;
-// addDropdown();
+/**
+ * Creates and returns an ingredient document as a dropdown list 
+ * element (or dropdown option)
+ */
+function createIngredientLI(listItemTemplate, ingredientDoc) {
+  const newListItem = listItemTemplate.content.cloneNode(true);
+  const item = newListItem.querySelector('.dropdown-item');
 
+  item.id = ingredientDoc.id;
+  item.innerHTML = ingredientDoc.data().name;
+
+  return newListItem;
+}
+
+/** Creates a recipe document when the form is submitted. */
 function createRecipe() {
   const recipeName = document.getElementById("recipeName").value;
   const cookingTime = parseInt(document.getElementById("cookingTime").value);
@@ -65,14 +75,13 @@ function createRecipe() {
   const recipeCode = document.getElementById("recipeCode").value;
 
   const ingredients = document.getElementById("ingredients-dropdowns");
-  const ingredientsMenu = ingredients.querySelector(".ingredients-menu");
+  const ingredientsMenu = ingredients.getElementsByClassName("ingredients-menu");
   const ingredientsQty = ingredients.getElementsByClassName("quantity");
   const ingredientsArray = [];
   
   for (let i = 0; i < ingredientsQty.length; i++) {
-    var e = ingredientsMenu[i];
-    var value = e.value;
-    var id = e.options[e.selectedIndex].id;
+    const ingredientItem = ingredientsMenu[i];
+    const id = ingredientItem.options[ingredientItem.selectedIndex].id;
     const ingredientID = db.collection('ingredients').doc(id);
     const qty = parseInt(ingredientsQty[i].value);
     ingredientsArray.push({ ingredientID, qty });
@@ -89,11 +98,15 @@ function createRecipe() {
     ingredients: ingredientsArray,
     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
   });
-
+  // Feedback modal for the user
   $('#createdRecipe').modal('show');
 }
 
-/* Creates a new ingredient document and adds it to firestore. */
+/**
+ * If the dropdown menu does not list the ingredient needed, this function will
+ * create a new ingredient document and add it to firestore. The dropdown element
+ * will refresh and the new ingredient will show up as an option.
+ */
 function createIngredient() {
   const newIngredientName = document.getElementById("ingredientName").value;
   const newExpiryDays = parseInt(document.getElementById("expiryDays").value);
@@ -120,10 +133,12 @@ function createIngredient() {
   }
 }
 
+/** Activates the modal with the form to create an ingredient document. */
 $('#newIngredientModal').on('shown.bs.modal', function () {
   $('#newIngredient').trigger('focus')
 })
 
-$(".added-recipe").on("hidden.bs.modal", function () {
-  window.location = "/pages/recipeMenu/recipeMenu.html";
+/** Redirects the user to recipeMenu.html after creating the recipe document. */
+$("#createdRecipe").on("hidden.bs.modal", function () {
+  window.location = "../recipeMenu/recipeMenu.html";
 });

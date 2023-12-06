@@ -43,36 +43,41 @@ What we'd like to build in the future:
 
 ```
  Top level of project folder: 
+├── .firebaserc             # Firebase init file
 ├── .gitignore              # Git ignore file
-├── index.js                # Runs the application's startup, routing, 
-|                             and other functions. Accessed with Nodejs
-|                             at http://localhost:8000/eachGroceryList
-├── package.json            # JS file with Nodejs to access web pages
-├── package-lock.json       # JS file with Nodejs to access web pages
+├── 404.html                # Error page
+├── firebase.json           # Firebase init file
+├── firebase.rules          # Rules to access firebase firestore
+├── index.html              # Web app welcome page
+├── storage.rules           # Rules to access firebase storage
 └── README.md
 
 It has the following subfolders and files:
 ├── .git                    # Folder for git repo
 ├-- components              # Folder for reused html items (i.e. navbar)
 ├── images                  # Folder for static images
-├── node_modules            # Folder with libraries and Nodejs packages
-├── scripts                 # Folder for scripts used in multiple pages
-|   ├── authentication.js   #Firestore authentication
-├── styles                  # Folder for styles
-|   └-- style.css           # All the custom styles for GrocerEase
 ├── pages                   # Contains subfolders for each web page and their
-|   |                         corresponding files javascript files
-|   ├── createRecipe        # Web form for users to add recipes in the database
-|   ├── eachGroceryList     # Web page showing the current user grocery list
+|   |                         corresponding javascript and css files
+|   ├── createRecipe        # Web form for users to add recipes to the database
+|   ├── dashboard           # Landing page after user login and main page of the web app
+|   ├── eachGroceryList     # Web page showing the current user's grocery list
 |   ├── eachRecipe          # View of a selected recipe document
 |   ├── fridge              # Web page simulating the ingredients in the
 |   |                         current user's physical refridgerator
-|   ├── home                # Landing page and main page of the web app
 |   ├── login               # Login form for user to access account or sign up
 |   ├── recipeMenu          # Web page showing a collection of recipes for 
 |   |                         user to check out
-|   ├── savedRecipes        # Web page showing the current user saved recipes
-|   └── userPage            # Has a summary of user's details
+|   └── savedRecipes        # Web page showing the current user's saved recipes
+├── scripts                 # Folder for scripts used in multiple pages
+|   ├── authentication.js   # Firestore authentication
+|   ├── functions.js        # Global functions used across different pages
+|   ├── head.js             # Global links used across different pages
+|   ├── index.js            # JS file for index.html
+|   └-- authentication.js   # Firestore authentication
+└── styles                  # Folder for styles
+    ├-- style.css           # Global custom styles
+    └── index.js            # Styles for index.html
+
 ```
 
 

@@ -1,3 +1,4 @@
+/** Customizes the greeting to the user's name. */
 function addName() {
   firebase.auth().onAuthStateChanged(user => {
     setCurrentUser(user);
