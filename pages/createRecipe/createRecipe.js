@@ -62,6 +62,7 @@ function createRecipe() {
   const cookingTime = parseInt(document.getElementById("cookingTime").value);
   const recipeDesc = document.getElementById("description").value;
   const recipeInstructions = document.getElementById("instructions").value;
+  const recipeCode = document.getElementById("recipeCode").value;
 
   const ingredients = document.getElementById("ingredients-dropdowns");
   const ingredientsMenu = ingredients.querySelector(".ingredients-menu");
@@ -77,6 +78,7 @@ function createRecipe() {
   var recipesRef = db.collection("recipes");
 
   recipesRef.add({
+    recipeCode: recipeCode,
     name: recipeName,
     cook_time: cookingTime,
     description: recipeDesc,
@@ -92,12 +94,14 @@ function createRecipe() {
 function createIngredient() {
   const newIngredientName = document.getElementById("ingredientName").value;
   const newExpiryDays = parseInt(document.getElementById("expiryDays").value);
+  const newIngredientCode = document.getElementById("ingredientCode").value
   
   var ingredientsRef = db.collection("ingredients");
 
   ingredientsRef.add({
     name: newIngredientName,
     expiryDays: newExpiryDays,
+    ingredientCode: newIngredientCode,
     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
   });
 

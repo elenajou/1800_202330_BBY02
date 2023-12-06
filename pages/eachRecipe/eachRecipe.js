@@ -46,7 +46,7 @@ function displayRecipeInfo() {
         // ingredientID points to a firestore object referencing an ingredients document
         ingredientID.get().then((doc) => {
           let listItem = document.createElement("li");
-          listItem.innerHTML = thisRecipe.name + ": " + qty;
+          listItem.innerHTML = doc.data().name + ": " + qty;
           ingredientList.appendChild(listItem);
         });
       });
