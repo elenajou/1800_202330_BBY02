@@ -16,7 +16,7 @@ function createNewRecipeCard(doc) {
   const title = doc.data().name;
   const cookTime = doc.data().cook_time;
   const description = doc.data().description;
-  const recipeCode = doc.data().code;
+  const recipeCode = doc.data().recipeCode;
   const docID = doc.id;
   // Clone the HTML template to create a new card (newCard) that will be filled with Firestore data
   var newCard = cardTemplate.content.cloneNode(true);

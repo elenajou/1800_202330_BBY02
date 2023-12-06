@@ -26,7 +26,7 @@ function populateSavedRecipes(recipeDoc, recipeDocID){
   var title = recipeDoc.data().name;
   var cookTime = recipeDoc.data().cook_time;
   var description = recipeDoc.data().description;
-  var recipeCode = recipeDoc.data().code;
+  var recipeCode = recipeDoc.data().recipeCode;
   let newCard = savedCardTemplate.content.cloneNode(true);
 
   newCard.querySelector('.card-title').innerHTML = title;
