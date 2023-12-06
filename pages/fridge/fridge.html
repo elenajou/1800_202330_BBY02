@@ -48,11 +48,17 @@
       <div class="container" id="ingredients-container">
         <div id="ingredients-go-here" class="row row-cols-auto"></div>
       </div>
+      <template id="purchasedDateHeading">
+        <div class="instructions col-12">
+          Delete Items from <span class="purchasedDate"></span>
+          <button class="btn btn-ge-primary delete-btn" id="" onclick="deleteFridgeLog(this.id)">Delete</button>
+        </div>
+      </template>
       <!--Fridge card templates, not displayed-->
       <template id="fridgeCardTemplate">
-        <div class="card py-2 mx-2">
+        <div class="card py-2">
           <div class="ingredient-img">
-            <img class="card-image card-img-top" src=" ..." alt="..."/>
+            <img class="card-image card-img-top" src="..." alt="..."/>
           </div>
           <div class="card-body">
             <h5>

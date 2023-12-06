@@ -181,6 +181,11 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
 /* Navbar and content responsive for screens under 500px. */
 
 @media only screen and (max-width: 500px) {
+  /* .display-container {
+    margin-top: 0;
+    position: unset;
+  } */
+
   .page-banner {
     background: var(--primary-color);
     z-index: 100;
@@ -226,7 +231,6 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 170px;
     margin-bottom: 0;
   }
 
@@ -272,11 +276,6 @@ fa-house, fa-book, fa-basket-shopping, fa-rectagle-list {
 } 
 
 /* Buttons CSS. */
-
-.btn-ge-primary {
-  background-color: #c1cacb;
-}
-
 .btn-toolbar {
   justify-content: center;
   padding-bottom: 40px;

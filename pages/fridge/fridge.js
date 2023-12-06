@@ -1,6 +1,7 @@
 function displayFridge() {
   const fridgeList = document.getElementById("ingredients-go-here");
   const cardTemplate = document.getElementById("fridgeCardTemplate");
+  const fridgeHeadingTemplate = document.getElementById("purchasedDateHeading");
   fridgeList.innerHTML = "";
   
   firebase.auth().onAuthStateChanged(async user => {
@@ -10,15 +11,18 @@ function displayFridge() {
       const userFridgeDocuments = await userFridgeRef.get();
 
       userFridgeDocuments.forEach(fridgeDoc => {
+        if (!fridgeDoc.exists) return;
+        const newFridgeHeading = createFridgeHeading(fridgeHeadingTemplate, fridgeDoc);
+        fridgeList.appendChild(newFridgeHeading);
+
         const fridgeData = fridgeDoc.data();
         const ingredientList = fridgeData.ingredientList || [];
 
-        if (ingredientList === 0 ) return console.log("There are no items in your fridge");
-
         ingredientList.forEach(({ ingredientID, qty }) => {
           ingredientID.get().then(doc => {
-            const newCard = createFridgeCard(cardTemplate, fridgeDoc, doc, qty);
-            fridgeList.appendChild(newCard);
+            createFridgeCard(cardTemplate, fridgeDoc, doc, qty).then(newCard => {
+              fridgeList.appendChild(newCard);
+            });
           });
         });        
       })
@@ -29,7 +33,7 @@ function displayFridge() {
 }
 
 // Creates and returns a new Bootstrap card with ingredient details
-function createFridgeCard(cardTemplate, fridgeDoc, ingredientDoc, qty) {
+async function createFridgeCard(cardTemplate, fridgeDoc, ingredientDoc, qty) {
   thisIngredient = ingredientDoc.data();
   const newCard = cardTemplate.content.cloneNode(true);
 
@@ -46,13 +50,15 @@ function createFridgeCard(cardTemplate, fridgeDoc, ingredientDoc, qty) {
 
   // get image URL from FireBase Storage
   const storage = firebase.storage();
-  var imageRef = storage.ref(thisIngredient.ingredientCode + ".jpg");
-  console.log(thisIngredient.ingredientCode);
-  imageRef.getDownloadURL().then((url) => {
-    localStorage.setItem(thisIngredient.name, url);
-  }); 
-  newCard.querySelector(".card-image").src = localStorage.getItem(thisIngredient.name);
-
+  try {
+    var imageRef = storage.ref(thisIngredient.ingredientCode + ".jpg");
+    const url = await imageRef.getDownloadURL();
+    newCard.querySelector(".card-image").src = url;
+  } catch {
+    var undefinedRef = storage.ref("undefined.jpg");
+    const undefinedUrl = await undefinedRef.getDownloadURL();
+    newCard.querySelector(".card-image").src = undefinedUrl;
+  }
 
   return newCard;
 }
@@ -65,7 +71,7 @@ function changeQty(htmlElementID, action) {
       setCurrentUser(user);
       await getUserDoc();
 
-      const htmlElement = document.getElementById(htmlElementID)
+      const htmlElement = document.getElementById(htmlElementID);
       // htmlElementID = fridge document id + ingredient document id stored inside
       const [ fridgeDocID, ingredientDocID ] = htmlElementID.split("+");
       const userFridgeDocRef = currentUser.collection('refrigerator').doc(fridgeDocID);
@@ -91,4 +97,35 @@ function changeQty(htmlElementID, action) {
       console.error('Error:', error);
     }
   });
+}
+
+function deleteFridgeLog(fridgeHeadingID) {
+  firebase.auth().onAuthStateChanged(async user => {
+    try {
+      setCurrentUser(user);
+      await getUserDoc();
+
+      const currentFridgeList = document.querySelectorAll(`[id^="${fridgeHeadingID}"]`);
+      currentFridgeList.forEach(list => {
+        list.remove();
+      })
+
+      currentUser.collection('refrigerator').doc(fridgeHeadingID).delete();  
+      console.log("deleted fridge log");
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });
+}
+
+/* Creates a Heading for every fridge entry */
+function createFridgeHeading(headingTemplate, fridgeDoc) {
+  const newHeading = headingTemplate.content.cloneNode(true);
+  const date = (calculateDate(fridgeDoc.data().boughtDate)).toDateString();
+
+  newHeading.querySelector('.instructions').id = `${fridgeDoc.id}+date`;
+  newHeading.querySelector('button').id = fridgeDoc.id;
+  newHeading.querySelector('.purchasedDate').innerHTML = date;
+
+  return newHeading;
 }

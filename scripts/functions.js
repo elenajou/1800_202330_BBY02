@@ -84,6 +84,11 @@ function calculateExpiryDate(ingredientDocRef, boughtDate) {
   return new Date(unixBoughtDate + daysToExpiry);
 }
 
+function calculateDate(boughtDate) {
+  const unixBoughtDate = Date.parse(boughtDate.toDate());
+  return new Date(unixBoughtDate);
+}
+
 /* Sets title of each page */
 function setPageTitle() { 
   const headerTitle = document.title;

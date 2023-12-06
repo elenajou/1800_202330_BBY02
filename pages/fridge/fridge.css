@@ -149,5 +149,13 @@
   .fa-arrow-left {
     color: white;
   }
+
+  .instructions {
+    font-size: 12px;
+  }
+
+  .delete-btn {
+    scale: 70%;
+  }
 } 
 

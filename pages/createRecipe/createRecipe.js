@@ -70,7 +70,10 @@ function createRecipe() {
   const ingredientsArray = [];
   
   for (let i = 0; i < ingredientsQty.length; i++) {
-    const ingredientID = db.collection('ingredients').doc(ingredientsMenu[i].id);
+    var e = ingredientsMenu[i];
+    var value = e.value;
+    var id = e.options[e.selectedIndex].id;
+    const ingredientID = db.collection('ingredients').doc(id);
     const qty = parseInt(ingredientsQty[i].value);
     ingredientsArray.push({ ingredientID, qty });
   }
