@@ -5,12 +5,15 @@ let currentUser;
 /* Stores user document */
 let userDoc;
 
-/* Sets or updates currentUser. */
+/**
+ * Sets or updates currentUser. 
+ * @param {*} user firestore user reference
+ */
 async function setCurrentUser(user) {
   currentUser = user ? db.collection("users").doc(user.uid) : null;
 }
 
-/* Gets the user document.  */
+/* Gets the user document and sets it to a global variable.  */
 async function getUserDoc() {
   if (currentUser) {
     userDoc = await currentUser.get();
@@ -41,12 +44,22 @@ function loadSkeleton() {
 }
 loadSkeleton(); //invoke the function
 
-/* Returns the index of ingredientID within the provided arrayList. */
+/**
+ * Returns the index of ingredientID within the provided arrayList. 
+ * @param {*} ingredientId firestore ingredient document id as string
+ * @param {*} arrayList an array of ingredient ids
+ * @returns the index if ingredientId is within the array
+ */
 function findIndex(ingredientId, arrayList) {
   return arrayList.findIndex(docRef => _.isEqual(ingredientId, docRef.ingredientID.id));
 }
 
-/* Generic function to update a specific field of the user document in Firestore. */
+/**
+ * Generic function to update a specific field of the user document in Firestore.
+ * @param {*} docRef firestore document reference
+ * @param {*} fieldName firestore document field name
+ * @param {*} fieldValue firestore document field value
+ */
 function updateUserFieldInFirestore(docRef, fieldName, fieldValue) {
   const updateObject = {};
   updateObject[fieldName] = fieldValue;
@@ -79,7 +92,12 @@ function returnBack() {
   window.history.back();
 }
 
-/* Calculates the expiry date and returns it as a Date object */
+/**
+ * Calculates the expiry date and returns it as a Date object 
+ * @param {*} ingredientDocRef firestore ingredient document reference
+ * @param {*} boughtDate firestore field value
+ * @returns Date object representation of boughtDate
+ */
 function calculateExpiryDate(ingredientDocRef, boughtDate) {
   // 1 Day: 86,400 seconds, One second = 1 in UNIX time
   const daysToExpiry = ingredientDocRef.data().expiryDays * 86400 * 1000;
@@ -87,9 +105,13 @@ function calculateExpiryDate(ingredientDocRef, boughtDate) {
   return new Date(unixBoughtDate + daysToExpiry);
 }
 
-/* Returns the given firestore date field as a Date object */
+/**
+ * Returns the given firestore date field as a Date object
+ * @param {*} firestoreDate to parse
+ * @returns Date object representing firestoreDate
+ */
 function calculateDate(firestoreDate) {
-  const unixBoughtDate = Date.parse(date.toDate());
+  const unixBoughtDate = Date.parse(firestoreDate.toDate());
   return new Date(unixBoughtDate);
 }
 
@@ -102,7 +124,12 @@ function setPageTitle() {
   }
 }
 
-/* Helper function to calculate the new ingredient quantity based on the action. */
+/**
+ * Helper function to calculate the new ingredient quantity based on the action.
+ * @param {*} action to perform
+ * @param {*} currentQty current ingredient quantity
+ * @returns the new quantity value
+ */
 function calculateNewQty(action, currentQty) {
   switch (action) {
     case "+": return ++currentQty;
@@ -111,7 +138,13 @@ function calculateNewQty(action, currentQty) {
   }
 }
 
-/* Generic function to update a specific field of the users document in Firestore. */
+/**
+ * Generic function to add a field to the given Firestore document.
+ * @param {*} docRef firestore document reference
+ * @param {*} fieldName firestore document field name
+ * @param {*} fieldValue firestore document field value
+ * @param {*} timestampField firestore timestamp value
+ */
 function addDocumentInFirestore(docRef, fieldName, fieldValue, timestampField) {
   const addObject = {};
   addObject[fieldName] = fieldValue;
@@ -122,7 +155,10 @@ function addDocumentInFirestore(docRef, fieldName, fieldValue, timestampField) {
     .catch(error => console.error(`Error updating ${fieldName} in Firestore:`, error));
 }
 
-/* Function to redirect to eachRecipe.html and display the selected item */
+/**
+ * Function to redirect to eachRecipe.html and display the selected item.
+ * @param {*} docID param passed to eachRecipe.html
+ */
 function readRecipe(docID) {
   window.location.href = "../eachRecipe/eachRecipe.html?docID=" + docID;
 }

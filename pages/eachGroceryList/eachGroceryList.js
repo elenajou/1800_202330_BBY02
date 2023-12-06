@@ -27,7 +27,13 @@ function displayIngredientList() {
   });
 }
 
-/* Creates and returns an ingredient document as a list element. */
+/**
+ * Creates and returns an ingredient document as a list element.
+ * @param {*} listItemTemplate html template of list element
+ * @param {*} ingredientDoc ingredient document reference in firestore
+ * @param {*} ingredientListItem an element in ingredientList array field under user document
+ * @returns newListItem as an html list element
+ */
 function createIngredientItem(listItemTemplate, ingredientDoc, ingredientListItem) {
   const newListItem = listItemTemplate.content.cloneNode(true);
 
@@ -51,6 +57,8 @@ displayIngredientList();
  * Linked to buttons in eachGroceryList.html used to add or reduce ingredients.
  * The ingredients get deleted from ingredientList if qty reaches 0. Cannot pass index
  * to the function as index changes if it gets deleted.
+ * @param {*} htmlElementID the id of the html element to change
+ * @param {*} action the type of action to run
  */
 function changeQty(htmlElementID, action) {
   firebase.auth().onAuthStateChanged(async user => {
@@ -81,7 +89,10 @@ function changeQty(htmlElementID, action) {
   });
 }
 
-/* Updates the checkbox value in firestore for the ingredientList element. */
+/**
+ * Updates the checkbox value in firestore for the ingredientList element. 
+ * @param {*} checkbox html element being updated in html page and firestore
+ */
 function updateCheckboxValue(checkbox) {
   getUserDoc().then(() => {
       const userIngredientList = userDoc.data().ingredientList;
@@ -125,7 +136,7 @@ function addToFridge() {
         const userIngredientList = userDoc.data().ingredientList || [];
         const ingredientItemsToAdd = [];
 
-        if (userIngredientList.length < 1) return console.log("No ingredients to add");
+        if (userIngredientList.length < 1) return;
 
         // Add items that are checked as true
         for (const ingredientListItem of userIngredientList) {
@@ -149,7 +160,11 @@ function addToFridge() {
   });
 }
 
-// Checks the current date and the date of the last list of bought items
+/**
+ * Checks the current date and the date of the refrigerator document. 
+ * @param {*} lastBoughtDateRef the boughtDate field of the refrigerator document
+ * @return true if the boughtDate and today's date is the same
+ */
 function checkSameDate(lastBoughtDateRef) {
   const currentBoughtDateRef = firebase.firestore.Timestamp.now();
   const currentBoughtDate = currentBoughtDateRef.toDate().toDateString();
@@ -162,8 +177,13 @@ function checkSameDate(lastBoughtDateRef) {
   return sameDate;
 }
 
-// Function to update ingredients in the refridgerator document
-async function updateIngredientsInFridge(userFridgeRef, docId, ingredientItemsToAdd) {
+/**
+ * Function to update ingredient quantities in the refrigerator document. 
+ * @param {*} userFridgeRef reference to the refrigerator collection within the user collection
+ * @param {*} fridgeDocId the id of the refrigerator document
+ * @param {*} ingredientItemsToAdd an array of ingredients to add to the refrigerator document
+ */
+async function updateIngredientsInFridge(userFridgeRef, fridgeDocId, ingredientItemsToAdd) {
   const fridgeIngredientList = (await userFridgeRef.doc(docId).get()).data().ingredientList || [];
 
   ingredientItemsToAdd.forEach((item) => {
@@ -172,11 +192,11 @@ async function updateIngredientsInFridge(userFridgeRef, docId, ingredientItemsTo
     (index !== -1) ? fridgeIngredientList[index].qty += item.qty : fridgeIngredientList.push(item);
   });
 
-  updateUserFieldInFirestore(userFridgeRef.doc(docId), 'ingredientList', fridgeIngredientList);
+  updateUserFieldInFirestore(userFridgeRef.doc(fridgeDocId), 'ingredientList', fridgeIngredientList);
   $('#addedToFridgeMsg').modal('show');
 }
 
-// Redirects the page on closing the modal
+/* Redirects the page to fridge.html on closing the confirmation modal. */
 $(".modal").on("hidden.bs.modal", function () {
   window.location = "/pages/fridge/fridge.html";
 });
