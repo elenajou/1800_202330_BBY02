@@ -15,6 +15,15 @@ body {
   --accent: white;
 }
 
+/* Buttons */
+.back-button-mobile {
+  display: none;
+}
+
+.btn-ge-primary {
+  background-color: #c1cacb;
+}
+
 /* Navbar */
 
 .small-navbar,
@@ -243,9 +252,4 @@ fa-rectagle-list {
     border-radius: 40px 40px 0 0 !important;
     overflow-y: auto;
   }
-}
-
-/* Buttons */
-.back-button-mobile {
-  display: none;
 }

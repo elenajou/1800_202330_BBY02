@@ -20,13 +20,15 @@ a {
 }
 
 #recipe-menu-body {
-  background: rgba(255, 255, 255, 0.7) url(/images/cooking_pan.jpg) center no-repeat !important;
+  background: rgba(255, 255, 255, 0.7) url(/images/cooking_pan.jpg) center
+    no-repeat !important;
   background-size: cover !important;
   background-blend-mode: lighten;
 }
 
 #grocery-list-body {
-  background: rgba(255, 255, 255, 0.7) url(/images/grocery_list.jpg) center no-repeat !important;
+  background: rgba(255, 255, 255, 0.7) url(/images/grocery_list.jpg) center
+    no-repeat !important;
   background-size: cover !important;
   background-blend-mode: lighten;
 }
@@ -37,21 +39,23 @@ a {
   background-blend-mode: lighten;
 }
 
-
 #saved-recipe-body {
-  background: rgba(255, 255, 255, 0.7) url(/images/saved_recipes.jpg) center no-repeat !important;
+  background: rgba(255, 255, 255, 0.7) url(/images/saved_recipes.jpg) center
+    no-repeat !important;
   background-size: cover !important;
   background-blend-mode: lighten;
 }
 
 #create-recipe-body {
-  background: rgba(255, 255, 255, 0.7) url(/images/create_recipe.jpeg) center no-repeat !important;
+  background: rgba(255, 255, 255, 0.7) url(/images/create_recipe.jpeg) center
+    no-repeat !important;
   background-size: cover !important;
   background-blend-mode: lighten;
 }
 
 #add-ingredient-body {
-  background: rgba(255, 255, 255, 0.7) url(/images/add_ingredient.jpg) center no-repeat !important;
+  background: rgba(255, 255, 255, 0.7) url(/images/add_ingredient.jpg) center
+    no-repeat !important;
   background-size: cover !important;
   background-blend-mode: lighten;
 }
@@ -92,7 +96,7 @@ a {
 
   .card {
     flex: 0 0 100%;
-    max-width: 100%; 
+    max-width: 100%;
   }
 
   .card-body {

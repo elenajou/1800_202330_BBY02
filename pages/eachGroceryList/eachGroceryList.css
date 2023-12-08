@@ -1,7 +1,4 @@
-/* Buttons */
-.btn-ge-primary {
-  background-color: #c1cacb;
-}
+/* Grocery List content. */
 
 #ingredients-go-here {
   display: block;
@@ -34,8 +31,6 @@
 }
 
 #list1 {
-  /* background-color: #eff1f2; */
-  /* border-radius: .75rem; */
   border-color: transparent;
   box-shadow: none;
 }
@@ -49,6 +44,7 @@
   padding-left: 24px;
   padding-right: 24px;
 }
+
 /* Mobile view (< 500px) */
 
 @media only screen and (max-width: 500px) {
@@ -69,7 +65,7 @@
 
   .fa-arrow-left {
     color: white;
-  } 
+  }
 
   .btn-container {
     margin-bottom: 24px !important;
@@ -84,5 +80,4 @@
   .h1 {
     display: none;
   }
-
 }

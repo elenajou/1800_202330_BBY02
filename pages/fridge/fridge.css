@@ -50,11 +50,6 @@
   color: gray;
 }
 
-/* Buttons */
-.btn-ge-primary {
-  background-color: #c1cacb;
-}
-
 /* Mobile view (< 500px) */
 
 @media only screen and (max-width: 500px) {
