@@ -1,9 +1,10 @@
 /** Tracks how many ingredients are added to firestore */
 let ingredientIndex = 1;
 
-/** 
+/**
  * Adds a new dropdown menu to the form with all the 
  * existing ingredient documents as options.
+ * @param {*} dropdownID html dropdown element id
  */
 function populateIngredientsMenu(dropdownID) {
   let listItemTemplate = document.getElementById("chooseIngredientTemplate");
@@ -55,6 +56,9 @@ addDropdown();
 /**
  * Creates and returns an ingredient document as a dropdown list 
  * element (or dropdown option)
+ * @param {*} listItemTemplate html template of the list element
+ * @param {*} ingredientDoc ingredient document reference in firestore
+ * @returns html list element
  */
 function createIngredientLI(listItemTemplate, ingredientDoc) {
   const newListItem = listItemTemplate.content.cloneNode(true);

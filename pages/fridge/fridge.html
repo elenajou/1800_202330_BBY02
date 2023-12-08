@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Fridge</title>
-    <meta name="fridge" content="GrocerEase Fridge">
-    
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+  <title>Fridge</title>
+  <meta name="fridge" content="GrocerEase Fridge">
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!--------------------------------------------------------->
   <!------------- Boostrap, Google Fonts ---------->
   <!----- PLEASE READ head.js BEFORE ADDING ANY LINKS ------->
@@ -20,9 +21,9 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"/>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 
   <!-------------------------------------------------------->
@@ -30,6 +31,7 @@
   <!-------------------------------------------------------->
   <link rel="stylesheet" href="./fridge.css">
 </head>
+
 <body>
   <!-- Navbar -->
   <nav id="navbarPlaceholder"></nav>
@@ -42,8 +44,9 @@
       </div>
       <br>
       <h1 class="display-6 fw-bold" id="mypageheader">Fridge</h1>
-      <p class="page-message">Where convenience meets freshness! Seamlessly manage your kitchen inventory and effortlessly track expiry dates anywhere!</p>
-      <!--Container-->  
+      <p class="page-message">Where convenience meets freshness! Seamlessly manage your kitchen inventory and
+        effortlessly track expiry dates anywhere!</p>
+      <!--Container-->
       <h2 class="display-6 fw-bold" id="mypageheader2">What you currently have</h2>
       <div class="container" id="ingredients-container">
         <div id="ingredients-go-here" class="row row-cols-auto"></div>
@@ -58,12 +61,13 @@
       <template id="fridgeCardTemplate">
         <div class="card py-2">
           <div class="ingredient-img">
-            <img class="card-image card-img-top" src="..." alt="..."/>
+            <img class="card-image card-img-top" src="..." alt="..." />
           </div>
           <div class="card-body">
             <h5>
               <div>
-                <span class="card-name">Name</span> <span id="times-symb">&times;</span> <span class="card-qty">Qty</span>
+                <span class="card-name">Name</span> <span id="times-symb">&times;</span> <span
+                  class="card-qty">Qty</span>
               </div>
               <div>
                 <input type="button" class="btn btn-ge-primary card-subtract-btn" value="-" id="" onclick="">
@@ -75,10 +79,10 @@
         </div>
       </template>
     </div>
-  </div>  
+  </div>
   <!-- Footer -->
   <footer id="footerPlaceholder"></footer>
-  
+
   <!---------------------------------------------->
   <!------  JavaScript functions go here --------->
   <!---------------------------------------------->
@@ -88,4 +92,5 @@
   <script src="./fridge.js"></script>
   <!-- <script src="../scripts/populateUsers.js"></script> -->
 </body>
+
 </html>

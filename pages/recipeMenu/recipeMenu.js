@@ -1,3 +1,7 @@
+/**
+ * Dynamically displays all the recipes documents into the page
+ * @param {*} collection firestore recipes collection reference
+ */
 function displayCardsDynamically(collection) {
 
   db.collection(collection)
@@ -10,6 +14,11 @@ function displayCardsDynamically(collection) {
     });
 }
 
+/**
+ * Creates and returns a new recipe card populated with data from the recipe document.
+ * @param {*} doc firestore recipe document reference
+ * @returns html Bootstrap card of the recipe document
+ */
 function createNewRecipeCard(doc) {
   const cardTemplate = document.getElementById("recipeCardTemplate");
 
@@ -18,8 +27,10 @@ function createNewRecipeCard(doc) {
   const description = doc.data().description;
   const recipeCode = doc.data().recipeCode;
   const docID = doc.id;
+  
   // Clone the HTML template to create a new card (newCard) that will be filled with Firestore data
   var newCard = cardTemplate.content.cloneNode(true);
+
   // update title and text and image
   newCard.querySelector(".card-title").innerHTML = title;
   newCard.querySelector(".card-time").innerHTML =
@@ -43,6 +54,10 @@ function createNewRecipeCard(doc) {
   return newCard;
 }
 
+/**
+ * Updates the status of the bookmark icon if the recipe is referenced in the
+ * bookmark array field under the user document.
+ */
 function doAll() {
   firebase.auth().onAuthStateChanged((user) => {
     try {
@@ -76,6 +91,12 @@ function doAll() {
 }
 doAll();
 
+/**
+ * Updates the bookmarks array field in the user document if the bookmark icon is selected.
+ * Adds or removes the recipe document reference to the bookmarks array field and updates
+ * the icon status.
+ * @param {*} recipeDocID firestore recipe document id
+ */
 function saveBookmark(recipeDocID) {
   currentUser.get().then((userDoc) => {
     var bookmarks = userDoc.data().bookmarks || [];

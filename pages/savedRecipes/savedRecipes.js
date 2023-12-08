@@ -1,3 +1,4 @@
+/** Dynamically displays the saved recipes as cards in the page. */
 function displaySavedRecipes() {
   currentUser.get().then(userDoc => {
     var bookmarks = userDoc.data().bookmarks;
@@ -20,6 +21,12 @@ function displaySavedRecipes() {
   })
 }
 
+/**
+ * Clones a node and populates its values with data from the recipe document.
+ * @param {*} recipeDoc recipe document reference
+ * @param {*} recipeDocID recipe document id
+ * @returns newCard node
+ */
 function populateSavedRecipes(recipeDoc, recipeDocID){
   let savedCardTemplate = document.getElementById("savedRecipeCardTemplate");
 
@@ -50,6 +57,10 @@ function populateSavedRecipes(recipeDoc, recipeDocID){
   return newCard;
 }
 
+/**
+ * Removes the recipe from the bookmark array field if icon is pressed.
+ * @param {*} recipeDocID 
+ */
 function unsaveRecipe(recipeDocID) {
   currentUser.update({
     bookmarks: firebase.firestore.FieldValue.arrayRemove(recipeDocID)
@@ -62,6 +73,9 @@ function unsaveRecipe(recipeDocID) {
   })
 }
 
+/**
+ * Redirects the page to login.html if no user is signed in.
+ */
 function initSavedRecipePage() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {

@@ -1,3 +1,4 @@
+/** Finds the user's bookmarked ingredients and updates the corresponding icons */
 function doAll() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -14,6 +15,10 @@ function doAll() {
   });
 }
 
+/**
+ * Updates the html bookmark element if it exists within the array bookmarks
+ * @param {*} bookmarks bookmarks array
+ */
 function updateBookmarkIcon(bookmarks) {
   bookmarks.forEach((recipeID) => {
     var iconID = "save-" + recipeID;
@@ -26,6 +31,7 @@ function updateBookmarkIcon(bookmarks) {
 
 doAll();
 
+/** Displays the selected recipe info. */
 function displayRecipeInfo() {
   let params = new URL(window.location.href); //get URL of search bar
   let ID = params.searchParams.get("docID"); //get value for key "id"
@@ -61,6 +67,11 @@ function displayRecipeInfo() {
 }
 displayRecipeInfo();
 
+/**
+ * Grabs the data from the recipe document and populates it into the 
+ * corresponding fields. 
+ * @param {*} doc recipe document reference
+ */
 function populateRecipePage(doc) {
   thisRecipe = doc.data();
   recipeCode = thisRecipe.code;
@@ -86,6 +97,10 @@ function populateRecipePage(doc) {
   document.getElementById("recipe-image").src = localStorage.getItem(title);
 }
 
+/**
+ * Bookmarks the recipe if the button is selected. Adds the recipe document
+ * reference to the firestore bookmarks array.
+ */
 function bookmarkRecipe() {
   // Get the recipe ID from the URL
   let params = new URL(window.location.href);
@@ -110,4 +125,5 @@ function bookmarkRecipe() {
   });
 }
 
+/** Listens to the bookmark button and calls the bookmarkRecipe function */
 document.getElementById("bookmark-button").addEventListener("click", bookmarkRecipe);

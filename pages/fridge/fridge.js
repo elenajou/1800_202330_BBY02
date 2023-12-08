@@ -1,3 +1,6 @@
+/**
+ * Dynamically displays the refrigerator documents in the page.
+ */
 function displayFridge() {
   const fridgeList = document.getElementById("ingredients-go-here");
   const cardTemplate = document.getElementById("fridgeCardTemplate");
@@ -32,7 +35,14 @@ function displayFridge() {
   });
 }
 
-// Creates and returns a new Bootstrap card with ingredient details
+/**
+ * Creates and returns an ingredient document as a Bootstrap card.
+ * @param {*} cardTemplate ingredient html template
+ * @param {*} fridgeDoc firestore refrigerator document reference
+ * @param {*} ingredientDoc firestore ingredient document reference
+ * @param {*} qty quantity to update to
+ * @returns html Bootstrap card
+ */
 async function createFridgeCard(cardTemplate, fridgeDoc, ingredientDoc, qty) {
   thisIngredient = ingredientDoc.data();
   const newCard = cardTemplate.content.cloneNode(true);
@@ -65,6 +75,12 @@ async function createFridgeCard(cardTemplate, fridgeDoc, ingredientDoc, qty) {
 
 displayFridge();
 
+/**
+ * Changes the quantity listed on the specified ingredient and updates value
+ * within the refrigerator document in firestore.
+ * @param {*} htmlElementID html element id reference
+ * @param {*} action type to run
+ */
 function changeQty(htmlElementID, action) {
   firebase.auth().onAuthStateChanged(async user => {
     try {
@@ -99,6 +115,10 @@ function changeQty(htmlElementID, action) {
   });
 }
 
+/**
+ * Deletes the refrigerator document.
+ * @param {*} fridgeHeadingID html heading element id
+ */
 function deleteFridgeLog(fridgeHeadingID) {
   firebase.auth().onAuthStateChanged(async user => {
     try {
@@ -118,7 +138,12 @@ function deleteFridgeLog(fridgeHeadingID) {
   });
 }
 
-/* Creates a Heading for every fridge entry */
+/**
+ * Creates and returns a heading for every fridge entry
+ * @param {*} headingTemplate html template for the heading
+ * @param {*} fridgeDoc firestore refrigerator document reference
+ * @returns html heading element
+ */
 function createFridgeHeading(headingTemplate, fridgeDoc) {
   const newHeading = headingTemplate.content.cloneNode(true);
   const date = (calculateDate(fridgeDoc.data().boughtDate)).toDateString();

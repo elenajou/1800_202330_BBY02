@@ -1,3 +1,7 @@
+/**
+ * Adds the recipe ingredients' reference to the ingredientList (also known as grocery list)
+ * array in the user document. 
+ */
 function addToGroceryList() {
   const urlParams = new URL(window.location.href);
   const recipeID = urlParams.searchParams.get("docID");
