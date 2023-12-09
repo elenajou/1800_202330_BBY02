@@ -33,13 +33,16 @@ Here are the steps ...
 Here are some known bugs:
 * Bookmark/add buttons are misaligned on the desktop version of eachRecipe page. 
 * Logout button is not responsive on the desktop version.
-* ...
+* Images used to populate the All Recipes and ingredients are in an async function. At every refresh, the images might not get populated.
 
 ## 6. Features for Future
 What we'd like to build in the future:
-* Allow users to share grocery lists with other users
-* Allow users to adjust recipe serving size
-* Allow users to leave a review on recipes
+* Allow users to share grocery lists with other users.
+* Allow users to adjust recipe serving size.
+* Allow users to leave a review on recipes.
+* Allow users to import recipes from other websites.
+* Allow users to add ingredients to the Grocery List page or the Fridge page.
+* Allow users to add images to the createRecipe form.
 	
 ## 7. Contents of Folder
 
@@ -57,7 +60,15 @@ What we'd like to build in the future:
 It has the following subfolders and files:
 ├── .git                    # Folder for git repo
 ├-- components              # Folder for reused html items (i.e. navbar)
-├── images                  # Folder for static images
+|   ├── nav_after_login     # Navbar used after user login
+|   ├── nav_before_login    # Navbar used before user login
+|   └── footer.html         # Footer for the web page in laptop format
+├── images                  # Folder for static images.
+|   ├── icons8-             # Refrigerator icon for navbar
+|   |   refrigerator-50.png 
+|   ├── [logo-*]            # Custom logo for GrocerEase
+|   ├── [phone-*]           # Custom images for GrocerEase
+|   └── [*other images*]    # All images are from unsplash.com
 ├── pages                   # Contains subfolders for each web page and their
 |   |                         corresponding javascript and css files
 |   ├── createRecipe        # Web form for users to add recipes to the database
