@@ -2,42 +2,44 @@
 
 ## 1. Project Description
 A web application to help people keep track of what ingredients they need to buy by auto-generating a grocery list based on all the recipes they are using. 
-* It will use information from previous shopping lists to keep track of expiration times.
-* It will use information from previously used recipes to keep track of quantity left.
-* It will use the ingredient quantities left and generate an updated grocery list. 
+* It will generate a grocery list based on users' added recipes.
+* It will track purchased ingredients' expiration dates
+* It will bookmark users' favourite recipes.
+* It will save users' customized recipes.
 
 ## 2. Names of Contributors
 * Elena Jou Luo - CST student at BCIT
 * Stella Hui - CST student at BCIT
-* Grace - I am excited to make this web application.
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
 * HTML, CSS, JavaScript
 * Fonts from https://fonts.google.com/
 * Icons from https://icons8.com/
+* Images from https://unsplash.com/
 * Bootstrap 5.0 (Frontend library)
 * Firebase 8.0 (BAAS - Backend as a Service)
-* ...
 
-## 4. Complete setup/installion/usage
+## 4. Complete setup/installation/usage
 State what a user needs to do when they come to your project.  How do others start using your code or application?
 Here are the steps ...
-* To use the bootstrap links in the head component, use a script tag and src the head.js file
-* To use the footer element, use a script tag and src the footer.js file
-* ...
+* Git clone the repository
+* Acquire the Firebase config file from the project owners or set up a new database in FireStore
+* Copy and paste the Firebase config file into the /scripts folder
+* npm install Firebase
+* Firebase deploy to run the application or open index.html in Live Serve
 
 ## 5. Known Bugs and Limitations
 Here are some known bugs:
-* ...
-* ...
+* Bookmark/add buttons are misaligned on the desktop version of eachRecipe page. 
+* Logout button is not responsive on the desktop version.
 * ...
 
 ## 6. Features for Future
 What we'd like to build in the future:
-* Provide ability to import recipes from other websites
-* Ability to share grocery lists with other users
-* ...
+* Allow users to share grocery lists with other users
+* Allow users to adjust recipe serving size
+* Allow users to leave a review on recipes
 	
 ## 7. Contents of Folder
 
@@ -63,7 +65,7 @@ It has the following subfolders and files:
 |   ├── eachGroceryList     # Web page showing the current user's grocery list
 |   ├── eachRecipe          # View of a selected recipe document
 |   ├── fridge              # Web page simulating the ingredients in the
-|   |                         current user's physical refridgerator
+|   |                         current user's physical refrigerator
 |   ├── login               # Login form for user to access account or sign up
 |   ├── recipeMenu          # Web page showing a collection of recipes for 
 |   |                         user to check out
